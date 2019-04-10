@@ -27,8 +27,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
   getUserLocationHandler = () => {
     navigator.geolocation.getCurrentPosition(position => {
       const lat = position.coords.latitude.toString();
@@ -44,62 +43,7 @@ export default class App extends Component<Props> {
   }
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <View style={styles.layout}>
-          <View style={styles.header}>
-            <AppHeader />
-          </View>
-          <ScrollView style={styles.body}>
-          {/* <Switch>
-            <Route path="/offers" component={OfferPage} />
-            <Route path="/profile" component={ProfilePage} />
-          </Switch> */}
-            <OfferPage/>
-            <FetchLocation onGetLocation={this.getUserLocationHandler} />
-            <Text style={styles.welcome}>Welcome to React Native!</Text>
-            <Text style={styles.instructions}>To get started, edit App.js</Text>
-            <Text style={styles.instructions}>{instructions}</Text>
-            <InputComponent />
-            <PickerComponent />
-          </ScrollView>
-        </View>
-        <View style={styles.footer} >
-          <AppFooter />
-        </View>
-      </View>
+      <OfferPage />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  layout: {
-    flex: 1,
-    // flexDirection: 'column',
-    // justifyContent: 'space-between',
-    // justifyContent: 'center',
-    alignItems: 'stretch',
-    backgroundColor: '#F5FCFF',
-    // height: '100%',
-  },
-  header: {
-
-  },
-  body: {
-
-  },
-  footer: {
-    justifyContent: 'flex-end',
-    paddingBottom: 60,
-    backgroundColor: '#fff'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});

@@ -1,10 +1,15 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import Banners from '../banner';
-import OfferList from '../offers/offerList';
+import OfferList from './offerList';
 import AppHeader from '../layout/header';
 
-export default class OfferPage extends React.Component {
+export default class OfferIndex extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
+    }
 
     render() {
         const { navigation } = this.props;

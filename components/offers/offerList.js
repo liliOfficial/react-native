@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, StyleSheet, ScrollView } from 'react-native';
 import OfferCard from './offerCard';
+
+import ScrollableTabView, { DefaultTabBar } from 'react-native-scrollable-tab-view';
 
 class OfferList extends Component {
     state = {
@@ -40,10 +42,26 @@ class OfferList extends Component {
     render() {
         return (
             <View>
-                {this.state.list.map(item => {
-                    return <OfferCard key={item.id} data={item} navigation={this.props.navigation} />
-                })}
-                <Button title="Load More" color="#841584"/>
+                <ScrollableTabView
+                    tabBarUnderlineStyle={styles.tabBarUnderline}
+                    style={styles.scrollableTab}
+                    tabBarActiveTextColor='#F17C21'
+                    tabBarTextStyle={styles.tabBarText}
+                    renderTabBar={() => <DefaultTabBar style={styles.tabBar}  />}
+                >
+                    <ScrollView tabLabel='Online'>
+                        {this.state.list.map(item => {
+                            return <OfferCard key={item.id} data={item} navigation={this.props.navigation} />
+                        })}
+                    </ScrollView>
+                    <ScrollView tabLabel='In-Store'>
+                        {this.state.list.map(item => {
+                            return <OfferCard key={item.id} data={item} navigation={this.props.navigation} />
+                        })}
+                    </ScrollView>
+                </ScrollableTabView>
+
+                <Button title="Load More" color="#841584" />
             </View>
 
 
@@ -51,8 +69,23 @@ class OfferList extends Component {
     }
 }
 
-// const styles = StyleSheet.create({
-    
-// });
+const styles = StyleSheet.create({
+    scrollableTab: {
+        paddingBottom: 5,
+        backgroundColor:'#fff'
+    },
+    tabBar: {
+        height:45
+    },
+    tabBarText: {
+        position:'relative',
+        top:6
+    },
+    tabBarUnderline: {
+        marginTop: 0,
+        backgroundColor: '#F17C21',
+        height: 2,
+    }
+});
 
 export default OfferList;

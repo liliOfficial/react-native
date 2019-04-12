@@ -7,9 +7,6 @@ export default class CategoryList extends Component {
     return (
       <View>
         <Text> Browse Categories </Text>
-        <View>
-
-        </View>
       </View>
     );
   }

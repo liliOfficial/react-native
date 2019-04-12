@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
-import { View, ScrollView, Text, StyleSheet } from 'react-native';
-import AppFooter from '../layout/footer';
+import React from 'react';
+import { View, ScrollView, Text, StyleSheet, Platform } from 'react-native';
+
+import AppHeader from '../layout/header';
 import FetchLocation from '../fetchLocation';
 
-export default class ProfilePage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
+const instructions = Platform.select({
+    ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+    android:
+      'Double tap R on your keyboard to reload,\n' +
+      'Shake or press menu button for dev menu',
+  });
+
+export default class ProfilePage extends React.Component {
 
     getUserLocationHandler = () => {
         navigator.geolocation.getCurrentPosition(position => {
@@ -28,15 +31,15 @@ export default class ProfilePage extends Component {
         return (
             <View style={{ flex: 1 }}>
                 <View style={styles.layout}>
+                    <View style={styles.header}>
+                        <AppHeader />
+                    </View>
                     <ScrollView style={styles.body}>
                         <FetchLocation onGetLocation={this.getUserLocationHandler} />
                         <Text style={styles.welcome}>Welcome to React Native111!</Text>
                         <Text style={styles.instructions}>To get started, edit App.js</Text>
                         <Text style={styles.instructions}>{instructions}</Text>
                     </ScrollView>
-                </View>
-                <View style={styles.footer} >
-                    <AppFooter />
                 </View>
             </View>
         );
@@ -45,26 +48,26 @@ export default class ProfilePage extends Component {
 
 const styles = StyleSheet.create({
     layout: {
-      flex: 1,
-      // flexDirection: 'column',
-      // justifyContent: 'space-between',
-      // justifyContent: 'center',
-      alignItems: 'stretch',
-      backgroundColor: '#F5FCFF',
+        flex: 1,
+        // flexDirection: 'column',
+        // justifyContent: 'space-between',
+        // justifyContent: 'center',
+        alignItems: 'stretch',
+        backgroundColor: '#F5FCFF',
     },
     footer: {
-      justifyContent: 'flex-end',
-      paddingBottom: 60,
-      backgroundColor: '#fff'
+        justifyContent: 'flex-end',
+        paddingBottom: 60,
+        backgroundColor: '#fff'
     },
     welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
     },
     instructions: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5,
+        textAlign: 'center',
+        color: '#333333',
+        marginBottom: 5,
     },
-  });
+});

@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
-import { View, Image, Text, StyleSheet, AppRegistry } from 'react-native';
-import Dimensions from 'Dimensions';
+import { View, Image, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import LogoBox from '../share/logoBox';
 
-const { height, width } = Dimensions.get('window');
 export default class OfferCard extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {}
-
+    _onPressButton() {
+        Alert.alert('You tapped the button!')
     }
+
     render() {
         const { imageUrl, text, cashBack, link } = this.props.data;
         return (
+
+                <TouchableHighlight onPress={() => this.props.navigation.navigate('Store', { data: this.props.data })} underlayColor="white">
             <View style={styles.card}>
-                <View style={styles.logoBox}>
-                    <Image style={styles.logo} source={imageUrl} resizeMethod="resize" />
-                </View>
+                <LogoBox imageUrl={imageUrl} />
                 <Text style={styles.description}>{text}</Text>
                 <View style={styles.line}></View>
-                <View style={styles.bottomBox}>
-                    <Text>{cashBack}</Text>
-                    <View style={styles.offerButton}><Text style={{ color: '#fff', fontSize: 12 }}>Shop Offer</Text></View>
-                </View>
+                    <View style={styles.bottomBox}>
+                        <Text>{cashBack}</Text>
+                        <View style={styles.offerButton}><Text style={{ color: '#fff', fontSize: 12 }}>Shop Offer</Text></View>
+                    </View>
             </View>
+                </TouchableHighlight>
+
         );
     }
 }
@@ -38,18 +38,6 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.2,
         shadowRadius: 2,
-    },
-    logoBox: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 5,
-        
-    },
-    logo: {
-        width: width * 0.3,
-        height: width * 0.15,
-        resizeMode: 'contain'
     },
     description: {
         paddingTop: 8,
@@ -78,4 +66,4 @@ const styles = StyleSheet.create({
     }
 });
 
-AppRegistry.registerComponent('OfferCard', () => OfferCard);
+// AppRegistry.registerComponent('OfferCard', () => OfferCard);

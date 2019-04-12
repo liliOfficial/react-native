@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import Banners from '../banner';
-import OfferList from '../offers/offerList';
-import AppFooter from '../layout/footer';
-import AppHeader from '../layout/header';
 
-export default class OfferPage extends React.Component {
+import AppHeader from '../layout/header';
+import CategoryList from '../categories/categoryList';
+
+export default class CategoryPage extends React.Component {
 
     render() {
         const { navigation } = this.props;
@@ -14,8 +13,7 @@ export default class OfferPage extends React.Component {
                 <AppHeader />
                 <View style={styles.layout}>
                     <ScrollView>
-                        <Banners />
-                        <OfferList navigation={navigation} />
+                        <CategoryList/>
                     </ScrollView>
                 </View>
             </View>
@@ -28,10 +26,5 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'stretch',
         backgroundColor: '#F5FCFF'
-    },
-    footer: {
-        justifyContent: 'flex-end',
-        paddingBottom: 60,
-        backgroundColor: '#fff'
     }
 });

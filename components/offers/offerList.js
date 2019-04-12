@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import { View, Button } from 'react-native';
 import OfferCard from './offerCard';
 
 class OfferList extends Component {
@@ -41,7 +41,7 @@ class OfferList extends Component {
         return (
             <View>
                 {this.state.list.map(item => {
-                    return <OfferCard key={item.id} data={item} />
+                    return <OfferCard key={item.id} data={item} navigation={this.props.navigation} />
                 })}
                 <Button title="Load More" color="#841584"/>
             </View>

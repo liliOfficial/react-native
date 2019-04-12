@@ -1,21 +1,15 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
-import Banners from '../banner';
-import OfferList from '../offers/offerList';
-import AppFooter from '../layout/footer';
+import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import AppHeader from '../layout/header';
 
-export default class OfferPage extends React.Component {
-
+export default class ReferPage extends React.Component {
     render() {
-        const { navigation } = this.props;
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
                 <AppHeader />
                 <View style={styles.layout}>
                     <ScrollView>
-                        <Banners />
-                        <OfferList navigation={navigation} />
+                        <Text>qweqwedfadf</Text>
                     </ScrollView>
                 </View>
             </View>

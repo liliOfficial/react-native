@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, Text, TouchableHighlight,Alert } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableHighlight, Alert } from 'react-native';
 
 class AppFooter extends Component {
-    _onPressButton() {
-        Alert.alert('You tapped the button!')
-    }
+
 
 
     render() {
+        console.log(JSON.stringify(this.props));
         return (
             <View style={styles.container}>
-                <TouchableHighlight underlayColor="white" style={styles.box} onPress={this._onPressButton} >
+                <TouchableHighlight underlayColor="white" style={styles.box} onPress={() => this.props.navigation.navigate('Offers')} >
                     <View >
                         <Image
                             source={require('../../asset/img/icon/offers.png')}
@@ -19,7 +18,7 @@ class AppFooter extends Component {
                         <Text style={styles.title}>Offers</Text>
                     </View>
                 </TouchableHighlight>
-                <TouchableHighlight underlayColor="white" style={styles.box}>
+                <TouchableHighlight underlayColor="white" style={styles.box} onPress={() => this.props.navigation.navigate('Categories')}>
                     <View>
                         <Image
                             source={require('../../asset/img/icon/categories.png')}
@@ -35,7 +34,7 @@ class AppFooter extends Component {
                         />
                         <Text style={styles.title}>Refer a Friend</Text>
                     </View></TouchableHighlight>
-                <TouchableHighlight underlayColor="white" style={styles.box}>
+                <TouchableHighlight underlayColor="white" style={styles.box} onPress={() => this.props.navigation.navigate('Profile')}>
                     <View >
                         <Image
                             source={require('../../asset/img/icon/user.png')}
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
         paddingTop: 3,
         paddingBottom: 15,
         color: '#000',
-        textAlign:'center',
+        textAlign: 'center',
     }
 
 });

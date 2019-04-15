@@ -20,6 +20,15 @@ const styles = StyleSheet.create({
   }
 });
 
+// const OffersRoot = StackNavigator({
+//   Offers: {
+//     screen: OfferPage
+//   },
+//   Store: {
+//     screen: StorePage,
+//   }
+// })
+
 const AppNavigator = createBottomTabNavigator({
   Offers: {
     screen: OfferPage,
@@ -52,11 +61,9 @@ const AppNavigator = createBottomTabNavigator({
       tabBarVisible: false
     }
   },
-
-
 },
   {
-    initialRouteName: "Offers",
+    initialRouteName: "Categories",
 
     tabBarOptions: {
       activeTintColor: "#000",

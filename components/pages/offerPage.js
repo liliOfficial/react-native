@@ -3,6 +3,7 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import Banners from '../banner';
 import OfferList from '../offers/offerList';
 import AppHeader from '../layout/header';
+import { OfferCarousel } from '../offers/offerCarousel';
 
 export default class OfferPage extends React.Component {
 
@@ -11,9 +12,10 @@ export default class OfferPage extends React.Component {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
                 <AppHeader />
+
                 <View style={styles.layout}>
                     <ScrollView>
-                        <Banners />
+                        <OfferCarousel />
                         <OfferList navigation={navigation} />
                     </ScrollView>
                 </View>

@@ -16,7 +16,7 @@ import CategoryPage from './components/pages/categoryPage';
 
 const styles = StyleSheet.create({
   icon: {
-    width: 20, height: 20, marginTop: 15, marginBottom: 5
+    width: 20, height: 20, marginTop: 20, marginBottom: 8
   }
 });
 
@@ -60,9 +60,10 @@ const AppNavigator = createBottomTabNavigator({
   }
 },
   {
-    initialRouteName: "Offers",
+    initialRouteName: "Categories",
 
     tabBarOptions: {
+      style:{backgroundColor:'rgba(255,255,255,0.3)'},
       activeTintColor: "#000",
       inactiveTintColor: "#858585",
       labelStyle: {

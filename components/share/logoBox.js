@@ -4,11 +4,11 @@ import Dimensions from 'Dimensions';
 
 const { height, width } = Dimensions.get('window');
 
-const LogoBox = ({imageUrl} ) => {
+const LogoBox = ({ imageUrl }) => {
     return (
         <View style={styles.logoBox}>
-                    <Image style={styles.logo} source={imageUrl} resizeMethod="resize" />
-                </View>
+            <Image style={styles.logo} source={imageUrl} resizeMethod="resize" />
+        </View>
     )
 }
 

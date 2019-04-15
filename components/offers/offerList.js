@@ -11,14 +11,14 @@ class OfferList extends Component {
                 id: 1,
                 imageUrl: { uri: 'https://cdn.cashrewards.com/coles-online.jpg' },
                 text: 'New customers, get $18 off when you spend $150 or more',
-                cashBack: '4.20% Cashback',
+                cashBack: '10.00% Cashback',
                 link: ''
             },
             {
                 id: 2,
                 imageUrl: { uri: 'https://cdn.cashrewards.com/dan-murphys.jpg' },
                 text: 'New customers, get $18 off when you spend $150 or more',
-                cashBack: '4.20% Cashback',
+                cashBack: '3.80% Cashback',
                 link: ''
             },
             {
@@ -30,9 +30,9 @@ class OfferList extends Component {
             },
             {
                 id: 4,
-                imageUrl: { uri: '//cdn.cashrewards.com/forever-new.jpg' },
-                text: 'New customers, get $18 off when you spend $150 or more',
-                cashBack: '3.80% Cashback',
+                imageUrl: { uri: 'https://cdn.cashrewards.com/forever-new.jpg' },
+                text: 'A minimum spend of $10 in a single transaction is required to be eligible for Cashback.',
+                cashBack: '7.00% Cashback',
                 link: ''
             },
         ]

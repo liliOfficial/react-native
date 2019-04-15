@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, Text,ScrollView, StyleSheet } from 'react-native';
 
-import AppFooter from '../layout/footer';
-import AppHeader from '../layout/header';
 import LogoBox from '../share/logoBox';
+import StoreTab from '../store/storeTab';
 
 export default class StorePage extends React.Component {
 
@@ -12,17 +11,13 @@ export default class StorePage extends React.Component {
     const { imageUrl, text, cashBack, link } = navigation.getParam('data');
     return (
       <View style={{ flex: 1, backgroundColor: 'red' }}>
-        <AppHeader />
         <View style={styles.layout}>
           <ScrollView>
-            <View>
+            <View style={styles.banner}>
               <LogoBox imageUrl={imageUrl} />
             </View>
-            <Text> textInComponent {text} </Text>
+            <StoreTab/>
           </ScrollView>
-          <View style={styles.footer} >
-            <AppFooter navigation={navigation} />
-          </View>
         </View>
       </View>
     );
@@ -35,9 +30,7 @@ const styles = StyleSheet.create({
       alignItems: 'stretch',
       backgroundColor: '#F5FCFF'
   },
-  footer: {
-      justifyContent: 'flex-end',
-      paddingBottom: 60,
-      backgroundColor: '#fff'
+  banner: {
+    backgroundColor:'#fff'
   }
 });

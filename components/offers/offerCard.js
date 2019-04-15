@@ -12,17 +12,17 @@ export default class OfferCard extends Component {
         const { imageUrl, text, cashBack, link } = this.props.data;
         return (
 
-                <TouchableHighlight onPress={() => this.props.navigation.navigate('Store', { data: this.props.data })} underlayColor="white">
-            <View style={styles.card}>
-                <LogoBox imageUrl={imageUrl} />
-                <Text style={styles.description}>{text}</Text>
-                <View style={styles.line}></View>
+            <TouchableHighlight onPress={() => this.props.navigation.navigate('Store', { data: this.props.data })} underlayColor="white">
+                <View style={styles.card}>
+                    <LogoBox imageUrl={imageUrl} />
+                    <Text style={styles.description}>{text}</Text>
+                    <View style={styles.line}></View>
                     <View style={styles.bottomBox}>
                         <Text>{cashBack}</Text>
                         <View style={styles.offerButton}><Text style={{ color: '#fff', fontSize: 12 }}>Shop Offer</Text></View>
                     </View>
-            </View>
-                </TouchableHighlight>
+                </View>
+            </TouchableHighlight>
 
         );
     }
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         paddingLeft: 12,
         paddingRight: 12,
         borderRadius: 5,
-        backgroundColor: '#841584'
+        backgroundColor: '#F17C21'
     }
 });
 

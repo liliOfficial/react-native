@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
+import SearchInput from '../search/searchInput';
 
 class AppHeader extends Component {
 
@@ -9,6 +10,7 @@ class AppHeader extends Component {
                 <View style={styles.container}>
                     <Text style={styles.logo}>CASHREWARDS</Text>
                 </View>
+                <SearchInput />
             </SafeAreaView>
         );
     }

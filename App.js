@@ -7,7 +7,7 @@
  */
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
 
 import OfferPage from './components/pages/offerPage';
 import ProfilePage from './components/pages/profilePage';
@@ -20,18 +20,22 @@ const styles = StyleSheet.create({
   }
 });
 
-// const OffersRoot = StackNavigator({
-//   Offers: {
-//     screen: OfferPage
-//   },
-//   Store: {
-//     screen: StorePage,
-//   }
-// })
+const OffersNavigator = createStackNavigator({
+  OffersList: {
+    screen: OfferPage,
+    navigationOptions: {
+      title: 'offers',
+      header: null
+    }
+  },
+  Store: {
+    screen: StorePage,
+  }
+})
 
 const AppNavigator = createBottomTabNavigator({
   Offers: {
-    screen: OfferPage,
+    screen: OffersNavigator,
     navigationOptions: {
       tabBarIcon: <Image source={require('./asset/img/icon/offers.png')} style={styles.icon} />
     }
@@ -53,17 +57,10 @@ const AppNavigator = createBottomTabNavigator({
     navigationOptions: {
       tabBarIcon: <Image source={require('./asset/img/icon/user.png')} style={styles.icon} />
     }
-  },
-  Store: {
-    screen: StorePage,
-    navigationOptions: {
-      tabBarIcon: <Image source={require('./asset/img/icon/offers.png')} style={styles.icon} />,
-      tabBarVisible: false
-    }
-  },
+  }
 },
   {
-    initialRouteName: "Categories",
+    initialRouteName: "Offers",
 
     tabBarOptions: {
       activeTintColor: "#000",

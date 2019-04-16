@@ -45,23 +45,23 @@ class OfferList extends Component {
                 <ScrollableTabView
                     tabBarUnderlineStyle={styles.tabBarUnderline}
                     style={styles.scrollableTab}
-                    tabBarActiveTextColor='#F17C21'
+                    tabBarActiveTextColor='#5e3bbf'
                     tabBarTextStyle={styles.tabBarText}
                     renderTabBar={() => <DefaultTabBar style={styles.tabBar}  />}
                 >
-                    <ScrollView tabLabel='Online'>
+                    <View tabLabel='Online'>
                         {this.state.list.map(item => {
                             return <OfferCard key={item.id} data={item} navigation={this.props.navigation} />
                         })}
-                    </ScrollView>
-                    <ScrollView tabLabel='In-Store'>
+                    </View>
+                    <View tabLabel='In-Store'>
                         {this.state.list.map(item => {
                             return <OfferCard key={item.id} data={item} navigation={this.props.navigation} />
                         })}
-                    </ScrollView>
+                    </View>
                 </ScrollableTabView>
 
-                <Button title="Load More" color="#841584" />
+                <Button title="Load More" color="#5e3bbf" />
             </View>
 
 
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     },
     tabBarUnderline: {
         marginTop: 0,
-        backgroundColor: '#F17C21',
+        backgroundColor: '#5e3bbf',
         height: 2,
     }
 });

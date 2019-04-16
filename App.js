@@ -13,6 +13,8 @@ import OfferPage from './components/pages/offerPage';
 import ProfilePage from './components/pages/profilePage';
 import StorePage from './components/pages/storePage';
 import CategoryPage from './components/pages/categoryPage';
+import CategoriesList from './components/categories/categoryList';
+
 
 const styles = StyleSheet.create({
   icon: {
@@ -24,12 +26,35 @@ const OffersNavigator = createStackNavigator({
   OffersList: {
     screen: OfferPage,
     navigationOptions: {
-      title: 'offers',
+      title: 'Offers',
       header: null
     }
   },
   Store: {
     screen: StorePage,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#6b52ae'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }
+  }
+})
+
+const CategoriesNavigator = createStackNavigator({
+  CategoriesList: {
+    screen: CategoriesList,
+    navigationOptions: {
+      title: 'Categories',
+      header: null
+    }
+  },
+  CategoriesDetail: {
+    screen: CategoryPage,
+    
   }
 })
 
@@ -41,7 +66,7 @@ const AppNavigator = createBottomTabNavigator({
     }
   },
   Categories: {
-    screen: CategoryPage,
+    screen: CategoriesNavigator,
     navigationOptions: {
       tabBarIcon: <Image source={require('./asset/img/icon/categories.png')} style={styles.icon} />
     }
@@ -63,7 +88,7 @@ const AppNavigator = createBottomTabNavigator({
     initialRouteName: "Categories",
 
     tabBarOptions: {
-      style:{backgroundColor:'rgba(255,255,255,0.3)'},
+      style: { backgroundColor: 'rgba(255,255,255,0.3)' },
       activeTintColor: "#000",
       inactiveTintColor: "#858585",
       labelStyle: {

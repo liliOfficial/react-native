@@ -9,32 +9,32 @@ export class OfferCarousel extends Component {
             {
                 title: 'Beautiful and dramatic Antelope Canyon',
                 subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-                illustration: 'https://cdn.cashrewards.com/banner-myer12-1311am-desktop.jpg'
+                illustration: 'https://s3-ap-southeast-2.amazonaws.com/cmsv2-assets-dev/dev/upload/banner-api/Bupa/Mobilepercent20Site/1555374323543.jpg'
             },
             {
                 title: 'Earlier this morning, NYC',
                 subtitle: 'Lorem ipsum dolor sit amet',
-                illustration: 'https://cdn.cashrewards.com/banner-mrportercpaincreaseapril-desktop.jpg'
+                illustration: 'https://s3-ap-southeast-2.amazonaws.com/cmsv2-assets-dev/dev/upload/banner-api/Bupa/Mobilepercent20Site/1555374323543.jpg'
             },
             {
                 title: 'White Pocket Sunset',
                 subtitle: 'Lorem ipsum dolor sit amet et nuncat ',
-                illustration: 'https://cdn.cashrewards.com/banner-stubhubaprilincrease-desktop.jpg'
+                illustration: 'https://s3-ap-southeast-2.amazonaws.com/cmsv2-assets-dev/dev/upload/banner-api/Bupa/Mobilepercent20Site/1555374323543.jpg'
             },
             {
                 title: 'Acrocorinth, Greece',
                 subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-                illustration: 'https://cdn.cashrewards.com/banner-jomaloneincreaseendsjuly-desktop.jpg'
+                illustration: 'https://s3-ap-southeast-2.amazonaws.com/cmsv2-assets-dev/dev/upload/banner-api/Bupa/Mobilepercent20Site/1555374323543.jpg'
             },
             {
                 title: 'The lone tree, majestic landscape of New Zealand',
                 subtitle: 'Lorem ipsum dolor sit amet',
-                illustration: 'https://cdn.cashrewards.com/banner-ww11-13aprilv2-desktop.jpg'
+                illustration: 'https://s3-ap-southeast-2.amazonaws.com/cmsv2-assets-dev/dev/upload/banner-api/Bupa/Mobilepercent20Site/1555374323543.jpg'
             },
             {
                 title: 'Middle Earth, Germany',
                 subtitle: 'Lorem ipsum dolor sit amet',
-                illustration: 'https://cdn.cashrewards.com/banner-stubhubaprilincrease-desktop.jpg'
+                illustration: 'https://s3-ap-southeast-2.amazonaws.com/cmsv2-assets-dev/dev/upload/banner-api/Bupa/Mobilepercent20Site/1555374323543.jpg'
             }
         ],
         activeSlide: 1
@@ -98,7 +98,7 @@ export class OfferCarousel extends Component {
 const styles = StyleSheet.create({
     image: {
         width: '100%',
-        height: 120,
+        height: 320,
         resizeMode: 'contain',
         borderRadius: 10
     },
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     },
 
     container: {
-        backgroundColor: '#841584',
+        backgroundColor: '#6b52ae',
         position: 'relative'
     }
 })

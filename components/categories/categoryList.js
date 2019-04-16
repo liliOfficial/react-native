@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableHighlight } from 'react-native';
 import AppHeader from '../layout/header';
 import Dimensions from 'Dimensions';
 
@@ -8,29 +8,50 @@ export default class CategoryList extends Component {
   state = {
     categories: [
       {
-        name: 'Home'
+        id: 1,
+        name: 'Home',
+        icon: '../../asset/img/categories/home.png'
       },
       {
-        name: 'Food'
+        id: 2,
+        name: 'Food',
+        icon: '../../asset/img/categories/home.png'
       },
       {
-        name: 'Health'
+        id: 3,
+        name: 'Health',
+        icon: '../../asset/img/categories/home.png'
       },
       {
-        name: 'Life'
+        id: 4,
+        name: 'Life',
+        icon: '../../asset/img/categories/home.png'
       },
       {
-        name: 'Food'
+        id: 5,
+        name: 'Food',
+        icon: '../../asset/img/categories/home.png'
       },
       {
-        name: 'Food'
+        id: 6,
+        name: 'Food',
+        icon: '../../asset/img/categories/home.png'
       },
       {
-        name: 'Food'
+        id: 7,
+        name: 'Food',
+        icon: '../../asset/img/categories/home.png'
       },
       {
-        name: 'Food'
+        id: 8,
+        name: 'Food',
+        icon: '../../asset/img/categories/home.png'
       },
+      {
+        id: 9,
+        name: 'Food',
+        icon: '../../asset/img/categories/home.png'
+      }
 
     ]
   }
@@ -41,15 +62,19 @@ export default class CategoryList extends Component {
         <AppHeader />
         <View style={styles.layout}>
           <ScrollView>
-            <Text> Browse Categories </Text>
+            <Text style={styles.title}> Browse Categories </Text>
             <View style={styles.grip}>
-              <View style={styles.gripContent}><Text>111</Text></View>
-              <View style={styles.gripContent}><Text>111</Text></View>
-              <View style={styles.gripContent}><Text>111</Text></View>
-              <View style={styles.gripContent}><Text>111</Text></View>
-              <View style={styles.gripContent}><Text>111</Text></View>
-              <View style={styles.gripContent}><Text>111</Text></View>
-              <View style={styles.gripContent}><Text>111</Text></View>
+              {this.state.categories.map(item => {
+                const uri = require('../../asset/img/categories/home.png');
+                return (
+                  <TouchableHighlight key={item.id} onPress={() => this.props.navigation.navigate('CategoriesDetail', { data: item })} underlayColor="white">
+                    <View style={styles.gripContent}>
+                      <Image source={uri} style={styles.icon} />
+                      <Text style={styles.name}>{item.name}</Text>
+                    </View>
+                  </TouchableHighlight>
+                )
+              })}
             </View>
           </ScrollView>
         </View>
@@ -64,6 +89,12 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     backgroundColor: '#F5FCFF'
   },
+  title: {
+    padding:width*0.025,
+    fontSize:18,
+    color:'#6b52ae',
+    fontWeight: 'bold',
+  },
   grip: {
     flex: 1,
     flexDirection: 'row',
@@ -74,8 +105,22 @@ const styles = StyleSheet.create({
   gripContent: {
     width: width * 0.3,
     height: width * 0.3,
-    margin:5,
-    backgroundColor:'#ccc'
+    margin: 5,
+    padding: 30,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
 
+  },
+  icon: {
+    width: 35,
+    height: 35,
+    resizeMode: 'contain'
+  },
+  name: {
+    color:'#6b52ae'
   }
 });

@@ -18,7 +18,7 @@ export default class OfferCard extends Component {
                     <Text style={styles.description}>{text}</Text>
                     <View style={styles.line}></View>
                     <View style={styles.bottomBox}>
-                        <Text>{cashBack}</Text>
+                        <Text style={styles.cashBack}>{cashBack}</Text>
                         <View style={styles.offerButton}><Text style={{ color: '#fff', fontSize: 12 }}>Shop Offer</Text></View>
                     </View>
                 </View>
@@ -56,13 +56,18 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
+    cashBack: {
+        color:'#5e3bbf',
+        fontSize:16,
+        fontWeight: 'bold',
+    },
     offerButton: {
-        paddingTop: 5,
-        paddingBottom: 5,
+        paddingTop: 6,
+        paddingBottom: 6,
         paddingLeft: 12,
         paddingRight: 12,
-        borderRadius: 5,
-        backgroundColor: '#F17C21'
+        borderRadius: 3,
+        backgroundColor: '#5e3bbf'
     }
 });
 

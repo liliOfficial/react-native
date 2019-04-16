@@ -19,7 +19,7 @@ export default class ProfilePage extends React.Component {
             const lon = position.coords.longitude.toString();
             Alert.alert(`latitude:${lat}, longitude:${lon}`);
             console.log(position);
-            const css1 = "background: #841584; color: #fff; padding:5px 5px";
+            const css1 = "background: #6b52ae; color: #fff; padding:5px 5px";
             const css2 = "font-weight:700; padding:5px 0";
             console.log('%c If you\'re seeing this, CASHREWARDS want to work with you! ' + '%c \nFind us at: https://www.cashrewards.com.au ', css1, css2);
         }, err => {

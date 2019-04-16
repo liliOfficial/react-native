@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import Dimensions from 'Dimensions';
 
-const { height, width } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const LogoBox = ({ imageUrl }) => {
     return (

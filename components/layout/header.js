@@ -6,13 +6,12 @@ class AppHeader extends Component {
 
     render() {
         return (
-            <SafeAreaView style={{ backgroundColor: '#6b52ae' }}>
+            <SafeAreaView style={{ backgroundColor: '#7C4DFF' }}>
                 <View style={styles.container}>
                     <Image source={require('../../asset/img/logo.png')} style={styles.logo} />
                     <Image source={require('../../asset/img/icon/search.png')} style={styles.search} />
-                    {/* <Text style={styles.logo}>CASHREWARDS</Text> */}
                 </View>
-                <SearchInput />
+                {/* <SearchInput /> */}
             </SafeAreaView>
         );
     }

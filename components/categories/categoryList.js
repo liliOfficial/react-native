@@ -10,47 +10,47 @@ export default class CategoryList extends Component {
       {
         id: 1,
         name: 'Home',
-        icon: '../../asset/img/categories/home.png'
+        icon: require('../../asset/img/categories/home.png')
       },
       {
         id: 2,
         name: 'Food',
-        icon: '../../asset/img/categories/home.png'
+        icon: require('../../asset/img/categories/home.png')
       },
       {
         id: 3,
         name: 'Health',
-        icon: '../../asset/img/categories/home.png'
+        icon: require('../../asset/img/categories/health.png')
       },
       {
         id: 4,
         name: 'Life',
-        icon: '../../asset/img/categories/home.png'
+        icon: require('../../asset/img/categories/sport.png')
       },
       {
         id: 5,
         name: 'Food',
-        icon: '../../asset/img/categories/home.png'
+        icon: require('../../asset/img/categories/home.png')
       },
       {
         id: 6,
         name: 'Food',
-        icon: '../../asset/img/categories/home.png'
+        icon: require('../../asset/img/categories/home.png')
       },
       {
         id: 7,
         name: 'Food',
-        icon: '../../asset/img/categories/home.png'
+        icon: require('../../asset/img/categories/home.png')
       },
       {
         id: 8,
         name: 'Food',
-        icon: '../../asset/img/categories/home.png'
+        icon: require('../../asset/img/categories/home.png')
       },
       {
         id: 9,
         name: 'Food',
-        icon: '../../asset/img/categories/home.png'
+        icon: require('../../asset/img/categories/home.png')
       }
 
     ]
@@ -65,11 +65,10 @@ export default class CategoryList extends Component {
             <Text style={styles.title}> Browse Categories </Text>
             <View style={styles.grip}>
               {this.state.categories.map(item => {
-                const uri = require('../../asset/img/categories/home.png');
                 return (
                   <TouchableHighlight key={item.id} onPress={() => this.props.navigation.navigate('CategoriesDetail', { data: item })} underlayColor="white">
                     <View style={styles.gripContent}>
-                      <Image source={uri} style={styles.icon} />
+                      <Image source={item.icon} style={styles.icon} />
                       <Text style={styles.name}>{item.name}</Text>
                     </View>
                   </TouchableHighlight>
@@ -90,9 +89,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   },
   title: {
-    padding:width*0.025,
-    fontSize:18,
-    color:'#6b52ae',
+    padding: width * 0.025,
+    fontSize: 18,
+    color: '#7C4DFF',
     fontWeight: 'bold',
   },
   grip: {
@@ -121,6 +120,6 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   name: {
-    color:'#6b52ae'
+    color: '#7C4DFF'
   }
 });

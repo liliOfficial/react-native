@@ -14,11 +14,9 @@ const LogoBox = ({ imageUrl }) => {
 
 const styles = StyleSheet.create({
     logoBox: {
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         padding: 5,
-
     },
     logo: {
         width: width * 0.3,

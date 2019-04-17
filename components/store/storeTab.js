@@ -13,7 +13,7 @@ export default class StoreTab extends Component {
                 <ScrollableTabView
                     tabBarUnderlineStyle={styles.tabBarUnderline}
                     style={styles.scrollableTab}
-                    tabBarActiveTextColor='#6b52ae'
+                    tabBarActiveTextColor='#7C4DFF'
                     tabBarTextStyle={styles.tabBarText}
                     renderTabBar={() => <DefaultTabBar style={styles.tabBar} />}
                 >
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     },
     tabBarUnderline: {
         marginTop: 0,
-        backgroundColor: '#6b52ae',
+        backgroundColor: '#7C4DFF',
         height: 2,
     }
 });

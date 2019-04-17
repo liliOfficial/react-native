@@ -6,6 +6,7 @@ export default class ReferPage extends React.Component {
     render() {
         return (
             <View style={styles.layout}>
+                <AppHeader />
                 <ScrollView>
                     <Text>qweqwedfadf</Text>
                 </ScrollView>

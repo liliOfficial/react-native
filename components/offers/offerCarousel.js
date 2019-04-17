@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     },
 
     container: {
-        backgroundColor: '#6b52ae',
+        backgroundColor: '#7C4DFF',
         position: 'relative'
     }
 })

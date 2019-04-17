@@ -19,7 +19,7 @@ export default class OfferCard extends Component {
                     <View style={styles.line}></View>
                     <View style={styles.bottomBox}>
                         <Text style={styles.cashBack}>{cashBack}</Text>
-                        <View style={styles.offerButton}><Text style={{ color: '#fff', fontSize: 12 }}>Shop Offer</Text></View>
+                        {/* <View style={styles.offerButton}><Text style={{ color: '#fff', fontSize: 12 }}>Shop Offer</Text></View> */}
                     </View>
                 </View>
             </TouchableHighlight>
@@ -30,7 +30,8 @@ export default class OfferCard extends Component {
 
 const styles = StyleSheet.create({
     card: {
-        margin: 5,
+        marginLeft:5,
+        marginRight:5,
         padding: 8,
         backgroundColor: '#fff',
         borderRadius: 5,
@@ -42,7 +43,8 @@ const styles = StyleSheet.create({
     description: {
         paddingTop: 8,
         paddingBottom: 10,
-        fontSize: 11
+        fontSize: 11,
+         textAlign: 'center'
     },
     line: {
         height: 1,
@@ -51,14 +53,14 @@ const styles = StyleSheet.create({
     },
     bottomBox: {
         marginTop: 10,
-        flex: 1,
+
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        justifyContent: 'center',
+       
     },
     cashBack: {
-        color:'#5e3bbf',
-        fontSize:16,
+        color:'#7C4DFF',
+        fontSize:12,
         fontWeight: 'bold',
     },
     offerButton: {
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
         paddingLeft: 12,
         paddingRight: 12,
         borderRadius: 3,
-        backgroundColor: '#5e3bbf'
+        backgroundColor: '#7C4DFF'
     }
 });
 

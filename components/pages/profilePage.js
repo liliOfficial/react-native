@@ -7,9 +7,9 @@ import FetchLocation from '../fetchLocation';
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
     android:
-      'Double tap R on your keyboard to reload,\n' +
-      'Shake or press menu button for dev menu',
-  });
+        'Double tap R on your keyboard to reload,\n' +
+        'Shake or press menu button for dev menu',
+});
 
 export default class ProfilePage extends React.Component {
 
@@ -19,7 +19,7 @@ export default class ProfilePage extends React.Component {
             const lon = position.coords.longitude.toString();
             Alert.alert(`latitude:${lat}, longitude:${lon}`);
             console.log(position);
-            const css1 = "background: #6b52ae; color: #fff; padding:5px 5px";
+            const css1 = "background: #7C4DFF; color: #fff; padding:5px 5px";
             const css2 = "font-weight:700; padding:5px 0";
             console.log('%c If you\'re seeing this, CASHREWARDS want to work with you! ' + '%c \nFind us at: https://www.cashrewards.com.au ', css1, css2);
         }, err => {
@@ -29,18 +29,25 @@ export default class ProfilePage extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1 }}>
-                <View style={styles.layout}>
-                    <View style={styles.header}>
-                        <AppHeader />
+            <View style={styles.layout}>
+                <AppHeader />
+                <ScrollView style={styles.body}>
+                    <View style={styles.titleBox}>
+                        <Text style={styles.title}>Welcome Back, Li</Text>
+                        <View style={styles.buttonGroup}>
+                            <View style={styles.titleButton}>
+                                <Text style={styles.blackButton}>Settings</Text>
+                            </View>
+                            <View style={styles.titleButton}>
+                                <Text style={styles.blackButton}>Click History</Text>
+                            </View>
+                        </View>
                     </View>
-                    <ScrollView style={styles.body}>
-                        <FetchLocation onGetLocation={this.getUserLocationHandler} />
-                        <Text style={styles.welcome}>Welcome to React Native111!</Text>
-                        <Text style={styles.instructions}>To get started, edit App.js</Text>
-                        <Text style={styles.instructions}>{instructions}</Text>
-                    </ScrollView>
-                </View>
+                    <FetchLocation onGetLocation={this.getUserLocationHandler} />
+                    <Text style={styles.welcome}>Welcome to React Native111!</Text>
+                    <Text style={styles.instructions}>To get started, edit App.js</Text>
+                    <Text style={styles.instructions}>{instructions}</Text>
+                </ScrollView>
             </View>
         );
     }
@@ -55,11 +62,41 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
         backgroundColor: '#F5FCFF',
     },
-    footer: {
-        justifyContent: 'flex-end',
-        paddingBottom: 60,
-        backgroundColor: '#fff'
+    titleBox: {
+        backgroundColor: '#7C4DFF',
+        color: '#7C4DFF',
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingBottom: 80
     },
+    title: {
+        fontSize: 18,
+        color: '#fff',
+        fontWeight: 'bold',
+        marginBottom: 10
+    },
+    buttonGroup: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'stretch'
+    },
+    titleButton: {
+        width: '49%',
+    },
+    blackButton: {
+        backgroundColor: '#212121',
+        color: '#fff',
+        padding: 7,
+        textAlign: 'center',
+        borderRadius: 15,
+        overflow: 'hidden',
+        fontWeight: 'bold'
+    }
+
+
+
+    ,
     welcome: {
         fontSize: 20,
         textAlign: 'center',

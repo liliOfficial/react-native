@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "imageUrl": {
+            "uri": "https://cdn.cashrewards.com/coles-online.jpg"
+        },
+        "text": "New customers, get $18 off when you spend $150 or more",
+        "cashBack": "10.00% Cashback",
+        "link": ""
+    },
+    {
+        "id": 2,
+        "imageUrl": {
+            "uri": "https://cdn.cashrewards.com/dan-murphys.jpg"
+        },
+        "text": "New customers, get $18 off when you spend $150 or more",
+        "cashBack": "3.80% Cashback",
+        "link": ""
+    },
+    {
+        "id": 3,
+        "imageUrl": {
+            "uri": "https://cdn.cashrewards.com/groupon.jpg"
+        },
+        "text": "New customers, get $18 off when you spend $150 or more",
+        "cashBack": "4.20% Cashback",
+        "link": ""
+    },
+    {
+        "id": 4,
+        "imageUrl": {
+            "uri": "https://cdn.cashrewards.com/forever-new.jpg"
+        },
+        "text": "A minimum spend of $10 in a single transaction is required to be eligible for Cashback.",
+        "cashBack": "7.00% Cashback",
+        "link": ""
+    },
+    {
+        "id": 5,
+        "imageUrl": {
+            "uri": "https://cdn.cashrewards.com/woolworths-gift-cards.jpg"
+        },
+        "text": "Instantly save 5.5% on groceries, petrol, liquor & more with WISH eGift cards",
+        "cashBack": "Save 5.50%",
+        "link": ""
+    },
+    {
+        "id": 6,
+        "imageUrl": {
+            "uri": "https://cdn.cashrewards.com/vodafone.jpg"
+        },
+        "text": "Our fastest NBN just $69 per month for 6 months + Cashback increase",
+        "cashBack": "Up to 75.00% Cashback",
+        "link": ""
+    }
+]

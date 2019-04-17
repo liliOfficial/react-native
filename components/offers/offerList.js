@@ -1,42 +1,23 @@
 import React, { Component } from 'react';
 import { View, Button, StyleSheet, ScrollView } from 'react-native';
 import OfferCard from './offerCard';
+import listData from '../../asset/data/offers.json'
 
 import ScrollableTabView, { DefaultTabBar } from 'react-native-scrollable-tab-view';
 
+import Dimensions from 'Dimensions';
+
+const { width } = Dimensions.get('window');
+
 class OfferList extends Component {
     state = {
-        list: [
-            {
-                id: 1,
-                imageUrl: { uri: 'https://cdn.cashrewards.com/coles-online.jpg' },
-                text: 'New customers, get $18 off when you spend $150 or more',
-                cashBack: '10.00% Cashback',
-                link: ''
-            },
-            {
-                id: 2,
-                imageUrl: { uri: 'https://cdn.cashrewards.com/dan-murphys.jpg' },
-                text: 'New customers, get $18 off when you spend $150 or more',
-                cashBack: '3.80% Cashback',
-                link: ''
-            },
-            {
-                id: 3,
-                imageUrl: { uri: 'https://cdn.cashrewards.com/groupon.jpg' },
-                text: 'New customers, get $18 off when you spend $150 or more',
-                cashBack: '4.20% Cashback',
-                link: ''
-            },
-            {
-                id: 4,
-                imageUrl: { uri: 'https://cdn.cashrewards.com/forever-new.jpg' },
-                text: 'A minimum spend of $10 in a single transaction is required to be eligible for Cashback.',
-                cashBack: '7.00% Cashback',
-                link: ''
-            },
-        ]
+        list: []
+    }
 
+    componentDidMount() {
+        this.setState({
+            list: listData
+        })
     }
 
     render() {
@@ -45,23 +26,35 @@ class OfferList extends Component {
                 <ScrollableTabView
                     tabBarUnderlineStyle={styles.tabBarUnderline}
                     style={styles.scrollableTab}
-                    tabBarActiveTextColor='#5e3bbf'
+                    tabBarActiveTextColor='#7C4DFF'
                     tabBarTextStyle={styles.tabBarText}
-                    renderTabBar={() => <DefaultTabBar style={styles.tabBar}  />}
+                    renderTabBar={() => <DefaultTabBar style={styles.tabBar} />}
                 >
                     <View tabLabel='Online'>
-                        {this.state.list.map(item => {
-                            return <OfferCard key={item.id} data={item} navigation={this.props.navigation} />
-                        })}
+                        <View style={styles.cardBox}>
+                            {this.state.list.map(item => {
+                                return (
+                                    <View key={item.id} style={styles.cardContent}>
+                                        <OfferCard data={item} navigation={this.props.navigation} />
+                                    </View>
+                                )
+                            })}
+                        </View>
                     </View>
                     <View tabLabel='In-Store'>
-                        {this.state.list.map(item => {
-                            return <OfferCard key={item.id} data={item} navigation={this.props.navigation} />
-                        })}
+                        <View style={styles.cardBox}>
+                            {this.state.list.map(item => {
+                                return (
+                                    <View key={item.id} style={styles.cardContent}>
+                                        <OfferCard data={item} navigation={this.props.navigation} />
+                                    </View>
+                                )
+                            })}
+                        </View>
                     </View>
                 </ScrollableTabView>
 
-                <Button title="Load More" color="#5e3bbf" />
+                <Button title="Load More" color="#7C4DFF" />
             </View>
 
 
@@ -72,19 +65,33 @@ class OfferList extends Component {
 const styles = StyleSheet.create({
     scrollableTab: {
         paddingBottom: 5,
-        backgroundColor:'#fff'
+        backgroundColor: '#fff'
     },
     tabBar: {
-        height:45
+        height: 45
     },
     tabBarText: {
-        position:'relative',
-        top:6
+        position: 'relative',
+        top: 6
     },
     tabBarUnderline: {
         marginTop: 0,
-        backgroundColor: '#5e3bbf',
+        backgroundColor: '#7C4DFF',
         height: 2,
+    },
+    cardBox: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    cardContent: {
+        width: width * 0.49,
+        backgroundColor: '#fff',
+        alignItems: 'stretch',
+        marginTop: 10
+
     }
 });
 

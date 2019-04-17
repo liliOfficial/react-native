@@ -11,6 +11,7 @@ import { createBottomTabNavigator, createAppContainer, createStackNavigator } fr
 
 import OfferPage from './components/pages/offerPage';
 import ProfilePage from './components/pages/profilePage';
+import ReferPage from './components/pages/referPage'
 import StorePage from './components/pages/storePage';
 import CategoryPage from './components/pages/categoryPage';
 import CategoriesList from './components/categories/categoryList';
@@ -34,7 +35,7 @@ const OffersNavigator = createStackNavigator({
     screen: StorePage,
     navigationOptions: {
       headerStyle: {
-        backgroundColor: '#6b52ae'
+        backgroundColor: '#7C4DFF'
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -72,7 +73,7 @@ const AppNavigator = createBottomTabNavigator({
     }
   },
   'Refer a Friend': {
-    screen: StorePage,
+    screen: ReferPage,
     navigationOptions: {
       tabBarIcon: <Image source={require('./asset/img/icon/friend.png')} style={styles.icon} />
     }
@@ -85,7 +86,7 @@ const AppNavigator = createBottomTabNavigator({
   }
 },
   {
-    initialRouteName: "Categories",
+    initialRouteName: "Profile",
 
     tabBarOptions: {
       style: { backgroundColor: 'rgba(255,255,255,0.3)' },

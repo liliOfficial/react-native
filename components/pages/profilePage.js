@@ -70,10 +70,10 @@ const styles = StyleSheet.create({
         paddingBottom: 80
     },
     title: {
-        fontSize: 18,
+        fontSize: 20,
         color: '#fff',
         fontWeight: 'bold',
-        marginBottom: 10
+        marginBottom: 15
     },
     buttonGroup: {
         flex: 1,

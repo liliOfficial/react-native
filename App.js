@@ -65,7 +65,7 @@ const AppNavigator = createMaterialBottomTabNavigator({
   Offers: {
     screen: OffersNavigator,
     navigationOptions: {
-      tabBarIcon: <Icon name="gifts" size={22} />,
+      tabBarIcon: <Icon name="gifts" size={22} color="#212121"/>,
       tabBarColor: "#fff"
     }
   },

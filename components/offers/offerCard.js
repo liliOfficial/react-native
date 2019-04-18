@@ -59,17 +59,9 @@ const styles = StyleSheet.create({
        
     },
     cashBack: {
-        color:'#7C4DFF',
+        color:'#424242',
         fontSize:12,
         fontWeight: 'bold',
-    },
-    offerButton: {
-        paddingTop: 6,
-        paddingBottom: 6,
-        paddingLeft: 12,
-        paddingRight: 12,
-        borderRadius: 3,
-        backgroundColor: '#7C4DFF'
     }
 });
 

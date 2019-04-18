@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 import SearchInput from '../search/searchInput';
 
 class AppHeader extends Component {
@@ -9,7 +11,7 @@ class AppHeader extends Component {
             <SafeAreaView style={{ backgroundColor: '#7C4DFF' }}>
                 <View style={styles.container}>
                     <Image source={require('../../asset/img/logo.png')} style={styles.logo} />
-                    <Image source={require('../../asset/img/icon/search.png')} style={styles.search} />
+                    <Icon name="search" size={20} color="#fff" style={styles.search}/>
                 </View>
                 {/* <SearchInput /> */}
             </SafeAreaView>
@@ -35,7 +37,6 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',       
     },
     search: {
-        marginTop:3,
         width:25,
         height:25
     }

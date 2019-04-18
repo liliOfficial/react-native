@@ -51,13 +51,13 @@ export default class ProfilePage extends React.Component {
                             </View>
                         </View>
                     </View>
-                    <View style={{ marginTop: -60 }}>
+                    <View style={{ marginTop: -76 }}>
                         <RewardsBalance />
                     </View>
                     <View>
                         <RewardsList />
                     </View>
-                    
+
                     <FetchLocation onGetLocation={this.getUserLocationHandler} />
                     <Text style={styles.welcome}>Welcome to React Native111!</Text>
                     <Text style={styles.instructions}>To get started, edit App.js</Text>

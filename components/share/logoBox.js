@@ -7,7 +7,7 @@ const { width } = Dimensions.get('window');
 const LogoBox = ({ imageUrl }) => {
     return (
         <View style={styles.logoBox}>
-            <Image style={styles.logo} source={imageUrl} resizeMethod="resize" />
+            <Image style={styles.logo} source={imageUrl} />
         </View>
     )
 }

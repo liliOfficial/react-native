@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import RewardsCard from './rewardsCard';
 
 export default class RewardsList extends Component {
     constructor(props) {
@@ -12,7 +13,10 @@ export default class RewardsList extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>My Rewards </Text>
-                <Text style={styles.subTitle}>Purchases,rewards and payments</Text>
+                <Text style={styles.subTitle}>Purchases, rewards and payments</Text>
+                <View>
+                    <RewardsCard />
+                </View>
             </View>
         );
     }
@@ -20,7 +24,7 @@ export default class RewardsList extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        padding:10
+        padding: 10
     },
     title: {
         fontSize: 18,
@@ -28,6 +32,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     subTitle: {
-        color:'#484848'
+        color: '#484848'
     }
 });

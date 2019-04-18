@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     offerTitle: {
-        color: '#7C4DFF',
+        color: '#212121',
         fontWeight: 'bold',
         fontSize: 12
     },
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
         
     },
     words: {
-        color:'#54525d',
+        color:'#484848',
         fontSize:12
     }
 });

@@ -6,8 +6,10 @@
  * @flow
  */
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
-import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
+import { StyleSheet } from 'react-native';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import OfferPage from './components/pages/offerPage';
 import ProfilePage from './components/pages/profilePage';
@@ -19,7 +21,7 @@ import CategoriesList from './components/categories/categoryList';
 
 const styles = StyleSheet.create({
   icon: {
-    width: 20, height: 20, marginTop: 20, marginBottom: 8
+    width: 20, height: 20
   }
 });
 
@@ -55,48 +57,43 @@ const CategoriesNavigator = createStackNavigator({
   },
   CategoriesDetail: {
     screen: CategoryPage,
-    
+
   }
 })
 
-const AppNavigator = createBottomTabNavigator({
+const AppNavigator = createMaterialBottomTabNavigator({
   Offers: {
     screen: OffersNavigator,
     navigationOptions: {
-      tabBarIcon: <Image source={require('./asset/img/icon/offers.png')} style={styles.icon} />
+      tabBarIcon: <Icon name="gifts" size={22} />,
+      tabBarColor: "#fff"
     }
   },
   Categories: {
     screen: CategoriesNavigator,
     navigationOptions: {
-      tabBarIcon: <Image source={require('./asset/img/icon/categories.png')} style={styles.icon} />
+      tabBarIcon: <Icon name="grip-horizontal" size={22} color="#212121" />
     }
   },
   'Refer a Friend': {
     screen: ReferPage,
     navigationOptions: {
-      tabBarIcon: <Image source={require('./asset/img/icon/friend.png')} style={styles.icon} />
+      tabBarIcon: <Icon name="hand-holding-usd" size={22} color="#212121" />
     }
   },
   Profile: {
     screen: ProfilePage,
     navigationOptions: {
-      tabBarIcon: <Image source={require('./asset/img/icon/user.png')} style={styles.icon} />
+      tabBarIcon: <Icon name="user" size={22} color="#212121" />
     }
   }
 },
   {
     initialRouteName: "Profile",
-
-    tabBarOptions: {
-      style: { backgroundColor: 'rgba(255,255,255,0.3)' },
-      activeTintColor: "#000",
-      inactiveTintColor: "#858585",
-      labelStyle: {
-        fontSize: 10,
-        lineHeight: 20,
-      }
-    }
+    labeled: true,
+    activeColor: '#212121',
+    inactiveColor: '#212121',
+    barStyle: { backgroundColor: '#fff' },
   }
 );
 

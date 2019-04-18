@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableHighlight } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 import AppHeader from '../layout/header';
 import Dimensions from 'Dimensions';
 
@@ -10,47 +12,47 @@ export default class CategoryList extends Component {
       {
         id: 1,
         name: 'Home',
-        icon: require('../../asset/img/categories/home.png')
+        icon: 'home'
       },
       {
         id: 2,
         name: 'Food',
-        icon: require('../../asset/img/categories/home.png')
+        icon: 'utensils'
       },
       {
         id: 3,
         name: 'Health',
-        icon: require('../../asset/img/categories/health.png')
+        icon: 'heartbeat'
       },
       {
         id: 4,
         name: 'Life',
-        icon: require('../../asset/img/categories/sport.png')
+        icon: 'hands'
       },
       {
         id: 5,
-        name: 'Food',
-        icon: require('../../asset/img/categories/home.png')
+        name: 'Alcohol',
+        icon: 'wine-bottle'
       },
       {
         id: 6,
-        name: 'Food',
-        icon: require('../../asset/img/categories/home.png')
+        name: 'Child',
+        icon: 'child'
       },
       {
         id: 7,
-        name: 'Food',
-        icon: require('../../asset/img/categories/home.png')
+        name: 'Sport',
+        icon: 'running'
       },
       {
         id: 8,
-        name: 'Food',
-        icon: require('../../asset/img/categories/home.png')
+        name: 'Travel',
+        icon: 'plane-departure'
       },
       {
         id: 9,
-        name: 'Food',
-        icon: require('../../asset/img/categories/home.png')
+        name: 'Fashion',
+        icon: 'tshirt'
       }
 
     ]
@@ -66,9 +68,10 @@ export default class CategoryList extends Component {
             <View style={styles.grip}>
               {this.state.categories.map(item => {
                 return (
-                  <TouchableHighlight key={item.id} onPress={() => this.props.navigation.navigate('CategoriesDetail', { data: item })} underlayColor="white">
+                  <TouchableHighlight key={item.id} onPress={() => this.props.navigation.navigate('CategoriesDetail', { data: item })} underlayColor="#fff">
                     <View style={styles.gripContent}>
-                      <Image source={item.icon} style={styles.icon} />
+                      {/* <Image source={item.icon}  /> */}
+                      <Icon name={item.icon} size={32} style={styles.icon}/>
                       <Text style={styles.name}>{item.name}</Text>
                     </View>
                   </TouchableHighlight>
@@ -91,7 +94,7 @@ const styles = StyleSheet.create({
   title: {
     padding: width * 0.025,
     fontSize: 18,
-    color: '#7C4DFF',
+    color: '#212121',
     fontWeight: 'bold',
   },
   grip: {
@@ -115,11 +118,10 @@ const styles = StyleSheet.create({
 
   },
   icon: {
-    width: 35,
-    height: 35,
-    resizeMode: 'contain'
+    color:'#212121'
   },
   name: {
-    color: '#7C4DFF'
+    paddingTop:5,
+    color: '#212121'
   }
 });

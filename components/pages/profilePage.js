@@ -1,7 +1,11 @@
 import React from 'react';
-import { View, ScrollView, Text, StyleSheet, Platform } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, Platform, TouchableHighlight, Alert } from 'react-native';
 
 import AppHeader from '../layout/header';
+import RewardsBalance from '../profile/rewardsBalance';
+import RewardsList from '../profile/rewardsList';
+import { BlackButton } from '../share/button';
+
 import FetchLocation from '../fetchLocation';
 
 const instructions = Platform.select({
@@ -27,6 +31,10 @@ export default class ProfilePage extends React.Component {
         })
     }
 
+    _onPressButton() {
+        Alert.alert('You tapped the button!')
+    }
+
     render() {
         return (
             <View style={styles.layout}>
@@ -36,13 +44,20 @@ export default class ProfilePage extends React.Component {
                         <Text style={styles.title}>Welcome Back, Li</Text>
                         <View style={styles.buttonGroup}>
                             <View style={styles.titleButton}>
-                                <Text style={styles.blackButton}>Settings</Text>
+                                <BlackButton text='Settings' onPress={this._onPressButton} />
                             </View>
                             <View style={styles.titleButton}>
-                                <Text style={styles.blackButton}>Click History</Text>
+                                <BlackButton text='Click History' />
                             </View>
                         </View>
                     </View>
+                    <View style={{ marginTop: -60 }}>
+                        <RewardsBalance />
+                    </View>
+                    <View>
+                        <RewardsList />
+                    </View>
+                    
                     <FetchLocation onGetLocation={this.getUserLocationHandler} />
                     <Text style={styles.welcome}>Welcome to React Native111!</Text>
                     <Text style={styles.instructions}>To get started, edit App.js</Text>
@@ -56,9 +71,6 @@ export default class ProfilePage extends React.Component {
 const styles = StyleSheet.create({
     layout: {
         flex: 1,
-        // flexDirection: 'column',
-        // justifyContent: 'space-between',
-        // justifyContent: 'center',
         alignItems: 'stretch',
         backgroundColor: '#F5FCFF',
     },
@@ -89,7 +101,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         padding: 7,
         textAlign: 'center',
-        borderRadius: 15,
+        borderRadius: 5,
         overflow: 'hidden',
         fontWeight: 'bold'
     }

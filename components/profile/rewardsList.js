@@ -3,6 +3,17 @@ import { View, Text, StyleSheet } from 'react-native';
 import RewardsCard from './rewardsCard';
 
 export default class RewardsList extends Component {
+    state= {
+        rewards: [
+            {
+                "date":'19/05/2019',
+                "amount":'AUD 499.99',
+                "approveDate":'19/07/2019',
+                "status":'approved',
+                "cashback":'AUD 40.42'
+            }
+        ]
+    }
     constructor(props) {
         super(props);
         this.state = {

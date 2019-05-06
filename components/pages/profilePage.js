@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, ScrollView, Text, StyleSheet, Platform, TouchableHighlight, Alert } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import AppHeader from '../layout/header';
 import RewardsBalance from '../profile/rewardsBalance';
@@ -39,31 +40,33 @@ export default class ProfilePage extends React.Component {
         return (
             <View style={styles.layout}>
                 <AppHeader />
-                <ScrollView style={styles.body}>
-                    <View style={styles.titleBox}>
-                        <Text style={styles.title}>Welcome Back, Li</Text>
-                        <View style={styles.buttonGroup}>
-                            <View style={styles.titleButton}>
-                                <BlackButton text='Settings' onPress={this._onPressButton} />
-                            </View>
-                            <View style={styles.titleButton}>
-                                <BlackButton text='Click History' />
+                <LinearGradient colors={['#7C4DFF', '#F5FCFF', '#F5FCFF']} locations={[0.22, 0.22, 0.77]} style={styles.linearGradient}>
+                    <ScrollView style={styles.body}>
+                        <View style={styles.titleBox}>
+                            <Text style={styles.title}>Welcome Back, Li</Text>
+                            <View style={styles.buttonGroup}>
+                                <View style={styles.titleButton}>
+                                    <BlackButton text='Settings' onPress={() => this.props.navigation.navigate('Setting', { data: this.props.data })} />
+                                </View>
+                                <View style={styles.titleButton}>
+                                    <BlackButton text='Click History' />
+                                </View>
                             </View>
                         </View>
-                    </View>
-                    <View style={{ marginTop: -76 }}>
-                        <RewardsBalance />
-                    </View>
-                    <View>
-                        <RewardsList />
-                    </View>
+                        <View>
+                            <RewardsBalance />
+                        </View>
+                        <View style={{ backgroundColor: '#F5FCFF' }}>
+                            <RewardsList />
+                        </View>
 
-                    <FetchLocation onGetLocation={this.getUserLocationHandler} />
-                    <Text style={styles.welcome}>Welcome to React Native111!</Text>
-                    <Text style={styles.instructions}>To get started, edit App.js</Text>
-                    <Text style={styles.instructions}>{instructions}</Text>
-                </ScrollView>
-            </View>
+                        <FetchLocation onGetLocation={this.getUserLocationHandler} />
+                        <Text style={styles.welcome}>Welcome to React Native111!</Text>
+                        <Text style={styles.instructions}>To get started, edit App.js</Text>
+                        <Text style={styles.instructions}>{instructions}</Text>
+                    </ScrollView>
+                </LinearGradient>
+            </View >
         );
     }
 }
@@ -74,12 +77,14 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
         backgroundColor: '#F5FCFF',
     },
+    linearGradient:{
+        paddingBottom:120
+    },
     titleBox: {
-        backgroundColor: '#7C4DFF',
         color: '#7C4DFF',
         paddingLeft: 10,
         paddingRight: 10,
-        paddingBottom: 80
+        paddingBottom: 5
     },
     title: {
         fontSize: 20,
@@ -104,11 +109,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         overflow: 'hidden',
         fontWeight: 'bold'
-    }
-
-
-
-    ,
+    },
     welcome: {
         fontSize: 20,
         textAlign: 'center',

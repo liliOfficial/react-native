@@ -3,40 +3,41 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default class RewardsCard extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
+
         };
     }
 
     render() {
-        const imageUrl = {
-            "uri": "https://cdn.cashrewards.com/forever-new.jpg"
-        }
+        const { date, amount, approveDate, status, cashback, imageUrl } = this.props.reward;
+
+        const icon = status === 'approved' ? "check-circle" : "clock";
+
         return (
             <View style={styles.card}>
-
                 <Image source={imageUrl} style={styles.logo} />
                 <View style={styles.content}>
                     <View style={styles.col2}>
                         <View style={{ width: '50%' }}>
                             <Text>Date: </Text>
-                            <Text>19/07/2019</Text>
+                            <Text>{date}</Text>
                         </View>
                         <View>
                             <Text>Amount:</Text>
-                            <Text>AUD 499.99</Text>
+                            <Text>{amount}</Text>
                         </View>
                     </View>
                     <View style={styles.cashback}>
                         <View>
-                            <Text style={styles.cashbackNo}>AUD 1.43 </Text>
+                            <Text style={styles.cashbackNo}>{cashback}</Text>
                         </View>
-                        <Icon name="check-circle" size={18} color="#212121" style={styles.status} />
+                        <Icon name={icon} size={16} color="#212121" style={styles.status} />
                     </View>
-                    <Text style={styles.approvalDate}>Estimated Approval: 19/07/2019</Text>
+                    <Text style={styles.approveDate}>Estimated Approval: {approveDate}</Text>
                 </View>
-
             </View>
         );
     }
@@ -77,24 +78,25 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
         marginTop: 5,
         marginBottom: 5,
-        backgroundColor: '#484848',
-        borderRadius: 5,
+        backgroundColor: '#212121',
+        borderRadius: 3,
         overflow: 'hidden',
         justifyContent: 'space-between'
     },
     status: {
-        color: '#fff'
+        color: '#fff',
+        marginTop:1
     },
     cashbackNo: {
         color: '#fff',
-        fontSize: 16,
+        fontSize: 15,
     },
     line: {
         width: '100%',
         height: 1,
         backgroundColor: '#eee'
     },
-    approvalDate: {
+    approveDate: {
         color: '#484848',
         borderTopWidth: 1,
 

@@ -3,21 +3,68 @@ import { View, Text, StyleSheet } from 'react-native';
 import RewardsCard from './rewardsCard';
 
 export default class RewardsList extends Component {
-    state= {
+    state = {
         rewards: [
             {
-                "date":'19/05/2019',
-                "amount":'AUD 499.99',
-                "approveDate":'19/07/2019',
-                "status":'approved',
-                "cashback":'AUD 40.42'
-            }
+                "id": '001',
+                "date": '19/05/2019',
+                "amount": 'AUD 499.99',
+                "approveDate": '19/07/2019',
+                "status": 'approved',
+                "cashback": 'AUD 40.42',
+                "imageUrl": { "uri": "https://cdn.cashrewards.com/forever-new.jpg" }
+            },
+            {
+                "id": '002',
+                "date": '19/05/2019',
+                "amount": 'AUD 499.99',
+                "approveDate": '19/07/2019',
+                "status": 'approving',
+                "cashback": 'AUD 40.42',
+                "imageUrl": { "uri": "https://cdn.cashrewards.com/forever-new.jpg" }
+            },
+            {
+                "id": '003',
+                "date": '19/05/2019',
+                "amount": 'AUD 499.99',
+                "approveDate": '19/07/2019',
+                "status": 'approving',
+                "cashback": 'AUD 40.42',
+                "imageUrl": { "uri": "https://cdn.cashrewards.com/forever-new.jpg" }
+            },
+            {
+                "id": '004',
+                "date": '19/05/2019',
+                "amount": 'AUD 499.99',
+                "approveDate": '19/07/2019',
+                "status": 'approving',
+                "cashback": 'AUD 40.42',
+                "imageUrl": { "uri": "https://cdn.cashrewards.com/forever-new.jpg" }
+            },
+            {
+                "id": '005',
+                "date": '19/05/2019',
+                "amount": 'AUD 499.99',
+                "approveDate": '19/07/2019',
+                "status": 'approving',
+                "cashback": 'AUD 40.42',
+                "imageUrl": { "uri": "https://cdn.cashrewards.com/forever-new.jpg" }
+            },
+            {
+                "id": '006',
+                "date": '19/05/2019',
+                "amount": 'AUD 499.99',
+                "approveDate": '19/07/2019',
+                "status": 'approving',
+                "cashback": 'AUD 40.42',
+                "imageUrl": { "uri": "https://cdn.cashrewards.com/forever-new.jpg" }
+            },
+
         ]
     }
     constructor(props) {
         super(props);
-        this.state = {
-        };
+
     }
 
     render() {
@@ -26,7 +73,12 @@ export default class RewardsList extends Component {
                 <Text style={styles.title}>My Rewards </Text>
                 <Text style={styles.subTitle}>Purchases, rewards and payments</Text>
                 <View>
-                    <RewardsCard />
+                    {this.state.rewards.map(item => {
+                        return (
+                            <RewardsCard reward={item} key={item.id} />
+                        )
+                    })}
+
                 </View>
             </View>
         );

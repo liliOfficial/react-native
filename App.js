@@ -17,6 +17,7 @@ import ReferPage from './components/pages/referPage'
 import StorePage from './components/pages/storePage';
 import CategoryPage from './components/pages/categoryPage';
 import CategoriesList from './components/categories/categoryList';
+import SettingPage from './components/profile/settingPage';
 
 
 const styles = StyleSheet.create({
@@ -45,7 +46,30 @@ const OffersNavigator = createStackNavigator({
       },
     }
   }
-})
+});
+
+const ProfileNavigator = createStackNavigator({
+  OffersList: {
+    screen: ProfilePage,
+    navigationOptions: {
+      title: 'Profile',
+      header: null
+    }
+  },
+  Setting:{
+    screen: SettingPage,
+    navigationOptions: {
+      title:'Setting',
+      headerStyle: {
+        backgroundColor: '#7C4DFF'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }
+  }
+});
 
 const CategoriesNavigator = createStackNavigator({
   CategoriesList: {
@@ -82,7 +106,7 @@ const AppNavigator = createMaterialBottomTabNavigator({
     }
   },
   Profile: {
-    screen: ProfilePage,
+    screen: ProfileNavigator,
     navigationOptions: {
       tabBarIcon: <Icon name="user" size={22} color="#212121" />
     }

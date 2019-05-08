@@ -13,7 +13,7 @@ export default class StorePage extends React.Component {
       <View style={styles.layout}>
         <ScrollView>
           <View style={styles.banner}>
-            <LogoBox imageUrl={data.imageUrl} />
+            {/* <LogoBox imageUrl={data.imageUrl} /> */}
           </View>
           <StoreTab />
         </ScrollView>

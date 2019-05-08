@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView, View } from 'react-native';
+import StoreOnlineCashback from './online/storeOnlineCashback';
+import StoreOnlineOffers from './online/storeOnlineOffers';
 
 export default class StoreOnline extends Component {
   constructor(props) {
@@ -10,9 +12,13 @@ export default class StoreOnline extends Component {
 
   render() {
     return (
-      <View>
-        <Text> Online Component </Text>
+      <View style={{ flex: 1 }}>
+        <ScrollView style={{ padding: 10, paddingBottom: 40 }}>
+          <StoreOnlineCashback />
+          <StoreOnlineOffers/>
+        </ScrollView>
       </View>
+
     );
   }
 }

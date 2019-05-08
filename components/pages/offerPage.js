@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import Banners from '../banner';
 import OfferList from '../offers/offerList';
 import AppHeader from '../layout/header';
 import { OfferCarousel } from '../offers/offerCarousel';

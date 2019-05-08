@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, Text, StyleSheet, Platform, TouchableHighlight, Alert } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, Platform, Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import AppHeader from '../layout/header';
@@ -49,7 +49,7 @@ export default class ProfilePage extends React.Component {
                                     <BlackButton text='Settings' onPress={() => this.props.navigation.navigate('Setting', { data: this.props.data })} />
                                 </View>
                                 <View style={styles.titleButton}>
-                                    <BlackButton text='Click History' />
+                                    <BlackButton text='Click History' onPress={() => this.props.navigation.navigate('ClickHistory', { data: this.props.data })}/>
                                 </View>
                             </View>
                         </View>
@@ -59,11 +59,21 @@ export default class ProfilePage extends React.Component {
                         <View style={{ backgroundColor: '#F5FCFF' }}>
                             <RewardsList />
                         </View>
+                        <View style={styles.bottomButtons}>
+                            <BlackButton text='CASHREWARDS Terms & Conditions' />
+                        </View>
+                        <View style={styles.bottomButtons}>
+                            <BlackButton text='Privacy Policy' />
+                        </View>
+                        <View style={styles.bottomButtons}>
+                            <BlackButton text='Frequently Asked Question' />
+                        </View>
 
-                        <FetchLocation onGetLocation={this.getUserLocationHandler} />
+                        {/* <FetchLocation onGetLocation={this.getUserLocationHandler} />
                         <Text style={styles.welcome}>Welcome to React Native111!</Text>
                         <Text style={styles.instructions}>To get started, edit App.js</Text>
-                        <Text style={styles.instructions}>{instructions}</Text>
+                        <Text style={styles.instructions}>{instructions}</Text> */}
+
                     </ScrollView>
                 </LinearGradient>
             </View >
@@ -77,8 +87,8 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
         backgroundColor: '#F5FCFF',
     },
-    linearGradient:{
-        paddingBottom:120
+    linearGradient: {
+        paddingBottom: 120
     },
     titleBox: {
         color: '#7C4DFF',
@@ -120,4 +130,9 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginBottom: 5,
     },
+    bottomButtons: {
+        padding: 10,
+        paddingBottom: 0,
+        paddingTop: 8
+    }
 });

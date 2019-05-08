@@ -17,8 +17,6 @@ export const PurpleButton = ({ text, onPress }) => {
     )
 }
 
-
-
 const styles = StyleSheet.create({
     blackButton: {
         backgroundColor: '#212121',

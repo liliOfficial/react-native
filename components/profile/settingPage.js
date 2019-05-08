@@ -1,7 +1,6 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet, Text } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
-import ReferPage from '../pages/referPage';
 
 import PersonalDetails from './setting/personalDetails';
 

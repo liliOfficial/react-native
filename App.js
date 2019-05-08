@@ -18,6 +18,7 @@ import StorePage from './components/pages/storePage';
 import CategoryPage from './components/pages/categoryPage';
 import CategoriesList from './components/categories/categoryList';
 import SettingPage from './components/profile/settingPage';
+import ClickHistory from './components/profile/clickHistory';
 
 
 const styles = StyleSheet.create({
@@ -56,10 +57,23 @@ const ProfileNavigator = createStackNavigator({
       header: null
     }
   },
-  Setting:{
+  Setting: {
     screen: SettingPage,
     navigationOptions: {
-      title:'Setting',
+      title: 'Setting',
+      headerStyle: {
+        backgroundColor: '#7C4DFF'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }
+  },
+  ClickHistory: {
+    screen: ClickHistory,
+    navigationOptions: {
+      title: 'Click History',
       headerStyle: {
         backgroundColor: '#7C4DFF'
       },
@@ -89,7 +103,7 @@ const AppNavigator = createMaterialBottomTabNavigator({
   Offers: {
     screen: OffersNavigator,
     navigationOptions: {
-      tabBarIcon: <Icon name="gifts" size={22} color="#212121"/>,
+      tabBarIcon: <Icon name="gifts" size={22} color="#212121" />,
       tabBarColor: "#fff"
     }
   },

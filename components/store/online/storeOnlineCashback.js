@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     },
 
     conditionButton: {
-        backgroundColor: '#212121',
+        backgroundColor: '#7C4DFF',
         width: 80,
         height: 80,
         borderRadius: 40,

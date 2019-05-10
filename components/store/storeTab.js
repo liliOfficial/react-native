@@ -6,28 +6,32 @@ import StoreOnline from './storeOnline';
 import StoreInstore from './storeInstore';
 
 export default class StoreTab extends Component {
-
+    _onRefresh = (callback) => {
+        callback && setTimeout(callback({test: 'dkjdd'}, 3000))
+      }
+    
     render() {
-        return (
-            <View>
-                <ScrollableTabView
-                    tabBarUnderlineStyle={styles.tabBarUnderline}
-                    style={styles.scrollableTab}
-                    tabBarActiveTextColor='#7C4DFF'
-                    tabBarTextStyle={styles.tabBarText}
-                    renderTabBar={() => <DefaultTabBar style={styles.tabBar} />}
-                >
-                    <ScrollView tabLabel='Online'>
-                        <StoreOnline />
-                    </ScrollView>
-                    <ScrollView tabLabel='In-Store'>
-                        <StoreInstore />
-                    </ScrollView>
-                </ScrollableTabView>
-
+        const collapsableComponent = (
+            <View style={{ height: 300, backgroundColor: 'yellow', width: '100%' }}>
             </View>
-
-
+        );
+        return (
+            <ScrollableTabView
+            pullToRefresh={this._onRefresh}
+                collapsableBar={collapsableComponent}
+                tabBarUnderlineStyle={styles.tabBarUnderline}
+                style={styles.scrollableTab}
+                tabBarActiveTextColor='#7C4DFF'
+                tabBarTextStyle={styles.tabBarText}
+                renderTabBar={() => <DefaultTabBar style={styles.tabBar} />}
+            >
+                <ScrollView tabLabel='Online'>
+                    <StoreOnline navigation={this.props.navigation} />
+                </ScrollView>
+                <View tabLabel='In-Store'>
+                    <StoreInstore />
+                </View>
+            </ScrollableTabView>
         )
     }
 }

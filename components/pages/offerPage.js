@@ -11,7 +11,6 @@ export default class OfferPage extends React.Component {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
                 <AppHeader />
-
                 <View style={styles.layout}>
                     <ScrollView>
                         <OfferCarousel />

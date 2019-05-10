@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import StoreInstoreCashback from './inStore/storeInstoreCashback';
+import StoreinstoreStores from './inStore/storeInstoreStores';
 
 export default class StoreInstore extends Component {
   constructor(props) {
@@ -10,8 +12,9 @@ export default class StoreInstore extends Component {
 
   render() {
     return (
-      <View>
-        <Text> In store Component </Text>
+      <View style={{ padding: 10 }}>
+        <StoreInstoreCashback />
+        <StoreinstoreStores />
       </View>
     );
   }

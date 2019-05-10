@@ -6,7 +6,7 @@ import StoreNotificationApproval from '../storeNotificationApproval';
 
 import Collapsible from 'react-native-collapsible';
 
-export default class StoreOnlineCashback extends Component {
+export default class StoreInstoreCashback extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,11 +25,11 @@ export default class StoreOnlineCashback extends Component {
             <View style={styles.card}>
                 <Text style={styles.cashback}>UP TO 10.00% CASHBACK</Text>
                 <View style={{ width: '100%' }}>
-                    <PurpleButton text='Shop Now' onPress={() => this.props.navigation.navigate('Go')}/>
+                    <PurpleButton text='Link Your Card' />
                 </View>
                 <View style={styles.how}>
                     <Icon name='help' size={16} style={styles.howIcon} />
-                    <Text style={styles.howText}>How does online Cashback work?</Text>
+                    <Text style={styles.howText}>How do in-store offers work?</Text>
                 </View>
                 <Collapsible collapsed={this.state.conditionShow}>
                     <View style={styles.conditionContent}>

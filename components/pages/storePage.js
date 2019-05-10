@@ -11,12 +11,10 @@ export default class StorePage extends React.Component {
     const data = navigation.getParam('data');
     return (
       <View style={styles.layout}>
-        <ScrollView>
-          <View style={styles.banner}>
-            {/* <LogoBox imageUrl={data.imageUrl} /> */}
-          </View>
-          <StoreTab />
-        </ScrollView>
+        <View style={styles.banner}>
+          <LogoBox imageUrl={data.imageUrl} />
+        </View>
+        <StoreTab navigation={this.props.navigation} />
       </View>
     );
   }

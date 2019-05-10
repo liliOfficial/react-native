@@ -11,7 +11,6 @@ export default class OfferCard extends Component {
     render() {
         const { imageUrl, text, cashBack, link } = this.props.data;
         return (
-
             <TouchableHighlight onPress={() => this.props.navigation.navigate('Store', { data: this.props.data })} underlayColor="white">
                 <View style={styles.card}>
                     <LogoBox imageUrl={imageUrl} />

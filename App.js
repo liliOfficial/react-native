@@ -19,6 +19,7 @@ import CategoryPage from './components/pages/categoryPage';
 import CategoriesList from './components/categories/categoryList';
 import SettingPage from './components/profile/settingPage';
 import ClickHistory from './components/profile/clickHistory';
+import GoPage from './components/pages/goPage';
 
 
 const styles = StyleSheet.create({
@@ -45,6 +46,13 @@ const OffersNavigator = createStackNavigator({
       headerTitleStyle: {
         fontWeight: 'bold',
       },
+    }
+  },
+  Go: {
+    screen: GoPage,
+    navigationOptions: {
+      title: 'Go',
+      header: null
     }
   }
 });
@@ -101,7 +109,7 @@ const CategoriesNavigator = createStackNavigator({
 
 const AppNavigator = createMaterialBottomTabNavigator({
   Offers: {
-    screen: StorePage,
+    screen: OffersNavigator,
     navigationOptions: {
       tabBarIcon: <Icon name="gifts" size={22} color="#212121" />,
       tabBarColor: "#fff"

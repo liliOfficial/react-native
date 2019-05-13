@@ -109,7 +109,7 @@ const CategoriesNavigator = createStackNavigator({
 
 const AppNavigator = createMaterialBottomTabNavigator({
   Offers: {
-    screen: OffersNavigator,
+    screen: StorePage,
     navigationOptions: {
       tabBarIcon: <Icon name="gifts" size={22} color="#212121" />,
       tabBarColor: "#fff"

@@ -7,9 +7,9 @@ import StoreInstore from './storeInstore';
 
 export default class StoreTab extends Component {
     _onRefresh = (callback) => {
-        callback && setTimeout(callback({test: 'dkjdd'}, 3000))
-      }
-    
+        callback && setTimeout(callback({ test: 'dkjdd' }, 3000))
+    }
+
     render() {
         const collapsableComponent = (
             <View style={{ height: 300, backgroundColor: 'yellow', width: '100%' }}>
@@ -17,7 +17,8 @@ export default class StoreTab extends Component {
         );
         return (
             <ScrollableTabView
-            pullToRefresh={this._onRefresh}
+                pullToRefresh={this._onRefresh}
+                initialPage={1}
                 collapsableBar={collapsableComponent}
                 tabBarUnderlineStyle={styles.tabBarUnderline}
                 style={styles.scrollableTab}

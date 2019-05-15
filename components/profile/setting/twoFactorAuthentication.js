@@ -63,30 +63,33 @@ export default class TwoFactorAuthentication extends Component {
             <View style={styles.box}>
                 <View>
                     <Text>2FA provides an extra level of security to your account.</Text>
+                    <Text>Enabling 2FA ensures that only you can update your email address, password, bank details and withdraw your rewards.</Text>
+                    <Text>Your mobile number will only be used for security messages and you will not receive any promotional messages.</Text>
+                    <Text>2FA is only valid for Australian mobile numbers.</Text>
                 </View>
-                <RNPickerSelect
-                    placeholder={placeholder}
-                    items={countries}
-                    onValueChange={value => {
-                        this.setState({
-                            country: value,
-                        });
-                    }}
-                    onUpArrow={() => {
-                        this.inputRefs.firstTextInput.focus();
-                    }}
-                    onDownArrow={() => {
-                        this.inputRefs.favSport1.togglePicker();
-                    }}
-                    value={this.state.country}
-                    ref={el => {
-                        this.inputRefs.firstTextInput = el;
-                    }}
-                    Icon={() => {
-                        return <Icon name="sort-down" size={12} color='#212121' />;
-                    }}
-                    style={styles.input}
-                />
+                <View style={styles.input}>
+                    <RNPickerSelect
+                        placeholder={placeholder}
+                        items={countries}
+                        onValueChange={value => {
+                            this.setState({
+                                country: value,
+                            });
+                        }}
+                        onUpArrow={() => {
+                        }}
+                        onDownArrow={() => {
+                        }}
+                        value={this.state.country}
+                        ref={el => {
+                            this.inputRefs.firstTextInput = el;
+                        }}
+                        Icon={() => {
+                            return <Icon name="sort-down" size={12} color='#212121' />;
+                        }}
+                    />
+                </View>
+
                 <TextInput
                     style={styles.input}
                     placeholder="Mobile Number"
@@ -98,7 +101,7 @@ export default class TwoFactorAuthentication extends Component {
                     onChangeText={(currentPassword) => this.setState({ currentPassword })}
                 />
                 <View style={{ marginTop: 8, backgroundColor: '#484848', padding: 2 }}>
-                    <GreyButton text='Update' onPress={this._onSubmit} />
+                    <GreyButton text='Next' onPress={this._onSubmit} />
                 </View>
             </View>
         );

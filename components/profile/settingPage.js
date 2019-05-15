@@ -9,6 +9,8 @@ import Password from './setting/password';
 import BankAccount from './setting/bankAccount';
 import PaypelAccount from './setting/paypalAccount';
 import TwoFactorAuthentication from './setting/twoFactorAuthentication';
+import CommunicationPreference from './setting/communicationPreference';
+import CloseAccount from './setting/closeAccount';
 
 const SECTIONS = [
     {
@@ -41,11 +43,11 @@ const SECTIONS = [
     },
     {
         header: 'Communication Preference',
-        content: <BankAccount />,
+        content: <CommunicationPreference />,
     },
     {
         header: 'Close my Account',
-        content: <BankAccount />,
+        content: <CloseAccount />,
     },
 ];
 

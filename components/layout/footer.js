@@ -1,50 +1,44 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, Text, TouchableHighlight, Alert } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableHighlight } from 'react-native';
 
-class AppFooter extends Component {
-
-
-
-    render() {
-        console.log(JSON.stringify(this.props));
-        return (
-            <View style={styles.container}>
-                <TouchableHighlight underlayColor="white" style={styles.box} onPress={() => this.props.navigation.navigate('Offers')} >
-                    <View >
-                        <Image
-                            source={require('../../asset/img/icon/offers.png')}
-                            style={styles.image}
-                        />
-                        <Text style={styles.title}>Offers</Text>
-                    </View>
-                </TouchableHighlight>
-                <TouchableHighlight underlayColor="white" style={styles.box} onPress={() => this.props.navigation.navigate('Categories')}>
-                    <View>
-                        <Image
-                            source={require('../../asset/img/icon/categories.png')}
-                            style={styles.image}
-                        />
-                        <Text style={styles.title}>Categories</Text>
-                    </View></TouchableHighlight>
-                <TouchableHighlight underlayColor="white" style={styles.box}>
-                    <View >
-                        <Image
-                            source={require('../../asset/img/icon/friend.png')}
-                            style={styles.image}
-                        />
-                        <Text style={styles.title}>Refer a Friend</Text>
-                    </View></TouchableHighlight>
-                <TouchableHighlight underlayColor="white" style={styles.box} onPress={() => this.props.navigation.navigate('Profile')}>
-                    <View >
-                        <Image
-                            source={require('../../asset/img/icon/user.png')}
-                            style={styles.image}
-                        />
-                        <Text style={styles.title}>Profile</Text>
-                    </View></TouchableHighlight>
-            </View>
-        );
-    }
+const AppFooter = () => {
+    return (
+        <View style={styles.container}>
+            <TouchableHighlight underlayColor="white" style={styles.box} onPress={() => this.props.navigation.navigate('Offers')} >
+                <View >
+                    <Image
+                        source={require('../../asset/img/icon/offers.png')}
+                        style={styles.image}
+                    />
+                    <Text style={styles.title}>Offers</Text>
+                </View>
+            </TouchableHighlight>
+            <TouchableHighlight underlayColor="white" style={styles.box} onPress={() => this.props.navigation.navigate('Categories')}>
+                <View>
+                    <Image
+                        source={require('../../asset/img/icon/categories.png')}
+                        style={styles.image}
+                    />
+                    <Text style={styles.title}>Categories</Text>
+                </View></TouchableHighlight>
+            <TouchableHighlight underlayColor="white" style={styles.box}>
+                <View >
+                    <Image
+                        source={require('../../asset/img/icon/friend.png')}
+                        style={styles.image}
+                    />
+                    <Text style={styles.title}>Refer a Friend</Text>
+                </View></TouchableHighlight>
+            <TouchableHighlight underlayColor="white" style={styles.box} onPress={() => this.props.navigation.navigate('Profile')}>
+                <View >
+                    <Image
+                        source={require('../../asset/img/icon/user.png')}
+                        style={styles.image}
+                    />
+                    <Text style={styles.title}>Profile</Text>
+                </View></TouchableHighlight>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({

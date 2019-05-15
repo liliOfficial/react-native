@@ -3,6 +3,12 @@ import { ScrollView, View, StyleSheet, Text } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 
 import PersonalDetails from './setting/personalDetails';
+import EmailAddress from './setting/emailAddress';
+import CardLinkedOffers from './setting/cardLinkedOffers';
+import Password from './setting/password';
+import BankAccount from './setting/bankAccount';
+import PaypelAccount from './setting/paypalAccount';
+import TwoFactorAuthentication from './setting/twoFactorAuthentication';
 
 const SECTIONS = [
     {
@@ -11,19 +17,35 @@ const SECTIONS = [
     },
     {
         header: 'Email Address',
-        content: <PersonalDetails />,
+        content: <EmailAddress />,
     },
     {
         header: 'Card-Linked Offers',
-        content: <PersonalDetails />,
+        content: <CardLinkedOffers />,
     },
     {
         header: 'Password',
-        content: <PersonalDetails />,
+        content: <Password />,
     },
     {
         header: 'Bank Account',
-        content: <PersonalDetails />,
+        content: <BankAccount />,
+    },
+    {
+        header: 'PayPal Account',
+        content: <PaypelAccount />,
+    },
+    {
+        header: 'Two-Factor Authentication',
+        content: <TwoFactorAuthentication />,
+    },
+    {
+        header: 'Communication Preference',
+        content: <BankAccount />,
+    },
+    {
+        header: 'Close my Account',
+        content: <BankAccount />,
     },
 ];
 
@@ -42,7 +64,7 @@ export default class SettingPage extends React.Component {
     _renderHeader = (section, index, isActive, sections) => {
         return (
             <View style={isActive ? styles.headerActive : styles.header}>
-                <Text style={styles.headerText}>{section.header}</Text>
+                <Text style={isActive ? styles.headerTextActive : styles.headerText}>{section.header}</Text>
             </View>
         );
     };
@@ -85,25 +107,30 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'stretch',
         backgroundColor: '#F5FCFF',
-        padding: 10
+        padding: 10,
+        paddingBottom: 30
     },
     title: {
         height: 6
     },
-    header: {
-        padding: 10,
-        borderColor: '#212121',
-        borderWidth: 1,
-        backgroundColor: '#212121',
-    },
     headerActive: {
         padding: 10,
-        borderColor: '#7c4dff',
+        borderColor: '#484848',
         borderWidth: 1,
-        backgroundColor: '#7c4dff',
+        backgroundColor: '#484848',
+    },
+    header: {
+        padding: 10,
+        borderColor: '#484848',
+        borderWidth: 1,
+        backgroundColor: '#fff',
+    },
+    headerTextActive: {
+        color: '#fff',
+        fontWeight: 'bold',
     },
     headerText: {
-        color: '#fff',
+        color: '#484848',
         fontWeight: 'bold',
     }
 

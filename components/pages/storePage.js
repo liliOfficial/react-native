@@ -12,7 +12,7 @@ export default class StorePage extends React.Component {
     return (
       <View style={styles.layout}>
         <View style={styles.banner}>
-          {/* <LogoBox imageUrl={data.imageUrl} /> */}
+          <LogoBox imageUrl={data.imageUrl} />
         </View>
         <StoreTab navigation={this.props.navigation} />
       </View>

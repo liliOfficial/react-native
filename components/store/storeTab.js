@@ -18,7 +18,7 @@ export default class StoreTab extends Component {
         return (
             <ScrollableTabView
                 pullToRefresh={this._onRefresh}
-                initialPage={1}
+                initialPage={0}
                 collapsableBar={collapsableComponent}
                 tabBarUnderlineStyle={styles.tabBarUnderline}
                 style={styles.scrollableTab}

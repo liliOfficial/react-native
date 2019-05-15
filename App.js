@@ -22,11 +22,7 @@ import ClickHistory from './components/profile/clickHistory';
 import GoPage from './components/pages/goPage';
 
 
-const styles = StyleSheet.create({
-  icon: {
-    width: 20, height: 20
-  }
-});
+
 
 const OffersNavigator = createStackNavigator({
   OffersList: {
@@ -109,7 +105,7 @@ const CategoriesNavigator = createStackNavigator({
 
 const AppNavigator = createMaterialBottomTabNavigator({
   Offers: {
-    screen: StorePage,
+    screen: OffersNavigator,
     navigationOptions: {
       tabBarIcon: <Icon name="gifts" size={22} color="#212121" />,
       tabBarColor: "#fff"
@@ -128,14 +124,14 @@ const AppNavigator = createMaterialBottomTabNavigator({
     }
   },
   Profile: {
-    screen: ProfileNavigator,
+    screen: SettingPage,
     navigationOptions: {
       tabBarIcon: <Icon name="user" size={22} color="#212121" />
     }
   }
 },
   {
-    initialRouteName: "Offers",
+    initialRouteName: 'Profile',
     labeled: true,
     activeColor: '#212121',
     inactiveColor: '#212121',

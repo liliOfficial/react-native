@@ -3,8 +3,6 @@ import { View, StyleSheet, Text, ScrollView } from 'react-native';
 import AppHeader from '../layout/header';
 import axios from 'axios';
 
-import { Checkbox } from 'react-native-material-ui'
-
 export default class ReferPage extends React.Component {
     state = { user: [] };
     componentWillMount() {
@@ -17,9 +15,6 @@ export default class ReferPage extends React.Component {
                 <AppHeader />
 
                 <ScrollView>
-                    <View>
-                        <Checkbox label="I Agree" value="agree" checked={true} style={{backgroundColor:'red'}}/>
-                    </View>
                     {this.state.user.map(user => {
                         return (
                             <View key={user.id}>

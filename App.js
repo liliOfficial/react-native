@@ -124,14 +124,14 @@ const AppNavigator = createMaterialBottomTabNavigator({
     }
   },
   Profile: {
-    screen: ProfileNavigator,
+    screen: SettingPage,
     navigationOptions: {
       tabBarIcon: <Icon name="user" size={22} color="#212121" />
     }
   }
 },
   {
-    initialRouteName: "Refer a Friend",
+    initialRouteName: 'Offers',
     labeled: true,
     activeColor: '#212121',
     inactiveColor: '#212121',

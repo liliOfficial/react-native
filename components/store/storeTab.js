@@ -29,9 +29,9 @@ export default class StoreTab extends Component {
                 <ScrollView tabLabel='Online'>
                     <StoreOnline navigation={this.props.navigation} />
                 </ScrollView>
-                <View tabLabel='In-Store'>
+                <ScrollView tabLabel='In-Store'>
                     <StoreInstore />
-                </View>
+                </ScrollView>
             </ScrollableTabView>
         )
     }

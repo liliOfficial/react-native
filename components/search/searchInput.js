@@ -24,7 +24,6 @@ export default class SearchInput extends Component {
     }
 
     searching = (keywords) => {
-        console.log(keywords)
         keywords.length ? this.setState({ searchReq: true }) : this.setState({ searchReq: false });
     }
 
@@ -36,15 +35,16 @@ export default class SearchInput extends Component {
                     placeholder="Search"
                     onChangeText={(keywords) => this.searching(keywords)}
                 />
-                <ScrollView style={styles.searchBoard}>
-                    <View style={{ paddingBottom: 25 }}>
+                {this.state.searchReq &&
+                    <ScrollView style={styles.searchBoard}>
+                        <View style={{ paddingBottom: 25 }}>
+                            {this.state.list.map(item => {
+                                return <CategoryCard key={item.id} data={item} navigation={this.props.navigation} />
+                            })}
 
-                        {this.state.searchReq && this.state.list.map(item => {
-                            return <CategoryCard key={item.id} data={item} navigation={this.props.navigation} />
-                        })}
-
-                    </View>
-                </ScrollView>
+                        </View>
+                    </ScrollView>
+                }
             </View>
         );
     }

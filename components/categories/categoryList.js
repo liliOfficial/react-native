@@ -61,7 +61,7 @@ export default class CategoryList extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <AppHeader />
+        <AppHeader navigation={this.props.navigation}/>
         <View style={styles.layout}>
           <ScrollView>
             <Text style={styles.title}> Browse Categories </Text>
@@ -70,7 +70,6 @@ export default class CategoryList extends Component {
                 return (
                   <TouchableHighlight key={item.id} onPress={() => this.props.navigation.navigate('CategoriesDetail', { data: item })} underlayColor="#fff">
                     <View style={styles.gripContent}>
-                      {/* <Image source={item.icon}  /> */}
                       <Icon name={item.icon} size={32} style={styles.icon}/>
                       <Text style={styles.name}>{item.name}</Text>
                     </View>

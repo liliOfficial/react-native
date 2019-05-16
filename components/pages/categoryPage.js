@@ -27,19 +27,20 @@ export default class CategoryPage extends React.Component {
     }
 
     render() {
+        console.log(this.state.list);
         return (
-            <ScrollView style={{backgroundColor:'#7C4DFF'}}>
+            <ScrollView style={{ backgroundColor: '#7C4DFF' }}>
                 <View style={styles.container}>
                     <Text style={styles.title}>Attractions and Experiences</Text>
                 </View>
-                <View style={{backgroundColor:'#F5FCFF'}}>
+                <View style={{ backgroundColor: '#F5FCFF' }}>
                     <View style={styles.box}>
-                    {this.state.list.map(item => {
-                        return <CategoryCard key={item.id} data={item} navigation={this.props.navigation}/>
-                    })}
+                        {this.state.list.map(item => {
+                            return <CategoryCard key={item.id} data={item} navigation={this.props.navigation} />
+                        })}
+                    </View>
                 </View>
-                </View>
-                
+
 
             </ScrollView>
         );
@@ -59,10 +60,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     box: {
-        
+
         position: 'relative',
         top: -80,
-        marginBottom:-60
+        marginBottom: -60
     }
 });
 

@@ -39,7 +39,7 @@ export default class ProfilePage extends React.Component {
     render() {
         return (
             <View style={styles.layout}>
-                <AppHeader />
+                <AppHeader navigation={this.props.navigation}/>
                 <LinearGradient colors={['#7C4DFF', '#F5FCFF', '#F5FCFF']} locations={[0.22, 0.22, 0.77]} style={styles.linearGradient}>
                     <ScrollView style={styles.body}>
                         <View style={styles.titleBox}>

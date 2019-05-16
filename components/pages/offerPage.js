@@ -10,7 +10,7 @@ export default class OfferPage extends React.Component {
         const { navigation } = this.props;
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
-                <AppHeader />
+                <AppHeader navigation={this.props.navigation}/>
                 <View style={styles.layout}>
                     <ScrollView>
                         <OfferCarousel />

@@ -12,7 +12,7 @@ export default class ReferPage extends React.Component {
     render() {
         return (
             <View style={styles.layout}>
-                <AppHeader />
+                <AppHeader navigation={this.props.navigation}/>
 
                 <ScrollView>
                     {this.state.user.map(user => {

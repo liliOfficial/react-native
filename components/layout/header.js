@@ -20,11 +20,15 @@ class AppHeader extends Component {
                 <View style={styles.container}>
                     <Image source={require('../../asset/img/logo.png')} style={styles.logo} />
                     <TouchableHighlight onPress={() => this.setState({ searchInputShow: !searchInputShow })}>
-                        <Icon name="search" size={20} color="#fff" style={styles.search} />
+                        <View>
+                            {!this.state.searchInputShow &&
+                                <Icon name="search" size={20} color="#fff" style={styles.search} />}
+                            {this.state.searchInputShow &&
+                                <Icon name="times" size={20} color="#fff" style={styles.search} />}
+                        </View>
                     </TouchableHighlight>
                 </View>
-                {this.state.searchInputShow && <SearchInput />}
-
+                {this.state.searchInputShow && <SearchInput navigation={this.props.navigation} />}
             </SafeAreaView>
         );
     }

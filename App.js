@@ -124,7 +124,7 @@ const AppNavigator = createMaterialBottomTabNavigator({
     }
   },
   Profile: {
-    screen: SettingPage,
+    screen: ProfileNavigator,
     navigationOptions: {
       tabBarIcon: <Icon name="user" size={22} color="#212121" />
     }

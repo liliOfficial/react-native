@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, ScrollView, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, Text, ScrollView, ActivityIndicator, Image } from 'react-native';
 import AppHeader from '../layout/header';
 import axios from 'axios';
 
@@ -14,6 +14,8 @@ export default function ReferPage(props) {
     return (
         <View style={styles.layout}>
             <AppHeader navigation={props.navigation} />
+            <Image source={{ uri: 'https://facebook.github.io/react/logo-og.png' }}
+                style={{ width: 400, height: 400 }} />
             {!user &&
                 <View style={styles.loading}>
                     <ActivityIndicator size="large" color="#7c4dff" />

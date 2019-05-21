@@ -69,10 +69,10 @@ export default class ProfilePage extends React.Component {
                             <BlackButton text='Frequently Asked Question' />
                         </View>
 
-                        {/* <FetchLocation onGetLocation={this.getUserLocationHandler} />
+                        <FetchLocation onGetLocation={this.getUserLocationHandler} />
                         <Text style={styles.welcome}>Welcome to React Native111!</Text>
                         <Text style={styles.instructions}>To get started, edit App.js</Text>
-                        <Text style={styles.instructions}>{instructions}</Text> */}
+                        <Text style={styles.instructions}>{instructions}</Text>
 
                     </ScrollView>
                 </LinearGradient>

@@ -91,15 +91,8 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 15,
     },
-    line: {
-        width: '100%',
-        height: 1,
-        backgroundColor: '#eee'
-    },
     approveDate: {
-        color: '#484848',
-        borderTopWidth: 1,
-
+        color: '#484848'
     }
 
 });

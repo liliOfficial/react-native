@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
         height: 2,
     },
     cardBox: {
-        flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',

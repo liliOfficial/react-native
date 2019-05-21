@@ -40,8 +40,6 @@ export default class CategoryPage extends React.Component {
                         })}
                     </View>
                 </View>
-
-
             </ScrollView>
         );
     }

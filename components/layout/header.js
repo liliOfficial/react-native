@@ -11,7 +11,7 @@ export default function AppHeader(props) {
         <SafeAreaView style={{ backgroundColor: '#7C4DFF' }}>
             <View style={styles.container}>
                 <Image source={require('../../asset/img/logo.png')} style={styles.logo} />
-                <TouchableHighlight onPress={() => setSearchInputShow(!searchInputShow)}>
+                <TouchableHighlight onPress={() => setSearchInputShow(!searchInputShow)} underlayColor="transparent">
                     <View>
                         {!searchInputShow &&
                             <Icon name="search" size={20} color="#fff" style={styles.search} />}
@@ -27,14 +27,13 @@ export default function AppHeader(props) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         flexDirection: 'row',
         alignItems: 'stretch',
         justifyContent: 'space-between',
         paddingTop: 12,
         paddingLeft: 10,
         paddingRight: 12,
-        marginBottom: 40
+        marginBottom: 10
 
     },
     logo: {

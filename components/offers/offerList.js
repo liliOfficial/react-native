@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import { View, Button, StyleSheet, ScrollView, Alert } from 'react-native';
 import OfferCard from './offerCard';
 import listData from '../../asset/data/offers.json'
 
@@ -22,40 +22,49 @@ class OfferList extends Component {
 
     render() {
         return (
-            <View>
-                <ScrollableTabView
-                    tabBarUnderlineStyle={styles.tabBarUnderline}
-                    style={styles.scrollableTab}
-                    tabBarActiveTextColor='#7C4DFF'
-                    tabBarTextStyle={styles.tabBarText}
-                    renderTabBar={() => <DefaultTabBar style={styles.tabBar} />}
-                >
-                    <View tabLabel='Online'>
-                        <View style={styles.cardBox}>
-                            {this.state.list.map(item => {
-                                return (
-                                    <View key={item.id} style={styles.cardContent}>
-                                        <OfferCard data={item} navigation={this.props.navigation} />
-                                    </View>
-                                )
-                            })}
-                        </View>
-                    </View>
-                    <View tabLabel='In-Store'>
-                        <View style={styles.cardBox}>
-                            {this.state.list.map(item => {
-                                return (
-                                    <View key={item.id} style={styles.cardContent}>
-                                        <OfferCard data={item} navigation={this.props.navigation} />
-                                    </View>
-                                )
-                            })}
-                        </View>
-                    </View>
-                </ScrollableTabView>
+            <ScrollableTabView
+                initialPage={0}
+                tabBarUnderlineStyle={styles.tabBarUnderline}
+                style={styles.scrollableTab}
+                tabBarActiveTextColor='#7C4DFF'
+                tabBarTextStyle={styles.tabBarText}
 
-                <Button title="Load More" color="#7C4DFF" />
-            </View>
+                renderTabBar={() => <DefaultTabBar style={styles.tabBar} />}
+            >
+                <ScrollView tabLabel='Online'
+                    scrollEventThrottle={1}
+                    onScroll={(event) => {
+                        this.props.scrollY(event.nativeEvent.contentOffset.y);
+                    }}
+                    scrollsToTop={() => {
+                        Alert.alert('onScrollBeginDrag');
+                    }}
+                >
+                    <View style={styles.cardBox}>
+                        {this.state.list.map(item => {
+                            return (
+                                <View key={item.id} style={styles.cardContent}>
+                                    <OfferCard data={item} navigation={this.props.navigation} />
+                                </View>
+                            )
+                        })}
+                    </View>
+                    <Button title="Load More" color="#7C4DFF" />
+                </ScrollView>
+                <View tabLabel='In-Store'>
+                    <View style={styles.cardBox}>
+                        {this.state.list.map(item => {
+                            return (
+                                <View key={item.id} style={styles.cardContent}>
+                                    <OfferCard data={item} navigation={this.props.navigation} />
+                                </View>
+                            )
+                        })}
+                    </View>
+                </View>
+            </ScrollableTabView>
+
+
 
 
         )

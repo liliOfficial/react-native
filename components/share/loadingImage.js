@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
 
-class SpinnerView extends React.Component {
+class SpinnerView extends Component {
     state = {
         scale: new Animated.Value(0),  // Initial value for opacity: 0
     }

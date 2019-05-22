@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Button, StyleSheet, ScrollView, Alert, ActivityIndicator } from 'react-native';
 import OfferCard from './offerCard';
-import listData from '../../asset/data/offers.json'
+import listData from '../../asset/data/offers.json';
+import listAdd from '../../asset/data/offersadd.json';
 
 import ScrollableTabView, { DefaultTabBar } from 'react-native-scrollable-tab-view';
 
@@ -12,7 +13,8 @@ const { width } = Dimensions.get('window');
 class OfferList extends Component {
     state = {
         list: [],
-        loadingData: false
+        loadingData: false,
+        page: 1
     }
 
     componentDidMount() {
@@ -22,7 +24,7 @@ class OfferList extends Component {
     }
 
     isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
-        const paddingToBottom = 50
+        const paddingToBottom = 80
         return layoutMeasurement.height + contentOffset.y >=
             contentSize.height - paddingToBottom
     }
@@ -31,6 +33,10 @@ class OfferList extends Component {
         this.setState({ loadingData: true });
         console.log('load more data');
         Alert.alert('load more data');
+        console.log(listAdd);
+        const newList = this.state.list.concat(listAdd);
+        console.log(newList);
+        this.setState({ list: newList, page: 2 })
     }
 
 
@@ -53,7 +59,7 @@ class OfferList extends Component {
                     }}
                     onMomentumScrollEnd={({ nativeEvent }) => {
                         console.log(nativeEvent);
-                        if (this.isCloseToBottom(nativeEvent)) {
+                        if (this.isCloseToBottom(nativeEvent) && this.state.page == 1) {
                             this.loadMoreData()
                         }
 

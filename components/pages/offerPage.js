@@ -61,7 +61,7 @@ export default class OfferPage extends React.Component {
                 </View>
 
 
-                <OfferList navigation={navigation} scrollY={this.scrollY} />
+                <OfferList navigation={navigation} scrollY={this.scrollY}/>
             </View>
         );
     }

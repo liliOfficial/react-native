@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView, Animated, NativeModules, LayoutAnimation, } from 'react-native';
+import { View, StyleSheet, ScrollView, Animated, NativeModules, LayoutAnimation, SectionList, Text } from 'react-native';
 import OfferList from '../offers/offerList';
 import AppHeader from '../layout/header';
 import { OfferCarousel } from '../offers/offerCarousel';
@@ -18,7 +18,7 @@ export default class OfferPage extends React.Component {
     }
 
     scrollY = y => {
-        console.log('from parent' + y);
+        // console.log('from parent' + y);
         if (y > 30) {
             LayoutAnimation.spring();
             this.setState({
@@ -32,11 +32,29 @@ export default class OfferPage extends React.Component {
 
     }
 
+    hideCarousel= ()=> {
+        Animated.timing(this.state.height,
+            {
+                toValue: 1,
+                duration: 1400,
+                delay: this.props.delay
+            }).start();
+    }
+
     render() {
         const { navigation } = this.props;
         return (
             <View style={{ flex: 1 }}>
                 <AppHeader navigation={this.props.navigation} />
+                {/* <SectionList
+                    sections={[
+                        { title: 'D', data: ['Devin'] },
+                        { title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie'] },
+                    ]}
+                    renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
+                    renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+                    keyExtractor={(item, index) => index}
+                /> */}
 
                 <View style={{ height: this.state.height, opacity: this.state.opacity }}>
                     <OfferCarousel />
@@ -48,3 +66,24 @@ export default class OfferPage extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingTop: 22
+    },
+    sectionHeader: {
+        paddingTop: 2,
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingBottom: 2,
+        fontSize: 14,
+        fontWeight: 'bold',
+        backgroundColor: 'rgba(247,247,247,1.0)',
+    },
+    item: {
+        padding: 10,
+        fontSize: 18,
+        height: 44,
+    },
+})

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet, ScrollView, Alert } from 'react-native';
+import { View, Button, StyleSheet, ScrollView, Alert, ActivityIndicator } from 'react-native';
 import OfferCard from './offerCard';
 import listData from '../../asset/data/offers.json'
 
@@ -11,7 +11,8 @@ const { width } = Dimensions.get('window');
 
 class OfferList extends Component {
     state = {
-        list: []
+        list: [],
+        loadingData: false
     }
 
     componentDidMount() {
@@ -19,6 +20,20 @@ class OfferList extends Component {
             list: listData
         })
     }
+
+    isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
+        const paddingToBottom = 50
+        return layoutMeasurement.height + contentOffset.y >=
+            contentSize.height - paddingToBottom
+    }
+
+    loadMoreData = () => {
+        this.setState({ loadingData: true });
+        console.log('load more data');
+        Alert.alert('load more data');
+    }
+
+
 
     render() {
         return (
@@ -36,8 +51,12 @@ class OfferList extends Component {
                     onScroll={(event) => {
                         this.props.scrollY(event.nativeEvent.contentOffset.y);
                     }}
-                    scrollsToTop={() => {
-                        Alert.alert('onScrollBeginDrag');
+                    onMomentumScrollEnd={({ nativeEvent }) => {
+                        console.log(nativeEvent);
+                        if (this.isCloseToBottom(nativeEvent)) {
+                            this.loadMoreData()
+                        }
+
                     }}
                 >
                     <View style={styles.cardBox}>
@@ -49,7 +68,12 @@ class OfferList extends Component {
                             )
                         })}
                     </View>
-                    <Button title="Load More" color="#7C4DFF" />
+                    {this.state.loadingData &&
+                        <View style={styles.loading}>
+                            <ActivityIndicator size="large" color="#7c4dff" />
+                        </View>
+
+                    }
                 </ScrollView>
                 <View tabLabel='In-Store'>
                     <View style={styles.cardBox}>
@@ -99,7 +123,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'stretch',
         marginTop: 10
-
+    },
+    loading: {
+        padding: 10
     }
 });
 

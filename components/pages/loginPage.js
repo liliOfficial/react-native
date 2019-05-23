@@ -11,6 +11,7 @@ export default class LoginPage extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <View style={styles.container}>
                 <Image source={require('../../asset/img/logo.png')} style={styles.logo} />

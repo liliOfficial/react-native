@@ -6,7 +6,6 @@
  * @flow
  */
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -20,6 +19,7 @@ import CategoriesList from './components/categories/categoryList';
 import SettingPage from './components/profile/settingPage';
 import ClickHistory from './components/profile/clickHistory';
 import GoPage from './components/pages/goPage';
+import LogoutPage from './components/pages/loginPage';
 
 
 
@@ -86,6 +86,15 @@ const ProfileNavigator = createStackNavigator({
         fontWeight: 'bold',
       },
     }
+  },
+  Logout: {
+    screen: LogoutPage,
+    navigationOptions: {
+      title: 'Go',
+      header: null,
+      tabBarVisible: false
+    }
+
   }
 });
 
@@ -99,7 +108,11 @@ const CategoriesNavigator = createStackNavigator({
   },
   CategoriesDetail: {
     screen: CategoryPage,
-
+    navigationOptions: {
+      title: 'Go',
+      header: null,
+      tabBarVisible: false
+    }
   }
 })
 
@@ -125,9 +138,10 @@ const AppNavigator = createMaterialBottomTabNavigator({
   },
   Profile: {
     screen: ProfileNavigator,
-    navigationOptions: {
-      tabBarIcon: <Icon name="user" size={22} color="#212121" />
-    }
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: <Icon name="user" size={22} color="#212121" />,
+      tabBarVisible: navigation.state.index === 0 
+    })
   }
 },
   {
@@ -138,5 +152,15 @@ const AppNavigator = createMaterialBottomTabNavigator({
     barStyle: { backgroundColor: '#fff' },
   }
 );
+
+// export default class App extends React.Component {
+//   constructor(props) {
+//     super(props);
+
+//   }
+//   render() {
+//     return createAppContainer((this.AppNavigator));
+//   }
+// }
 
 export default createAppContainer(AppNavigator);

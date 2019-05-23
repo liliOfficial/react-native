@@ -1,5 +1,6 @@
 import { AppRegistry } from 'react-native';
 import App from './App';
+import LoginPage from './components/pages/loginPage';
 import { name as appName } from './app.json';
 import React, { Component } from 'react';
 import { COLOR, ThemeContext, getTheme } from 'react-native-material-ui';
@@ -18,6 +19,13 @@ const uiTheme = {
 };
 
 class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      login: true
+    };
+  }
+
   componentDidMount() {
     SplashScreen.hide();
   }
@@ -25,7 +33,7 @@ class Main extends Component {
   render() {
     return (
       <ThemeContext.Provider value={getTheme(uiTheme)}>
-        <App />
+        {this.state.login ? <App/> : <LoginPage login={()=>this.setState({ login: true })} />}
       </ThemeContext.Provider>
     );
   }

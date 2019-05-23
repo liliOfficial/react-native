@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, Text, StyleSheet, Platform, Alert } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, Platform, Alert, Linking } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import AppHeader from '../layout/header';
@@ -37,9 +37,10 @@ export default class ProfilePage extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <View style={styles.layout}>
-                <AppHeader navigation={this.props.navigation}/>
+                <AppHeader navigation={this.props.navigation} />
                 <LinearGradient colors={['#7C4DFF', '#F5FCFF', '#F5FCFF']} locations={[0.22, 0.22, 0.77]} style={styles.linearGradient}>
                     <ScrollView style={styles.body}>
                         <View style={styles.titleBox}>
@@ -49,7 +50,7 @@ export default class ProfilePage extends React.Component {
                                     <BlackButton text='Settings' onPress={() => this.props.navigation.navigate('Setting', { data: this.props.data })} />
                                 </View>
                                 <View style={styles.titleButton}>
-                                    <BlackButton text='Click History' onPress={() => this.props.navigation.navigate('ClickHistory', { data: this.props.data })}/>
+                                    <BlackButton text='Click History' onPress={() => this.props.navigation.navigate('ClickHistory', { data: this.props.data })} />
                                 </View>
                             </View>
                         </View>
@@ -60,13 +61,21 @@ export default class ProfilePage extends React.Component {
                             <RewardsList />
                         </View>
                         <View style={styles.bottomButtons}>
-                            <BlackButton text='CASHREWARDS Terms & Conditions' />
+                            <BlackButton
+                                text='CASHREWARDS Terms & Conditions'
+                                onPress={() => Linking.openURL('https://www.cashrewards.com.au/en/terms-and-conditions)')}
+                            />
                         </View>
                         <View style={styles.bottomButtons}>
-                            <BlackButton text='Privacy Policy' />
+                            <BlackButton
+                                text='Privacy Policy'
+                                onPress={()=> Linking.openURL('https://www.cashrewards.com.au/en/privacy')}
+                            />
                         </View>
                         <View style={styles.bottomButtons}>
-                            <BlackButton text='Frequently Asked Question' />
+                            <BlackButton
+                                text='Frequently Asked Question'
+                            />
                         </View>
 
                         <FetchLocation onGetLocation={this.getUserLocationHandler} />

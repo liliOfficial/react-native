@@ -81,7 +81,7 @@ class OfferList extends Component {
 
                     }
                 </ScrollView>
-                <View tabLabel='In-Store'>
+                <ScrollView tabLabel='In-Store'>
                     <View style={styles.cardBox}>
                         {this.state.list.map(item => {
                             return (
@@ -91,7 +91,7 @@ class OfferList extends Component {
                             )
                         })}
                     </View>
-                </View>
+                </ScrollView>
             </ScrollableTabView>
 
 

@@ -32,7 +32,7 @@ export default class LoginPage extends Component {
                             onChangeText={(text) => this.setState({ text })}
                         />
                     </View>
-                    <BlackButton text='Log In' onPress={this.props.login}/>
+                    <BlackButton text='Log In' onPress={() => { this.props.navigation.goBack();this.props.login;  }} />
                 </View>
 
             </View>
@@ -64,15 +64,15 @@ const styles = StyleSheet.create({
         shadowRadius: 2
     },
     inputGroup: {
-        position:'relative',
-        height:40
+        position: 'relative',
+        height: 40
     },
     icon: {
         position: 'absolute',
-        color:'#212121',
+        color: '#212121',
     },
     input: {
-        paddingLeft:30,
-        paddingTop:3
+        paddingLeft: 30,
+        paddingTop: 3
     }
 });

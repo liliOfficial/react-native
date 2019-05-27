@@ -20,6 +20,8 @@ import SettingPage from './components/profile/settingPage';
 import ClickHistory from './components/profile/clickHistory';
 import GoPage from './components/pages/goPage';
 import LogoutPage from './components/pages/loginPage';
+import LinkCardPage from './components/cardLinked/linkCard';
+import CardListPage from './components/cardLinked/cardList';
 
 
 
@@ -51,6 +53,7 @@ const OffersNavigator = createStackNavigator({
       header: null
     }
   }
+
 });
 
 const ProfileNavigator = createStackNavigator({
@@ -90,11 +93,35 @@ const ProfileNavigator = createStackNavigator({
   Logout: {
     screen: LogoutPage,
     navigationOptions: {
-      title: 'Go',
+      title: 'Log Out',
       header: null,
-      tabBarVisible: false
     }
-
+  },
+  LinkCard: {
+    screen: LinkCardPage,
+    navigationOptions: {
+      title: 'Link Card',
+      headerStyle: {
+        backgroundColor: '#7C4DFF'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }
+  },
+  CardList: {
+    screen: CardListPage,
+    navigationOptions: {
+      title: 'Linked Card List',
+      headerStyle: {
+        backgroundColor: '#7C4DFF'
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }
   }
 });
 
@@ -108,11 +135,6 @@ const CategoriesNavigator = createStackNavigator({
   },
   CategoriesDetail: {
     screen: CategoryPage,
-    navigationOptions: {
-      title: 'Go',
-      header: null,
-      tabBarVisible: false
-    }
   }
 })
 
@@ -145,7 +167,7 @@ const AppNavigator = createMaterialBottomTabNavigator({
   }
 },
   {
-    initialRouteName: 'Offers',
+    initialRouteName: 'Profile',
     labeled: true,
     activeColor: '#212121',
     inactiveColor: '#212121',

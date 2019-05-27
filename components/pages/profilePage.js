@@ -8,6 +8,7 @@ import RewardsList from '../profile/rewardsList';
 import { BlackButton } from '../share/button';
 
 import FetchLocation from '../fetchLocation';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -44,10 +45,11 @@ export default class ProfilePage extends React.Component {
                 <LinearGradient colors={['#7C4DFF', '#F5FCFF', '#F5FCFF']} locations={[0.22, 0.22, 0.77]} style={styles.linearGradient}>
                     <ScrollView style={styles.body}>
                         <View style={styles.titleBox}>
-                            <View>
-                                <Text style={styles.title}>Welcome Back, Li</Text>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate('Logout')}>
-                                    <Text>Log Out</Text>
+                            <View style={styles.title}>
+                                <Text style={styles.user}>Welcome Back, Li</Text>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('Logout')} style={styles.logOut}>
+                                    <Text style={styles.logOutWords}>Log Out</Text>
+                                    <Icon name="sign-out-alt" size={16} color="#212121" style={styles.logOutIcon} />
                                 </TouchableOpacity>
                             </View>
 
@@ -58,6 +60,9 @@ export default class ProfilePage extends React.Component {
                                 </View>
                                 <View style={styles.titleButton}>
                                     <BlackButton text='Click History' onPress={() => this.props.navigation.navigate('ClickHistory', { data: this.props.data })} />
+                                </View>
+                                <View style={styles.titleButton}>
+                                    <BlackButton text='Link Card' onPress={() => this.props.navigation.navigate('CardList')} />
                                 </View>
                             </View>
                         </View>
@@ -113,10 +118,28 @@ const styles = StyleSheet.create({
         paddingBottom: 5
     },
     title: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    user: {
         fontSize: 20,
         color: '#fff',
         fontWeight: 'bold',
         marginBottom: 15
+    },
+    logOut: {
+        flexDirection: 'row',
+        paddingTop: 3
+    },
+    logOutWords: {
+        fontSize: 16,
+        color: '#fff',
+        fontWeight: 'bold',
+    },
+    logOutIcon: {
+        paddingTop: 2,
+        color: '#fff',
+        paddingLeft:5
     },
     buttonGroup: {
         flex: 1,
@@ -125,7 +148,7 @@ const styles = StyleSheet.create({
         alignItems: 'stretch'
     },
     titleButton: {
-        width: '49%',
+        width: '32.3%',
     },
     blackButton: {
         backgroundColor: '#212121',

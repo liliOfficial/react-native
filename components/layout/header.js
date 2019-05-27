@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     },
     search: {
         width: 25,
-        height: 25
+        height: 25,
+        paddingTop:5
     }
 });

@@ -1,4 +1,5 @@
 import React from 'react';
+import firebase from 'firebase';
 import { View, ScrollView, Text, StyleSheet, Platform, Alert, Linking, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -47,7 +48,7 @@ export default class ProfilePage extends React.Component {
                         <View style={styles.titleBox}>
                             <View style={styles.title}>
                                 <Text style={styles.user}>Welcome Back, Li</Text>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate('Logout')} style={styles.logOut}>
+                                <TouchableOpacity onPress={() => firebase.auth().signOut()} style={styles.logOut}>
                                     <Text style={styles.logOutWords}>Log Out</Text>
                                     <Icon name="sign-out-alt" size={16} color="#212121" style={styles.logOutIcon} />
                                 </TouchableOpacity>
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     logOutIcon: {
         paddingTop: 2,
         color: '#fff',
-        paddingLeft:5
+        paddingLeft: 5
     },
     buttonGroup: {
         flex: 1,

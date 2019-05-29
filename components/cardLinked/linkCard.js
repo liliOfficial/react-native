@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Checkbox } from 'react-native-material-ui';
 import { PurpleButton } from '../share/button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -18,16 +18,16 @@ export default class LinkCardPage extends Component {
             <View style={styles.container}>
                 <Text style={styles.title}>Link your Card</Text>
                 <Text style={styles.subTitle}>Link one or more Visa credit or debit cards and activate available card-linked Cashback offers to your card. </Text>
-                <View style={{position:'relative'}}>
+                <View style={{ position: 'relative' }}>
                     <TextInput
                         style={styles.input}
                         placeholder="Input Card Number"
                         onChangeText={(cardNumber) => this.setState({ cardNumber })}
                     />
                     <TouchableOpacity style={styles.camera}>
-                       <Icon name='camera' size={20}  color='#484848'/> 
+                        <Icon name='camera' size={20} color='#484848' />
                     </TouchableOpacity>
-                    
+
                 </View>
                 <View style={styles.agreement}>
                     <View style={styles.checkbox}>
@@ -70,10 +70,10 @@ const styles = StyleSheet.create({
         padding: 8,
         marginTop: 8
     },
-    camera:{
-        position:'absolute',
-        right:8,
-        top:15,
+    camera: {
+        position: 'absolute',
+        right: 8,
+        top: 15,
     }
 
 });

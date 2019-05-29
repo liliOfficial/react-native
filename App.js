@@ -19,7 +19,7 @@ import CategoriesList from './components/categories/categoryList';
 import SettingPage from './components/profile/settingPage';
 import ClickHistory from './components/profile/clickHistory';
 import GoPage from './components/pages/goPage';
-import LogoutPage from './components/pages/loginPage';
+import LogoutPage from './components/log/loginPage';
 import LinkCardPage from './components/cardLinked/linkCard';
 import CardListPage from './components/cardLinked/cardList';
 
@@ -174,15 +174,5 @@ const AppNavigator = createMaterialBottomTabNavigator({
     barStyle: { backgroundColor: '#fff' },
   }
 );
-
-// export default class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//   }
-//   render() {
-//     return createAppContainer((this.AppNavigator));
-//   }
-// }
 
 export default createAppContainer(AppNavigator);

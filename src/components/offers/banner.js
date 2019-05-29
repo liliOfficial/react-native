@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, AppRegistry } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 export default class Banners extends Component {
     render() {

@@ -49,9 +49,9 @@ export default class LoadingImage extends Component {
     render() {
         return (
             <View style={styles.spinner}>
-                <SpinnerView style={styles.bounce1}></SpinnerView>
-                <SpinnerView style={styles.bounce2} delay={160}></SpinnerView>
-                <SpinnerView style={styles.bounce3} delay={320}></SpinnerView>
+                <SpinnerView style={styles.bounce}></SpinnerView>
+                <SpinnerView style={styles.bounce} delay={160}></SpinnerView>
+                <SpinnerView style={styles.bounce} delay={320}></SpinnerView>
             </View>
         );
     }
@@ -62,28 +62,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: 50
     },
-    bounce1: {
+    bounce:{
         width: 9,
         height: 9,
         margin: 5,
         backgroundColor: '#484848',
         borderRadius: 9,
-    },
-    bounce2: {
-        width: 9,
-        height: 9,
-        margin: 5,
-        backgroundColor: '#484848',
-        borderRadius: 9,
-
-    },
-    bounce3: {
-        width: 9,
-        height: 9,
-        margin: 5,
-        backgroundColor: '#484848',
-        borderRadius: 9,
-    },
+    }
 });
 
 

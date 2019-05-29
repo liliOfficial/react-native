@@ -54,7 +54,6 @@ export default class ProfilePage extends React.Component {
                                 </TouchableOpacity>
                             </View>
 
-
                             <View style={styles.buttonGroup}>
                                 <View style={styles.titleButton}>
                                     <BlackButton text='Settings' onPress={() => this.props.navigation.navigate('Setting', { data: this.props.data })} />

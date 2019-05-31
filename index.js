@@ -28,7 +28,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false
+      loggedIn: true
     };
   }
 
@@ -60,9 +60,7 @@ class Main extends Component {
     return (
       <ThemeContext.Provider value={getTheme(uiTheme)}>
       <Provider store={createStore(reducers, applyMiddleware())}>
-
           {this.state.loggedIn ? <App /> : <LogNav />}
-
       </Provider>
         </ThemeContext.Provider>
     );

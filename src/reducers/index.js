@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import LibraryReducer from './LibraryReducer';
+import OffersReducer from './offersReducer';
+import OfferReducer from './onlineOfferReducer';
 
 export default combineReducers({
-    libraries: LibraryReducer
+    offers: OffersReducer,
+    offer: OfferReducer
 })

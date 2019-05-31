@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet, ScrollView, Alert, ActivityIndicator } from 'react-native';
+import { connect } from 'react-redux';
+import { View, StyleSheet, ScrollView, Alert, ActivityIndicator, FlatList } from 'react-native';
 import OfferCard from './offerCard';
 import listData from '../../asset/data/offers.json';
 import listAdd from '../../asset/data/offersadd.json';
@@ -38,8 +39,6 @@ class OfferList extends Component {
         console.log(newList);
         this.setState({ list: newList, page: 2 })
     }
-
-
 
     render() {
         return (
@@ -83,7 +82,7 @@ class OfferList extends Component {
                 </ScrollView>
                 <ScrollView tabLabel='In-Store'>
                     <View style={styles.cardBox}>
-                        {this.state.list.map(item => {
+                        {this.props.offers.map(item => {
                             return (
                                 <View key={item.id} style={styles.cardContent}>
                                     <OfferCard data={item} navigation={this.props.navigation} />
@@ -93,10 +92,6 @@ class OfferList extends Component {
                     </View>
                 </ScrollView>
             </ScrollableTabView>
-
-
-
-
         )
     }
 }
@@ -135,4 +130,10 @@ const styles = StyleSheet.create({
     }
 });
 
-export default OfferList;
+const mapStateToProps = (state, ownProps) => {
+    console.log(state);
+    console.log(ownProps);
+    return { offers: state.offers };
+}
+
+export default connect(mapStateToProps)(OfferList);

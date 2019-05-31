@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import StoreonlineOfferCard from './storeOnlineOfferCard';
 
-export default class StoreOnlineOffers extends Component {
+
+class StoreOnlineOffers extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,6 +41,7 @@ export default class StoreOnlineOffers extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>Online Offers</Text>
@@ -61,3 +63,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
 });
+
+export default StoreOnlineOffers;

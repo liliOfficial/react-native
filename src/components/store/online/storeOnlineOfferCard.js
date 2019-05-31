@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight, Clipboard } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import Collapsible from 'react-native-collapsible';
+import { connect } from 'react-redux';
+import * as actions from '../../../actions';
 
-export default class StoreonlineOfferCard extends Component {
+class StoreonlineOfferCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            TermsShow: false,
-            data: {
-                description: `Mother's Day 20% off Breville Waffle and Pancake Maker's`,
-                expires: '13/05/19',
-                coupon: 'qwerasdf',
-                terms: 'A minimum spend of $100 in a single transaction is required to be eligible for Cashback.'
-            }
+            TermsShow: false
         };
     }
 
@@ -28,12 +23,13 @@ export default class StoreonlineOfferCard extends Component {
     }
 
     render() {
-        const { description, expires, coupon, terms } = this.props.data;
+        const { id, description, expires, coupon, terms } = this.props.data;
         const couponRequire = coupon ? true : false;
         const termsRequire = terms ? true : false;
+        console.log(this.props);
         return (
             <View style={styles.containter}>
-                <View style={styles.card}>
+                <TouchableHighlight style={styles.card} onPress={() => this.props.offer(id)} underlayColor="transparent">
                     <View style={styles.cardContainer}>
                         <View style={styles.content}>
                             <Text style={styles.contentDaily}>{description}</Text>
@@ -56,7 +52,7 @@ export default class StoreonlineOfferCard extends Component {
                             <Text style={styles.shopButtonText}>Shop Now</Text>
                         </TouchableHighlight>
                     </View>
-                </View>
+                </TouchableHighlight>
                 {termsRequire &&
                     <View style={styles.terms}>
                         <Collapsible collapsed={!this.state.TermsShow}>
@@ -200,3 +196,5 @@ const styles = StyleSheet.create({
         textAlign:'center'
     }
 });
+
+export default connect(null, actions)(StoreonlineOfferCard);

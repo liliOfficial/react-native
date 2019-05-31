@@ -167,7 +167,7 @@ const AppNavigator = createMaterialBottomTabNavigator({
   }
 },
   {
-    initialRouteName: 'Profile',
+    initialRouteName: 'Offers',
     labeled: true,
     activeColor: '#212121',
     inactiveColor: '#212121',

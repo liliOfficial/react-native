@@ -11,10 +11,6 @@ export default class StoreTab extends Component {
     }
 
     render() {
-        const collapsableComponent = (
-            <View style={{ height: 300, backgroundColor: 'yellow', width: '100%' }}>
-            </View>
-        );
         return (
             <ScrollableTabView
                 

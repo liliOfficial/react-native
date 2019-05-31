@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView, Animated, NativeModules, LayoutAnimation, SectionList, Text } from 'react-native';
+import { View, StyleSheet, Animated, NativeModules, LayoutAnimation } from 'react-native';
 import OfferList from '../offers/offerList';
 import AppHeader from '../layout/header';
 import { OfferCarousel } from '../offers/offerCarousel';

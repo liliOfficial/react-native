@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { emailChanged } from '../../actions';
+
 import firebase from 'firebase';
 import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight } from 'react-native';
 import { BlackButton } from '../share/button';
@@ -6,7 +9,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import Spinner from '../share/spinner';
 
 
-export default class LoginPage extends Component {
+class LoginPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -41,7 +44,9 @@ export default class LoginPage extends Component {
         // this.props.login();
     }
 
-
+    onEmailChange(text) {
+        this.props.emailChanged(text);
+    }
 
     render() {
         const { error, loading } = this.state;
@@ -138,3 +143,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     }
 });
+
+const mapStateToProps = state => {
+    return {
+        email: state.auth.email
+    }
+}
+
+export default connect(mapStateToProps, { emailChanged })(LoginPage);

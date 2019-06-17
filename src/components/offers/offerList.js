@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet, ScrollView, Alert, ActivityIndicator, FlatList } from 'react-native';
+import { View, StyleSheet, ScrollView, Alert, ActivityIndicator } from 'react-native';
 import OfferCard from './offerCard';
-import listData from '../../asset/data/offers.json';
 import listAdd from '../../asset/data/offersadd.json';
 
 import ScrollableTabView, { DefaultTabBar } from 'react-native-scrollable-tab-view';
@@ -20,7 +19,7 @@ class OfferList extends Component {
 
     componentDidMount() {
         this.setState({
-            list: listData
+            list: this.props.offers
         })
     }
 
@@ -33,7 +32,6 @@ class OfferList extends Component {
     loadMoreData = () => {
         this.setState({ loadingData: true });
         console.log('load more data');
-        Alert.alert('load more data');
         console.log(listAdd);
         const newList = this.state.list.concat(listAdd);
         console.log(newList);
@@ -41,6 +39,8 @@ class OfferList extends Component {
     }
 
     render() {
+        console.log(this.props)
+        
         return (
             <ScrollableTabView
                 initialPage={0}
@@ -131,7 +131,9 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state);
+    console.log('state =====');
+    console.log(state.offers);
+    console.log('ownProps =====');
     console.log(ownProps);
     return { offers: state.offers };
 }

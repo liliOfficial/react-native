@@ -59,10 +59,10 @@ class Main extends Component {
   render() {
     return (
       <ThemeContext.Provider value={getTheme(uiTheme)}>
-      <Provider store={createStore(reducers, applyMiddleware())}>
+        <Provider store={createStore(reducers, applyMiddleware())}>
           {this.state.loggedIn ? <App /> : <LogNav />}
-      </Provider>
-        </ThemeContext.Provider>
+        </Provider>
+      </ThemeContext.Provider>
     );
   }
 }

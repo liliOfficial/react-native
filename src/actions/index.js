@@ -24,14 +24,11 @@ export const passwordChanged = (text) => {
 
 export const loginUser = ({ email, password }) => {
     return (dispatch) => {
-        loginUserLoading(dispatch);
+        dispatch({ type: LOGIN_USER });
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(user => loginUserSuccess(dispatch, user))
             .catch(e => loginUserFail(dispatch, e));
     }
-}
-const loginUserLoading = (dispatch) => {
-    dispatch({ type: LOGIN_USER });
 }
 
 const loginUserFail = (dispatch, e) => {

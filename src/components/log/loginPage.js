@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { emailChanged } from '../../actions';
+import { emailChanged, passwordChanged, loginUser } from '../../actions';
 
-import firebase from 'firebase';
 import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight } from 'react-native';
 import { BlackButton } from '../share/button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -13,43 +12,30 @@ class LoginPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            password: '',
-            error: '',
-            loading: false
         };
     }
 
     clickLogIn = () => {
-        const { email, password } = this.state;
-        this.setState({
-            error: '',
-            loading: true
-        });
-
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(date => {
-                this.onLoginSuccess(date);
-            })
-            .catch(e => {
-                console.log(e);
-                this.setState({ loading: false, error: e.message })
-            });
+        const { email, password } = this.props;
+        this.props.loginUser({ email, password });
     }
 
-    onLoginSuccess = (date) => {
-        this.setState({ loading: false });
-        console.log(date)
-        if (this.props.navigation) return this.props.navigation.goBack();
-        // this.props.login();
-    }
+    // onLoginSuccess = (date) => {
+    //     console.log(date)
+    //     if (this.props.navigation) return this.props.navigation.goBack();
+    //     // this.props.login();
+    // }
 
     onEmailChange(text) {
         this.props.emailChanged(text);
     }
 
+    onPasswordChange(text) {
+        this.props.passwordChanged(text);
+    }
+
     render() {
-        const { error, loading } = this.state;
+        const { error, loading } = this.props;
         return (
             <View style={styles.container}>
                 <Image source={require('../../asset/img/logo.png')} style={styles.logo} />
@@ -59,8 +45,8 @@ class LoginPage extends Component {
                         <TextInput
                             style={styles.input}
                             placeholder='Email'
-                            value={this.state.email}
-                            onChangeText={(email) => this.setState({ email })}
+                            value={this.props.email}
+                            onChangeText={(email) => this.onEmailChange(email)}
                         />
                     </View>
                     <View style={styles.inputGroup}>
@@ -69,8 +55,8 @@ class LoginPage extends Component {
                             secureTextEntry
                             style={styles.input}
                             placeholder='Password'
-                            value={this.state.password}
-                            onChangeText={(password) => this.setState({ password })}
+                            value={this.props.password}
+                            onChangeText={(password) => this.onPasswordChange(password)}
                         />
                     </View>
 
@@ -146,8 +132,11 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
     return {
-        email: state.auth.email
+        email: state.auth.email,
+        password: state.auth.password,
+        error: state.auth.error,
+        loading: state.auth.loading
     }
 }
 
-export default connect(mapStateToProps, { emailChanged })(LoginPage);
+export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser })(LoginPage);

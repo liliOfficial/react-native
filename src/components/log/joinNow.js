@@ -3,11 +3,28 @@ import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { Checkbox } from 'react-native-material-ui';
 import { BlackButton } from '../share/button';
 
+import firebase from 'firebase';
+
 export default class JoinNow extends Component {
     constructor(props) {
         super(props);
         this.state = {
+
         };
+    }
+
+    clickJoin = () => {
+        console.log('create');
+        const { email, password } = this.state;
+        if (email && password) {
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(user => {
+                    console.log(user);
+                }).catch(e => {
+                    console.log(e);
+                });
+        }
+
     }
 
     render() {
@@ -30,12 +47,12 @@ export default class JoinNow extends Component {
                     </View>
                     <TextInput
                         style={styles.input}
-                        placeholder="Mobile Number"
+                        placeholder="Email"
                         onChangeText={(email) => this.setState({ email })}
                     />
                     <TextInput
                         style={styles.input}
-                        placeholder="Mobile Number"
+                        placeholder="Password"
                         onChangeText={(password) => this.setState({ password })}
                     />
                     <View style={styles.col2}>
@@ -58,7 +75,7 @@ export default class JoinNow extends Component {
                             onCheck={agreement => this.setState({ agreement })}
                         />
                     </View>
-                    <BlackButton text='Join Now' />
+                    <BlackButton text='Join Now' onPress={this.clickJoin} />
                 </View>
             </View>
         );

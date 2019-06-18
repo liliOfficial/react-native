@@ -2,6 +2,7 @@
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
 
 import App from './src/App';
 import LogNav from './src/components/log/loginNav';
@@ -28,7 +29,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: true
+      loggedIn: false
     };
   }
 
@@ -57,9 +58,10 @@ class Main extends Component {
   }
 
   render() {
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
       <ThemeContext.Provider value={getTheme(uiTheme)}>
-        <Provider store={createStore(reducers, applyMiddleware())}>
+        <Provider store={store}>
           {this.state.loggedIn ? <App /> : <LogNav />}
         </Provider>
       </ThemeContext.Provider>

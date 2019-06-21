@@ -6,6 +6,7 @@ import ReduxThunk from 'redux-thunk';
 
 import App from './src/App';
 import LogNav from './src/components/log/loginNav';
+
 import { name as appName } from './app.json';
 import React, { Component } from 'react';
 import firebase from 'firebase';

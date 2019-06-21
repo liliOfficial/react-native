@@ -20,12 +20,6 @@ class LoginPage extends Component {
         this.props.loginUser({ email, password });
     }
 
-    // onLoginSuccess = (date) => {
-    //     console.log(date)
-    //     if (this.props.navigation) return this.props.navigation.goBack();
-    //     // this.props.login();
-    // }
-
     onEmailChange(text) {
         this.props.emailChanged(text);
     }

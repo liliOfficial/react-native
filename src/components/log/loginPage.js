@@ -125,12 +125,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-    return {
-        email: state.auth.email,
-        password: state.auth.password,
-        error: state.auth.error,
-        loading: state.auth.loading
-    }
+    const { email, password, error, loading } = state.auth;
+    return { email, password, error, loading };
 }
 
 export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser })(LoginPage);

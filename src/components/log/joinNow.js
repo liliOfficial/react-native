@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { userInfoUpdate, userCreate } from '../../actions';
+
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { Checkbox } from 'react-native-material-ui';
 import { BlackButton } from '../share/button';
+import Spinner from '../share/spinner';
 
 import firebase from 'firebase';
 
-export default class JoinNow extends Component {
+class JoinNow extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,68 +19,75 @@ export default class JoinNow extends Component {
 
     clickJoin = () => {
         console.log('create');
-        const { email, password } = this.state;
-        if (email && password) {
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-                .then(user => {
-                    console.log(user);
-                }).catch(e => {
-                    console.log(e);
-                });
-        }
+        const { firstName, lastName, email, password, postCode } = this.props;
+        this.props.userCreate({ firstName, lastName, email, password, postCode });
 
     }
 
+    infoUpdate(text) {
+        this.props.userInfoUpdate(text);
+    }
+
     render() {
+        const { firstName, lastName, email, password, postCode, agreement, loading, error } = this.props;
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>Join CASHREWARDS</Text>
-                <Text style={styles.subtitle}>Join hundreds of thousands of Aussies who have earned over $50 million through CASHREWARDS</Text>
-                <View style={styles.card}>
-                    <View style={styles.col2}>
+                <View style={{ padding: 10 }}>
+                    <Text style={styles.title}>Join CASHREWARDS</Text>
+                    <Text style={styles.subtitle}>Join hundreds of thousands of Aussies who have earned over $50 million through CASHREWARDS</Text>
+                    <View style={styles.card}>
+                        <View style={styles.col2}>
+                            <TextInput
+                                style={[styles.input, styles.widthP49]}
+                                placeholder="First Name"
+                                value={firstName}
+                                onChangeText={(firstName) => this.infoUpdate({ key: 'firstName', value: firstName })}
+                            />
+                            <TextInput
+                                style={[styles.input, styles.widthP49]}
+                                placeholder="Last Name"
+                                value={lastName}
+                                onChangeText={(lastName) => this.infoUpdate({ key: 'lastName', value: lastName })}
+                            />
+                        </View>
                         <TextInput
-                            style={[styles.input, styles.widthP49]}
-                            placeholder="First Name"
-                            onChangeText={(firstName) => this.setState({ firstName })}
+                            style={styles.input}
+                            placeholder="Email"
+                            value={email}
+                            onChangeText={(email) => this.infoUpdate({ key: 'email', value: email })}
                         />
                         <TextInput
-                            style={[styles.input, styles.widthP49]}
-                            placeholder="Last Name"
-                            onChangeText={(lastName) => this.setState({ lastName })}
+                            style={styles.input}
+                            placeholder="Password"
+                            value={password}
+                            onChangeText={(password) => this.infoUpdate({ key: 'password', value: password })}
                         />
+                        <View style={styles.col2}>
+                            <TextInput
+                                style={[styles.input, styles.widthP49]}
+                                placeholder="Post Code"
+                                value={postCode}
+                                onChangeText={(postCode) => this.infoUpdate({ key: 'postCode', value: postCode })}
+                            />
+                            <TextInput
+                                style={[styles.input, styles.widthP49]}
+                                placeholder="Promo Code (Optional)"
+                                onChangeText={(promoCode) => this.setState({ promoCode })}
+                            />
+                        </View>
+                        <View style={styles.checkbox}>
+                            <Checkbox
+                                label="I have read, understood and agree to the Privacy Policy and Terms of Use."
+                                value={agreement}
+                                checked={agreement}
+                                onCheck={agreement => this.infoUpdate({ key: 'agreement', value: agreement })}
+                            />
+                        </View>
+                        <Text style={styles.error}>{error}</Text>                      
+                        <BlackButton text='Join Now' onPress={this.clickJoin} />
                     </View>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Email"
-                        onChangeText={(email) => this.setState({ email })}
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Password"
-                        onChangeText={(password) => this.setState({ password })}
-                    />
-                    <View style={styles.col2}>
-                        <TextInput
-                            style={[styles.input, styles.widthP49]}
-                            placeholder="Post Code"
-                            onChangeText={(postCode) => this.setState({ postCode })}
-                        />
-                        <TextInput
-                            style={[styles.input, styles.widthP49]}
-                            placeholder="Promo Code (Optional)"
-                            onChangeText={(postCode) => this.setState({ postCode })}
-                        />
-                    </View>
-                    <View style={styles.checkbox}>
-                        <Checkbox
-                            label="I have read, understood and agree to the Privacy Policy and Terms of Use."
-                            value='true'
-                            checked={this.state.agreement}
-                            onCheck={agreement => this.setState({ agreement })}
-                        />
-                    </View>
-                    <BlackButton text='Join Now' onPress={this.clickJoin} />
                 </View>
+                {loading && <Spinner />}
             </View>
         );
     }
@@ -87,8 +98,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'stretch',
         justifyContent: 'center',
-        backgroundColor: '#7c4dff',
-        padding: 10
+        backgroundColor: '#7c4dff'
     },
     title: {
         fontSize: 20,
@@ -126,5 +136,18 @@ const styles = StyleSheet.create({
     },
     checkbox: {
         height: 60
-    }
+    },
+    error: {
+        color: '#d32f2f',
+        paddingBottom: 10,
+        textAlign: 'center'
+    },
 });
+
+const mapStateToProps = state => {
+    console.log(state);
+    const { firstName, lastName, email, password, postCode, agreement, error, loading } = state.join;
+    return { firstName, lastName, email, password, postCode, agreement, error, loading };
+}
+
+export default connect(mapStateToProps, { userInfoUpdate, userCreate })(JoinNow);

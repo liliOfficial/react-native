@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import OffersReducer from './offersReducer';
 import OfferReducer from './onlineOfferReducer';
-import authReducer from './authReducer';
+import AuthReducer from './authReducer';
+import JoinReducer from './joinReducer';
 
 export default combineReducers({
     offers: OffersReducer,
     offer: OfferReducer,
-    auth: authReducer
+    auth: AuthReducer,
+    join: JoinReducer
 })

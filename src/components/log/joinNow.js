@@ -7,8 +7,6 @@ import { Checkbox } from 'react-native-material-ui';
 import { BlackButton } from '../share/button';
 import Spinner from '../share/spinner';
 
-import firebase from 'firebase';
-
 class JoinNow extends Component {
     constructor(props) {
         super(props);
@@ -19,9 +17,9 @@ class JoinNow extends Component {
 
     clickJoin = () => {
         console.log('create');
-        const { firstName, lastName, email, password, postCode } = this.props;
-        this.props.userCreate({ firstName, lastName, email, password, postCode });
-
+        const { firstName, lastName, email, password, postCode, navigation } = this.props;
+        this.props.userCreate({ firstName, lastName, email, password, postCode, navigation });
+        // this.props.navigation.navigate('authPages');
     }
 
     infoUpdate(text) {
@@ -78,7 +76,7 @@ class JoinNow extends Component {
                         <View style={styles.checkbox}>
                             <Checkbox
                                 label="I have read, understood and agree to the Privacy Policy and Terms of Use."
-                                value={agreement}
+                                value='true'
                                 checked={agreement}
                                 onCheck={agreement => this.infoUpdate({ key: 'agreement', value: agreement })}
                             />

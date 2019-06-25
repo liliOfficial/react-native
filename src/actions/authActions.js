@@ -16,19 +16,21 @@ export const passwordChanged = (text) => {
     }
 }
 
-export const loginUser = ({ email, password }) => {
+export const loginUser = ({ email, password, navigation }) => {
     return (dispatch) => {
         dispatch({ type: LOGIN_USER });
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(user => loginUserSuccess(dispatch, user))
+            .then(user => loginUserSuccess(dispatch, user, navigation))
             .catch(e => loginUserFail(dispatch, e));
     }
+}
+
+const loginUserSuccess = (dispatch, user, navigation) => {
+    dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
+    navigation.navigate('authPages');
 }
 
 const loginUserFail = (dispatch, e) => {
     dispatch({ type: LOGIN_USER_FAIL, payload: e.message });
 }
 
-const loginUserSuccess = (dispatch, user) => {
-    dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
-}

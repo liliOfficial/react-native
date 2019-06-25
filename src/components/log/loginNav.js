@@ -47,4 +47,4 @@ const LogNavigator = createStackNavigator({
     initialRouteName: 'LogIn'
   })
 
-export default createAppContainer(LogNavigator);
+export default LogNavigator;

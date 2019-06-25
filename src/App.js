@@ -10,6 +10,8 @@ import { createAppContainer, createStackNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
+import LogNavigator from './components/log/loginNav';
+
 import OfferPage from './components/pages/offerPage';
 import ProfilePage from './components/pages/profilePage';
 import ReferPage from './components/pages/referPage'
@@ -138,7 +140,8 @@ const CategoriesNavigator = createStackNavigator({
   }
 })
 
-const AppNavigator = createMaterialBottomTabNavigator({
+// Main footer Nav
+const authNavigator = createMaterialBottomTabNavigator({
   Offers: {
     screen: OffersNavigator,
     navigationOptions: {
@@ -174,5 +177,21 @@ const AppNavigator = createMaterialBottomTabNavigator({
     barStyle: { backgroundColor: '#fff' },
   }
 );
+
+//Logged In and Logged Out
+const AppNavigator = createStackNavigator({
+  logPages: {
+    screen: LogNavigator,
+    navigationOptions: {
+      header: null
+    }
+  },
+  authPages: {
+    screen: authNavigator,
+    navigationOptions: {
+      header: null
+    }
+  }
+})
 
 export default createAppContainer(AppNavigator);

@@ -5,7 +5,6 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 
 import App from './src/App';
-import LogNav from './src/components/log/loginNav';
 
 import { name as appName } from './app.json';
 import React, { Component } from 'react';
@@ -63,7 +62,8 @@ class Main extends Component {
     return (
       <ThemeContext.Provider value={getTheme(uiTheme)}>
         <Provider store={store}>
-          {this.state.loggedIn ? <App /> : <LogNav />}
+          {/* {this.state.loggedIn ? <App /> : <LogNav />} */}
+          <App/>
         </Provider>
       </ThemeContext.Provider>
     );

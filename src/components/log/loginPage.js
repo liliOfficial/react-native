@@ -17,7 +17,8 @@ class LoginPage extends Component {
 
     clickLogIn = () => {
         const { email, password } = this.props;
-        this.props.loginUser({ email, password });
+        this.props.loginUser({ email, password, navigation: this.props.navigation});
+        // this.props.navigation.navigate('authPages');
     }
 
     onEmailChange(text) {

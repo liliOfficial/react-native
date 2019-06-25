@@ -38,6 +38,11 @@ export default class ProfilePage extends React.Component {
         Alert.alert('You tapped the button!')
     }
 
+    logOut = () => {
+        firebase.auth().signOut();
+        this.props.navigation.navigate('LogIn');
+    }
+
     render() {
         console.log(this.props);
         return (
@@ -48,7 +53,7 @@ export default class ProfilePage extends React.Component {
                         <View style={styles.titleBox}>
                             <View style={styles.title}>
                                 <Text style={styles.user}>Welcome Back, Li</Text>
-                                <TouchableOpacity onPress={() => firebase.auth().signOut()} style={styles.logOut}>
+                                <TouchableOpacity onPress={this.logOut} style={styles.logOut}>
                                     <Text style={styles.logOutWords}>Log Out</Text>
                                     <Icon name="sign-out-alt" size={16} color="#212121" style={styles.logOutIcon} />
                                 </TouchableOpacity>

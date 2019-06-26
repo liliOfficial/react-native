@@ -9,3 +9,5 @@ export const USER_CREATE = 'user_create';
 export const USER_CREATE_SUCCESS = 'user_create_success';
 export const USER_CREATE_FAIL = 'user_create_fail';
 export const USER_INFO_CREATE ='user_info_create';
+export const USER_FETCH_SUCCESS = 'user_fetch_success';
+export const USER_DETAIL_UPDATE = 'user_detail_update';

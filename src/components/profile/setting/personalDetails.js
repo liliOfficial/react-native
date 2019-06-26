@@ -1,10 +1,15 @@
+
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, DatePickerIOS } from 'react-native';
+
+import { connect } from 'react-redux';
+import { userFetch, userDetailUpdate } from '../../../actions';
 
 import { GreyButton } from '../../share/button';
 import { RadioButton } from 'react-native-material-ui';
 
-export default class PersonalDetails extends Component {
+class PersonalDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,36 +23,53 @@ export default class PersonalDetails extends Component {
         };
     }
 
+    componentWillMount() {
+        this.props.userFetch();
+    }
+
+    componentWillReceiveProps() {
+
+    }
+
     _onSubmit = () => {
-        console.log(this.state);
+        console.log(this.props);
     }
 
     setDate = (newDate) => {
         this.setState({ chosenDate: newDate });
     }
 
+    detailUpdate(text) {
+        this.props.userDetailUpdate(text);
+    }
+
     render() {
+        const { firstName, lastName, postCode, mobile, birthday, gender } = this.props;
         return (
             <View style={styles.box}>
                 <TextInput
                     style={styles.input}
                     placeholder="First Name"
-                    onChangeText={(firstName) => this.setState({ firstName })}
+                    onChangeText={(firstName) => this.detailUpdate({ key: 'firstName', value: firstName })}
+                    value={firstName}
                 />
                 <TextInput
                     style={styles.input}
                     placeholder="Last Name"
-                    onChangeText={(lastName) => this.setState({ lastName })}
+                    onChangeText={(lastName) => this.detailUpdate({ key: 'lastName', value: lastName })}
+                    value={lastName}
                 />
                 <TextInput
                     style={styles.input}
                     placeholder="Mobile Number"
-                    onChangeText={(mobile) => this.setState({ mobile })}
+                    onChangeText={(mobile) => this.detailUpdate({ key: 'mobile', value: mobile })}
+                    value={mobile}
                 />
                 <TextInput
                     style={styles.input}
                     placeholder="Post Code"
-                    onChangeText={(postCode) => this.setState({ postCode })}
+                    onChangeText={(postCode) => this.detailUpdate({ key: 'postCode', value: postCode })}
+                    value={postCode}
                 />
                 <Text style={{ paddingTop: 10 }}>Date of birth</Text>
                 <View style={styles.birthday}>
@@ -71,15 +93,15 @@ export default class PersonalDetails extends Component {
                 <View style={styles.gender}>
                     <RadioButton
                         label="Male"
-                        checked={this.state.gender === 'male'}
+                        checked={gender !== 'female'}
                         value="male"
-                        onSelect={gender => this.setState({ gender })}
+                        onSelect={gender => this.detailUpdate({ key: 'gender', value: gender })}
                     />
                     <RadioButton
                         label="Female"
-                        checked={this.state.gender === 'female'}
+                        checked={gender === 'female'}
                         value="female"
-                        onSelect={gender => this.setState({ gender })}
+                        onSelect={gender => this.detailUpdate({ key: 'gender', value: gender })}
                     />
                 </View>
                 <View style={{ marginTop: 8, backgroundColor: '#484848', padding: 2 }}>
@@ -133,3 +155,14 @@ const styles = StyleSheet.create({
         width: '56%'
     }
 });
+
+const mapStateToProps = state => {
+    console.log(state.user);
+    // const user = _.map(state.user, (val, uid) => { return { ...val, uid } });
+
+
+    const { firstName, lastName, postCode, mobile, birthday, gender } = state.user;
+    return { firstName, lastName, postCode, mobile, birthday, gender };
+}
+
+export default connect(mapStateToProps, { userFetch, userDetailUpdate })(PersonalDetails);

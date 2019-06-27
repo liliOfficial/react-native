@@ -77,23 +77,23 @@ class PersonalDetails extends Component {
                     <TextInput
                         style={styles.birthdayDay}
                         placeholder="DD"
-                        onChangeText={(postCode) => this.setState({ postCode })}
+                        onChangeText={(birthdayDay) => this.detailUpdate({ key: 'birthdayDay', value: birthdayDay })}
                     />
                     <TextInput
                         style={styles.birthdayMonth}
                         placeholder="MM"
-                        onChangeText={(postCode) => this.setState({ postCode })}
+                        onChangeText={(birthdayMonth) => this.detailUpdate({ key: 'birthdayMonth', value: birthdayMonth })}
                     />
                     <TextInput
                         style={styles.birthdayYear}
                         placeholder="YYYY"
-                        onChangeText={(postCode) => this.setState({ postCode })}
+                        onChangeText={(birthdayYear) => this.detailUpdate({ key: 'birthdayYear', value: birthdayYear })}
                     />
                 </View>
                 <View style={styles.gender}>
                     <RadioButton
                         label="Male"
-                        checked={gender !== 'female'}
+                        checked={gender === 'male'}
                         value="male"
                         onSelect={gender => this.detailUpdate({ key: 'gender', value: gender })}
                     />

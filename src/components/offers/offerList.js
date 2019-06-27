@@ -131,10 +131,10 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state, ownProps) => {
-    console.log('state =====');
-    console.log(state.offers);
-    console.log('ownProps =====');
-    console.log(ownProps);
+    // console.log('state =====');
+    // console.log(state.offers);
+    // console.log('ownProps =====');
+    // console.log(ownProps);
     return { offers: state.offers };
 }
 

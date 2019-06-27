@@ -2,9 +2,10 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, DatePickerIOS } from 'react-native';
+import DatePicker from 'react-native-datepicker'
 
 import { connect } from 'react-redux';
-import { userFetch, userDetailUpdate } from '../../../actions';
+import { userFetch, userDetailUpdate,userDetailSave } from '../../../actions';
 
 import { GreyButton } from '../../share/button';
 import { RadioButton } from 'react-native-material-ui';
@@ -33,6 +34,9 @@ class PersonalDetails extends Component {
 
     _onSubmit = () => {
         console.log(this.props);
+        const { firstName, lastName, postCode, mobile, birthday, gender, uid } = this.props;
+        this.props.userDetailSave({ firstName, lastName, postCode, mobile, birthday, gender, uid });
+
     }
 
     setDate = (newDate) => {
@@ -72,8 +76,7 @@ class PersonalDetails extends Component {
                     value={postCode}
                 />
                 <Text style={{ paddingTop: 10 }}>Date of birth</Text>
-                <View style={styles.birthday}>
-
+                {/* <View style={styles.birthday}>
                     <TextInput
                         style={styles.birthdayDay}
                         placeholder="DD"
@@ -89,7 +92,33 @@ class PersonalDetails extends Component {
                         placeholder="YYYY"
                         onChangeText={(birthdayYear) => this.detailUpdate({ key: 'birthdayYear', value: birthdayYear })}
                     />
-                </View>
+                </View> */}
+                <DatePicker
+                    style={styles.birthdayPicker}
+                    date={birthday}
+                    mode="date"
+                    placeholder="select date"
+                    format="DD/MM/YYYY"
+                    minDate="01/01/1900"
+                    maxDate="31/12/2019"
+                    confirmBtnText="Confirm"
+                    cancelBtnText="Cancel"
+                    customStyles={{
+                        dateIcon: {
+                            position: 'absolute',
+                            right: 5,
+                            top: 4,
+                            marginLeft: 0
+                        },
+                        dateInput: {
+                            paddingRight: 40,
+                            textAlign: 'left',
+                            borderColor: '#484848'
+                        }
+                        // ... You can check the source to find the other keys.
+                    }}
+                    onDateChange={(birthday) => this.detailUpdate({ key: 'birthday', value: birthday })}
+                />
                 <View style={styles.gender}>
                     <RadioButton
                         label="Male"
@@ -129,31 +158,35 @@ const styles = StyleSheet.create({
     gender: {
         flexDirection: 'row'
     },
-    birthday: {
-        flexDirection: 'row',
-        justifyContent: 'space-between'
+    birthdayPicker: {
+        width: '100%',
+        marginTop: 5
     },
-    birthdayDay: {
-        borderColor: '#484848',
-        borderWidth: 1,
-        padding: 8,
-        marginTop: 8,
-        width: '20%'
-    },
-    birthdayMonth: {
-        borderColor: '#484848',
-        borderWidth: 1,
-        padding: 8,
-        marginTop: 8,
-        width: '20%'
-    },
-    birthdayYear: {
-        borderColor: '#484848',
-        borderWidth: 1,
-        padding: 8,
-        marginTop: 8,
-        width: '56%'
-    }
+    // birthday: {
+    //     flexDirection: 'row',
+    //     justifyContent: 'space-between'
+    // },
+    // birthdayDay: {
+    //     borderColor: '#484848',
+    //     borderWidth: 1,
+    //     padding: 8,
+    //     marginTop: 8,
+    //     width: '20%'
+    // },
+    // birthdayMonth: {
+    //     borderColor: '#484848',
+    //     borderWidth: 1,
+    //     padding: 8,
+    //     marginTop: 8,
+    //     width: '20%'
+    // },
+    // birthdayYear: {
+    //     borderColor: '#484848',
+    //     borderWidth: 1,
+    //     padding: 8,
+    //     marginTop: 8,
+    //     width: '56%'
+    // }
 });
 
 const mapStateToProps = state => {
@@ -161,8 +194,8 @@ const mapStateToProps = state => {
     // const user = _.map(state.user, (val, uid) => { return { ...val, uid } });
 
 
-    const { firstName, lastName, postCode, mobile, birthday, gender } = state.user;
-    return { firstName, lastName, postCode, mobile, birthday, gender };
+    const { firstName, lastName, postCode, mobile, birthday, gender, uid } = state.user;
+    return { firstName, lastName, postCode, mobile, birthday, gender, uid };
 }
 
-export default connect(mapStateToProps, { userFetch, userDetailUpdate })(PersonalDetails);
+export default connect(mapStateToProps, { userFetch, userDetailUpdate,userDetailSave })(PersonalDetails);

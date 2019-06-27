@@ -48,17 +48,27 @@ export const userFetch = () => {
                 console.log(currentUser.uid);
                 console.log(snapshop.val());
                 const user = snapshop.val();
-                const payload = user[Object.keys(user)[0]]
+                const uid = Object.keys(user)[0];
+                const userInfo = user[uid]
+                const payload = { ...userInfo, uid };
                 dispatch({ type: USER_FETCH_SUCCESS, payload })
             })
     }
-
 }
 
 export const userDetailUpdate = ({ key, value }) => {
     return {
         type: USER_DETAIL_UPDATE,
         payload: { key, value }
+    }
+}
+
+export const userDetailSave = ({ firstName, lastName, postCode, mobile, birthday, gender, uid }) => {
+    const { currentUser } = firebase.auth();
+    return () => {
+        firebase.database().ref(`/users/${currentUser.uid}/userinfo/${uid}`)
+            .set({ firstName, lastName, postCode, mobile, birthday, gender })
+            .then(() => console.log('saved!'))
     }
 }
 

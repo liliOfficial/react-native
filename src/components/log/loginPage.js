@@ -6,6 +6,7 @@ import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight } from 're
 import { BlackButton } from '../share/button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Spinner from '../share/spinner';
+import { ConfirmPopup } from '../share/popup';
 
 
 class LoginPage extends Component {
@@ -17,7 +18,7 @@ class LoginPage extends Component {
 
     clickLogIn = () => {
         const { email, password } = this.props;
-        this.props.loginUser({ email, password, navigation: this.props.navigation});
+        this.props.loginUser({ email, password, navigation: this.props.navigation });
     }
 
     onEmailChange(text) {
@@ -66,6 +67,7 @@ class LoginPage extends Component {
                     <BlackButton text='Sign In' onPress={this.clickLogIn} />
                 </View>
                 {loading && <Spinner />}
+                <ConfirmPopup />
             </View>
         );
     }

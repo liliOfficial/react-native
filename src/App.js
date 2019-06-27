@@ -58,74 +58,75 @@ const OffersNavigator = createStackNavigator({
 
 });
 
-const ProfileNavigator = createStackNavigator({
-  OffersList: {
-    screen: ProfilePage,
-    navigationOptions: {
-      title: 'Profile',
-      header: null
+const ProfileNavigator = createStackNavigator(
+  {
+    OffersList: {
+      screen: ProfilePage,
+      navigationOptions: {
+        title: 'Profile',
+        header: null
+      }
+    },
+    Setting: {
+      screen: SettingPage,
+      navigationOptions: {
+        title: 'Setting',
+        headerStyle: {
+          backgroundColor: '#7C4DFF'
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }
+    },
+    ClickHistory: {
+      screen: ClickHistory,
+      navigationOptions: {
+        title: 'Click History',
+        headerStyle: {
+          backgroundColor: '#7C4DFF'
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }
+    },
+    Logout: {
+      screen: LogoutPage,
+      navigationOptions: {
+        title: 'Log Out',
+        header: null,
+      }
+    },
+    LinkCard: {
+      screen: LinkCardPage,
+      navigationOptions: {
+        title: 'Link Card',
+        headerStyle: {
+          backgroundColor: '#7C4DFF'
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }
+    },
+    CardList: {
+      screen: CardListPage,
+      navigationOptions: {
+        title: 'Linked Card List',
+        headerStyle: {
+          backgroundColor: '#7C4DFF'
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }
     }
-  },
-  Setting: {
-    screen: SettingPage,
-    navigationOptions: {
-      title: 'Setting',
-      headerStyle: {
-        backgroundColor: '#7C4DFF'
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    }
-  },
-  ClickHistory: {
-    screen: ClickHistory,
-    navigationOptions: {
-      title: 'Click History',
-      headerStyle: {
-        backgroundColor: '#7C4DFF'
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    }
-  },
-  Logout: {
-    screen: LogoutPage,
-    navigationOptions: {
-      title: 'Log Out',
-      header: null,
-    }
-  },
-  LinkCard: {
-    screen: LinkCardPage,
-    navigationOptions: {
-      title: 'Link Card',
-      headerStyle: {
-        backgroundColor: '#7C4DFF'
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    }
-  },
-  CardList: {
-    screen: CardListPage,
-    navigationOptions: {
-      title: 'Linked Card List',
-      headerStyle: {
-        backgroundColor: '#7C4DFF'
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    }
-  }
-});
+  });
 
 const CategoriesNavigator = createStackNavigator({
   CategoriesList: {
@@ -141,36 +142,37 @@ const CategoriesNavigator = createStackNavigator({
 })
 
 // Main footer Nav
-const authNavigator = createMaterialBottomTabNavigator({
-  Offers: {
-    screen: OffersNavigator,
-    navigationOptions: {
-      tabBarIcon: <Icon name="gifts" size={22} color="#212121" />,
-      tabBarColor: "#fff"
-    }
-  },
-  Categories: {
-    screen: CategoriesNavigator,
-    navigationOptions: {
-      tabBarIcon: <Icon name="grip-horizontal" size={22} color="#212121" />
-    }
-  },
-  'Refer a Friend': {
-    screen: ReferPage,
-    navigationOptions: {
-      tabBarIcon: <Icon name="hand-holding-usd" size={22} color="#212121" />
-    }
-  },
-  Profile: {
-    screen: ProfileNavigator,
-    navigationOptions: ({ navigation }) => ({
-      tabBarIcon: <Icon name="user" size={22} color="#212121" />,
-      tabBarVisible: navigation.state.index === 0 
-    })
-  }
-},
+const authNavigator = createMaterialBottomTabNavigator(
   {
-    initialRouteName: 'Offers',
+    Offers: {
+      screen: OffersNavigator,
+      navigationOptions: {
+        tabBarIcon: <Icon name="gifts" size={22} color="#212121" />,
+        tabBarColor: "#fff"
+      }
+    },
+    Categories: {
+      screen: CategoriesNavigator,
+      navigationOptions: {
+        tabBarIcon: <Icon name="grip-horizontal" size={22} color="#212121" />
+      }
+    },
+    'Refer a Friend': {
+      screen: ReferPage,
+      navigationOptions: {
+        tabBarIcon: <Icon name="hand-holding-usd" size={22} color="#212121" />
+      }
+    },
+    Profile: {
+      screen: ProfileNavigator,
+      navigationOptions: ({ navigation }) => ({
+        tabBarIcon: <Icon name="user" size={22} color="#212121" />,
+        tabBarVisible: navigation.state.index === 0
+      })
+    }
+  },
+  {
+    initialRouteName: 'Profile',
     labeled: true,
     activeColor: '#212121',
     inactiveColor: '#212121',
@@ -179,19 +181,24 @@ const authNavigator = createMaterialBottomTabNavigator({
 );
 
 //Logged In and Logged Out
-const AppNavigator = createStackNavigator({
-  logPages: {
-    screen: LogNavigator,
-    navigationOptions: {
-      header: null
+const AppNavigator = createStackNavigator(
+  {
+    logPages: {
+      screen: LogNavigator,
+      navigationOptions: {
+        header: null
+      }
+    },
+    authPages: {
+      screen: authNavigator,
+      navigationOptions: {
+        header: null
+      }
     }
   },
-  authPages: {
-    screen: authNavigator,
-    navigationOptions: {
-      header: null
-    }
+  {
+    initialRouteName: 'logPages',
   }
-})
+)
 
 export default createAppContainer(AppNavigator);

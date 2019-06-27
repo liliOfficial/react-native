@@ -14,3 +14,6 @@ export const USER_FETCH_SUCCESS = 'user_fetch_success';
 export const USER_DETAIL_UPDATE = 'user_detail_update';
 export const USER_DETAIL_SAVE = 'user_detail_save';
 export const USER_DETAIL_SAVE_SUCCESS = 'user_detail_save_success';
+
+export const POPUP_SHOW = 'popup_show';
+export const POPUP_CLOSE = 'popup_close';

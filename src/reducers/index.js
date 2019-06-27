@@ -4,11 +4,13 @@ import OfferReducer from './onlineOfferReducer';
 import AuthReducer from './authReducer';
 import JoinReducer from './joinReducer';
 import UserReducer from './userReducer';
+import PopupReducer from './popupReducer';
 
 export default combineReducers({
     offers: OffersReducer,
     offer: OfferReducer,
     auth: AuthReducer,
     join: JoinReducer,
-    user: UserReducer
+    user: UserReducer,
+    popup: PopupReducer
 })

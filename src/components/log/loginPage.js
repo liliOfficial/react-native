@@ -6,13 +6,14 @@ import { View, Text, StyleSheet, Image, TextInput, TouchableHighlight } from 're
 import { BlackButton } from '../share/button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Spinner from '../share/spinner';
-import { ConfirmPopup } from '../share/popup';
+import { SuccessPopup, FailPopup } from '../share/popup';
 
 
 class LoginPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            popup: false
         };
     }
 
@@ -67,7 +68,10 @@ class LoginPage extends Component {
                     <BlackButton text='Sign In' onPress={this.clickLogIn} />
                 </View>
                 {loading && <Spinner />}
-                <ConfirmPopup />
+                {this.state.popup &&
+                    <FailPopup message="Fail to Saved" onPress={() => this.setState({ popup: false })} />
+                }
+
             </View>
         );
     }

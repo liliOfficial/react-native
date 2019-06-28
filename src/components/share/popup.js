@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, Modal, } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -10,7 +10,8 @@ export const SuccessPopup = (({ message = 'Click to Continue!', onPress, color =
                 <View style={styles.content}>
                     <Text style={[styles.title, { color: color }]}>Success</Text>
                     <Text style={styles.message}>{message}</Text>
-                    <TouchableHighlight underlayColor="#212121" onPress={onPress} style={[styles.button, { backgroundColor: color, }]}>
+                    <TouchableHighlight underlayColor="#212121"
+                        onPress={onPress} style={[styles.button, { backgroundColor: color, width: '100%' }]}>
                         <Text style={{ color: '#fff' }}>OK</Text>
                     </TouchableHighlight>
                 </View>
@@ -26,9 +27,32 @@ export const FailPopup = (({ message = 'Something Went Wrong!', onPress, color =
                 <View style={styles.content}>
                     <Text style={[styles.title, { color: color }]}>Sorry</Text>
                     <Text style={styles.message}>{message}</Text>
-                    <TouchableHighlight underlayColor="#212121" onPress={onPress} style={[styles.button, { backgroundColor: color, }]}>
+                    <TouchableHighlight underlayColor="#212121"
+                        onPress={onPress} style={[styles.button, { backgroundColor: color, width: '100%' }]}>
                         <Text style={{ color: '#fff' }}>OK</Text>
                     </TouchableHighlight>
+                </View>
+            </View>
+        </View>
+    )
+})
+
+export const ConfirmPopup = (({ message = 'something to confirm', textLeft = 'Confirm', textRight = 'Cancle', onPressLeft, onPressRight }) => {
+    return (
+        <View style={styles.container}>
+            <View style={styles.card}>
+                <View style={styles.content}>
+                    <Text style={styles.message}>{message}</Text>
+                    <View style={styles.buttonGroup}>
+                        <TouchableHighlight underlayColor="#212121"
+                            onPress={onPressLeft} style={[styles.button, { backgroundColor: '#7C4DFF', width: '49%' }]}>
+                            <Text style={{ color: '#fff' }}>{textLeft}</Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight underlayColor="#212121"
+                            onPress={onPressRight} style={[styles.button, { backgroundColor: '#212121', width: '49%' }]}>
+                            <Text style={{ color: '#fff' }}>{textRight}</Text>
+                        </TouchableHighlight>
+                    </View>
                 </View>
             </View>
         </View>
@@ -79,9 +103,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: '#212121'
     },
-
     button: {
-        width: '100%',
         paddingTop: 8,
         paddingBottom: 8,
         paddingLeft: 45,
@@ -91,5 +113,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 5,
         marginBottom: 10
+    },
+    buttonGroup: {
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'space-between'
     }
 });

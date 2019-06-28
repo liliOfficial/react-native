@@ -15,5 +15,7 @@ export const USER_DETAIL_UPDATE = 'user_detail_update';
 export const USER_DETAIL_SAVE = 'user_detail_save';
 export const USER_DETAIL_SAVE_SUCCESS = 'user_detail_save_success';
 
-export const POPUP_SHOW = 'popup_show';
+export const POPUP_SUCCESS_SHOW = 'popup_success_show';
+export const POPUP_FAIL_SHOW = 'popup_fail_show';
 export const POPUP_CLOSE = 'popup_close';
+export const POPUP_CONFIRM_SHOW ='popup_confirm_show';

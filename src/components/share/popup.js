@@ -3,35 +3,33 @@ import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-export const SuccessPopup = (({message, onPress}) => {
+export const SuccessPopup = (({ message = 'Click to Continue!', onPress, color = '#009624' }) => {
     return (
         <View style={styles.container}>
             <View style={styles.card}>
-                <LinearGradient colors={['#7ecb20', '#e7ff8c']} style={styles.linearGradient}>
+                <View style={styles.content}>
+                    <Text style={[styles.title, { color: color }]}>Success</Text>
                     <Text style={styles.message}>{message}</Text>
-                    <TouchableHighlight underlayColor="#212121" onPress={onPress}>
-                        <View style={styles.button}>
-                            <Icon name="check" size={40} color="#fff" style={styles.status} />
-                        </View>
+                    <TouchableHighlight underlayColor="#212121" onPress={onPress} style={[styles.button, { backgroundColor: color, }]}>
+                        <Text style={{ color: '#fff' }}>OK</Text>
                     </TouchableHighlight>
-                </LinearGradient>
+                </View>
             </View>
         </View>
     )
 })
 
-export const FailPopup = (({message, onPress}) => {
+export const FailPopup = (({ message = 'Something Went Wrong!', onPress, color = '#b71c1c' }) => {
     return (
         <View style={styles.container}>
             <View style={styles.card}>
-                <LinearGradient colors={['#dd2c00', '#ffd180']} style={styles.linearGradient}>
+                <View style={styles.content}>
+                    <Text style={[styles.title, { color: color }]}>Sorry</Text>
                     <Text style={styles.message}>{message}</Text>
-                    <TouchableHighlight underlayColor="transparent" onPress={onPress}>
-                        <View style={styles.button}>
-                            <Icon name="times" size={40} color="#fff" style={styles.status} />
-                        </View>
+                    <TouchableHighlight underlayColor="#212121" onPress={onPress} style={[styles.button, { backgroundColor: color, }]}>
+                        <Text style={{ color: '#fff' }}>OK</Text>
                     </TouchableHighlight>
-                </LinearGradient>
+                </View>
             </View>
         </View>
     )
@@ -45,7 +43,7 @@ const styles = StyleSheet.create({
         top: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'rgba(0,0,0,0.25)',
+        backgroundColor: 'rgba(0,0,0,0.3)',
         width: '100%',
         height: '100%',
         alignItems: 'center',
@@ -63,29 +61,35 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         backgroundColor: '#fff'
     },
-    linearGradient: {
+    content: {
         padding: 15,
         borderRadius: 5,
         alignItems: 'center',
         width: '100%'
     },
-    message: {
-        fontSize: 20,
-        textAlign: 'center',
-        paddingTop: 30,
-        paddingBottom: 30,
-        color: '#fff'
+    title: {
+        paddingTop: 20,
+        fontSize: 28,
+        fontWeight: '600'
     },
+    message: {
+        textAlign: 'center',
+        paddingTop: 15,
+        paddingBottom: 15,
+        fontSize: 15,
+        color: '#212121'
+    },
+
     button: {
-        backgroundColor: '#212121',
-        color: '#fff',
-        height: 80,
-        width: 80,
-        margin:'auto',
+        width: '100%',
+        paddingTop: 8,
+        paddingBottom: 8,
+        paddingLeft: 45,
+        paddingRight: 45,
+        margin: 'auto',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 40,
-        overflow: 'hidden',
-        fontWeight: 'bold',
+        borderRadius: 5,
+        marginBottom: 10
     }
 });

@@ -14,6 +14,8 @@ import { COLOR, ThemeContext, getTheme } from 'react-native-material-ui';
 import SplashScreen from 'react-native-splash-screen';
 import reducers from './src/reducers';
 
+import {SuccessPopup} from './src/components/share/popup';
+
 const uiTheme = {
   palette: {
     primaryColor: COLOR.deepPurpleA200,
@@ -64,6 +66,7 @@ class Main extends Component {
         <Provider store={store}>
           {/* {this.state.loggedIn ? <App /> : <LogNav />} */}
           <App/>
+
         </Provider>
       </ThemeContext.Provider>
     );

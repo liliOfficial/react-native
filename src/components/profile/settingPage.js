@@ -12,10 +12,6 @@ import TwoFactorAuthentication from './setting/twoFactorAuthentication';
 import CommunicationPreference from './setting/communicationPreference';
 import CloseAccount from './setting/closeAccount';
 
-import { SuccessPopup } from '../share/popup';
-import { connect } from 'react-redux';
-import { popupClose } from '../../actions';
-
 const SECTIONS = [
     {
         header: 'Personal Details',
@@ -55,7 +51,7 @@ const SECTIONS = [
     },
 ];
 
-class SettingPage extends React.Component {
+export default class SettingPage extends React.Component {
 
     state = {
         activeSections: []
@@ -92,7 +88,6 @@ class SettingPage extends React.Component {
     }
 
     render() {
-        const { popupShow, message } = this.props;
         return (
             <View style={styles.layout}>
                 <ScrollView style={{ padding: 10 }}>
@@ -106,9 +101,6 @@ class SettingPage extends React.Component {
                         underlayColor='#F5FCFF'
                     />
                 </ScrollView>
-                {popupShow && message &&
-                    <SuccessPopup message={message} onPress={() => this.closePopup()} />
-                }
             </View>
 
 
@@ -148,10 +140,3 @@ const styles = StyleSheet.create({
     }
 
 });
-
-const mapStateToProps = state => {
-    const { popupShow, message } = state.popup;
-    return { popupShow, message };
-}
-
-export default connect(mapStateToProps, { popupClose })(SettingPage);

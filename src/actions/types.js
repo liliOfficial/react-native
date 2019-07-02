@@ -19,3 +19,6 @@ export const POPUP_SUCCESS_SHOW = 'popup_success_show';
 export const POPUP_FAIL_SHOW = 'popup_fail_show';
 export const POPUP_CLOSE = 'popup_close';
 export const POPUP_CONFIRM_SHOW ='popup_confirm_show';
+
+export const TOAST_ADD = 'toast_add';
+export const TOAST_DELETE = 'toast_delete';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, Modal, } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+
 
 export const SuccessPopup = (({ message = 'Click to Continue!', onPress, color = '#009624' }) => {
     return (
@@ -37,15 +37,16 @@ export const FailPopup = (({ message = 'Something Went Wrong!', onPress, color =
     )
 })
 
-export const ConfirmPopup = (({ message = 'something to confirm', textLeft = 'Confirm', textRight = 'Cancle', onPressLeft, onPressRight }) => {
+export const ConfirmPopup = (({ message = 'something to confirm', textLeft = 'Confirm', textRight = 'Cancle', color = '#7C4DFF', onPressLeft, onPressRight }) => {
     return (
         <View style={styles.container}>
             <View style={styles.card}>
                 <View style={styles.content}>
+                    <Text style={[styles.title, { color: color }]}>Are you Sure?</Text>
                     <Text style={styles.message}>{message}</Text>
                     <View style={styles.buttonGroup}>
                         <TouchableHighlight underlayColor="#212121"
-                            onPress={onPressLeft} style={[styles.button, { backgroundColor: '#7C4DFF', width: '49%' }]}>
+                            onPress={onPressLeft} style={[styles.button, { backgroundColor: color, width: '49%' }]}>
                             <Text style={{ color: '#fff' }}>{textLeft}</Text>
                         </TouchableHighlight>
                         <TouchableHighlight underlayColor="#212121"
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
     },
     title: {
         paddingTop: 20,
-        fontSize: 28,
+        fontSize: 25,
         fontWeight: '600'
     },
     message: {

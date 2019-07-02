@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, StyleSheet, Text, ScrollView } from 'react-native';
+import { View, TextInput, StyleSheet, ScrollView } from 'react-native';
 
 import CategoryCard from '../categories/categoryCard';
 import listData from '../../asset/data/offers.json';
@@ -41,7 +41,6 @@ export default class SearchInput extends Component {
                             {this.state.list.map(item => {
                                 return <CategoryCard key={item.id} data={item} navigation={this.props.navigation} />
                             })}
-
                         </View>
                     </ScrollView>
                 }

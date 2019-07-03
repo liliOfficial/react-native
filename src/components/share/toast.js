@@ -6,58 +6,80 @@ export class Toast extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            info: [
-                {
-                    message: ` By default, all toasts will inherit ToastContainer's props.Props defined on toast supersede ToastContainer's props. Props marked with * can only be set on the ToastContainer. The demo is not exhaustive, check the repo for more!`
-                },
-                {
-                    message: 'Wow so easy.'
-                },
-                {
-                    message: 'Something, Something, Something'
-                },
-                {
-                    message: 'a a a a aaaannanaa a a a a a a a a a a a '
-                }
-            ]
+            info: []
         };
     }
 
     componentDidMount() {
+        this.addCard({
+            message: 'a a a a aaaannanaa a a a a a a a a a a a 12000ms',
+            autoClose: 3000
+        });
         setTimeout(() => {
-            this.addCard();
-        }, (1000));
-
+            this.addCard({
+                message: 'Auto Close in 24000ms',
+                autoClose: 24000
+            });
+        }, 1000);
+        setTimeout(() => {
+            this.addCard({
+                message: 'Auto Close in 6000ms',
+                autoClose: 6000,
+                background: '#f44330'
+                
+            });
+        }, 2000);
+        setTimeout(() => {
+            this.addCard({
+                message: 'Auto Close in 12000ms',
+                autoClose: 12000
+            });
+        }, 3000);
     }
 
-    addCard = () => {
-        const { message } = this.props;
-        const info = this.state.info.concat({ message });
-        this.setState({ info });
+    addCard = (message) => {
+        setTimeout(() => {
+            const info = this.state.info.concat(message);
+            this.setState({ info });
+        }, 0);
+        if (message.autoClose) {
+            setTimeout(() => {
+                this.deleteCard(message);
+            }, message.autoClose + 1500);
+        }
     }
 
     deleteCard = (item) => {
+        console.log(item);
         const info = this.state.info.filter(e => {
             return e !== item
         });
+        console.log(this.state.info);
         this.setState({ info })
     }
 
     autoClose = () => {
+        this.state.info.map(e => {
+            if (e.autoClose) {
+                setTimeout(() => {
+                    this.deleteCard(e);
+                }, e.autoClose + 1500);
 
+            }
+        })
     }
 
     render() {
-        const { autoClose = 5000 } = this.props;
+        const { autoClose = Number.MAX_VALUE, background = 'rgba(0,0,0,0.8)' } = this.props;
         return (
             <View style={styles.container} autoClose={autoClose}>
                 {this.state.info.map((item, index) => {
                     return (
-                        <ToastSlideIn key={index} autoClose={autoClose}>
-                            <TouchableOpacity style={styles.card} onPress={() => { this.deleteCard(item) }}>
+                        <ToastSlideIn key={index} autoClose={item.autoClose || autoClose}>
+                            <TouchableOpacity style={[styles.card, { backgroundColor: item.background || background }]} onPress={() => { this.deleteCard(item) }}>
                                 <Icon name='times' size={16} style={styles.icon} />
                                 <Text style={styles.text}>{item.message}</Text>
-                                <ToastProcess style={styles.progress} autoClose={autoClose}></ToastProcess>
+                                <ToastProcess style={styles.progress} autoClose={item.autoClose || autoClose}></ToastProcess>
                             </TouchableOpacity>
                         </ToastSlideIn>
                     )
@@ -93,7 +115,7 @@ class ToastProcess extends Component {
 
 class ToastSlideIn extends Component {
     state = {
-        right: new Animated.Value(-400),
+        right: new Animated.Value(-400)
     }
 
     componentDidMount() {
@@ -118,7 +140,8 @@ class ToastSlideIn extends Component {
 
     render() {
         return (
-            <Animated.View style={{ ...this.props.style, position: 'relative', right: this.state.right }}>
+            <Animated.View
+                style={{ ...this.props.style, position: 'relative', right: this.state.right }}>
                 {this.props.children}
             </Animated.View>
         )
@@ -138,8 +161,8 @@ const styles = StyleSheet.create({
         paddingRight: 16,
         width: 300,
         marginBottom: 10,
-        backgroundColor: 'rgba(0,0,0,0.8)',
-        position: 'relative'
+        position: 'relative',
+        display: 'flex'
     },
     text: {
         color: '#fff',

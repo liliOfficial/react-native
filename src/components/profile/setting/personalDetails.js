@@ -1,7 +1,7 @@
 
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, DatePickerIOS } from 'react-native';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
 import DatePicker from 'react-native-datepicker'
 
 import { connect } from 'react-redux';
@@ -76,23 +76,6 @@ class PersonalDetails extends Component {
                     value={postCode}
                 />
                 <Text style={{ paddingTop: 10 }}>Date of birth</Text>
-                {/* <View style={styles.birthday}>
-                    <TextInput
-                        style={styles.birthdayDay}
-                        placeholder="DD"
-                        onChangeText={(birthdayDay) => this.detailUpdate({ key: 'birthdayDay', value: birthdayDay })}
-                    />
-                    <TextInput
-                        style={styles.birthdayMonth}
-                        placeholder="MM"
-                        onChangeText={(birthdayMonth) => this.detailUpdate({ key: 'birthdayMonth', value: birthdayMonth })}
-                    />
-                    <TextInput
-                        style={styles.birthdayYear}
-                        placeholder="YYYY"
-                        onChangeText={(birthdayYear) => this.detailUpdate({ key: 'birthdayYear', value: birthdayYear })}
-                    />
-                </View> */}
                 <DatePicker
                     style={styles.birthdayPicker}
                     date={birthday}
@@ -162,31 +145,6 @@ const styles = StyleSheet.create({
         width: '100%',
         marginTop: 5
     },
-    // birthday: {
-    //     flexDirection: 'row',
-    //     justifyContent: 'space-between'
-    // },
-    // birthdayDay: {
-    //     borderColor: '#484848',
-    //     borderWidth: 1,
-    //     padding: 8,
-    //     marginTop: 8,
-    //     width: '20%'
-    // },
-    // birthdayMonth: {
-    //     borderColor: '#484848',
-    //     borderWidth: 1,
-    //     padding: 8,
-    //     marginTop: 8,
-    //     width: '20%'
-    // },
-    // birthdayYear: {
-    //     borderColor: '#484848',
-    //     borderWidth: 1,
-    //     padding: 8,
-    //     marginTop: 8,
-    //     width: '56%'
-    // }
 });
 
 const mapStateToProps = state => {

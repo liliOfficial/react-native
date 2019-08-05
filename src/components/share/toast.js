@@ -12,7 +12,7 @@ export class Toast extends Component {
 
     componentDidMount() {
         this.addCard({
-            message: 'a a a a aaaannanaa a a a a a a a a a a a 12000ms',
+            message: 'a a a a aaaannanaa a a a a a a a a a a a 30000ms',
             autoClose: 3000
         });
         setTimeout(() => {
@@ -23,50 +23,38 @@ export class Toast extends Component {
         }, 1000);
         setTimeout(() => {
             this.addCard({
-                message: 'Auto Close in 6000ms',
-                autoClose: 6000,
+                message: 'Auto Close in 35000ms',
                 background: '#f44330'
-                
+
             });
         }, 2000);
+
         setTimeout(() => {
             this.addCard({
-                message: 'Auto Close in 12000ms',
-                autoClose: 12000
+                message: 'Auto Close in 10000ms',
+                autoClose: 10000
             });
         }, 3000);
+        setTimeout(() => {
+            this.addCard({
+                message: 'Auto Close in 15000ms',
+                autoClose: 15000
+            });
+        }, 4000);
     }
 
     addCard = (message) => {
-        setTimeout(() => {
-            const info = this.state.info.concat(message);
-            this.setState({ info });
-        }, 0);
+        const info = [...this.state.info, message];
+        this.setState({ info });
+
         if (message.autoClose) {
             setTimeout(() => {
-                this.deleteCard(message);
-            }, message.autoClose + 1500);
+                let { info } = this.state;
+                const index = info.indexOf(message);
+                info[index].hide = true;
+                this.setState({ info })
+            }, message.autoClose + 300);
         }
-    }
-
-    deleteCard = (item) => {
-        console.log(item);
-        const info = this.state.info.filter(e => {
-            return e !== item
-        });
-        console.log(this.state.info);
-        this.setState({ info })
-    }
-
-    autoClose = () => {
-        this.state.info.map(e => {
-            if (e.autoClose) {
-                setTimeout(() => {
-                    this.deleteCard(e);
-                }, e.autoClose + 1500);
-
-            }
-        })
     }
 
     render() {
@@ -75,13 +63,11 @@ export class Toast extends Component {
             <View style={styles.container} autoClose={autoClose}>
                 {this.state.info.map((item, index) => {
                     return (
-                        <ToastSlideIn key={index} autoClose={item.autoClose || autoClose}>
-                            <TouchableOpacity style={[styles.card, { backgroundColor: item.background || background }]} onPress={() => { this.deleteCard(item) }}>
-                                <Icon name='times' size={16} style={styles.icon} />
-                                <Text style={styles.text}>{item.message}</Text>
-                                <ToastProcess style={styles.progress} autoClose={item.autoClose || autoClose}></ToastProcess>
-                            </TouchableOpacity>
-                        </ToastSlideIn>
+                        <View key={index}>
+                            {!item.hide &&
+                                <ToastBlock item={item} autoClose={autoClose} background={background} />
+                            }
+                        </View>
                     )
                 })}
             </View>
@@ -89,19 +75,55 @@ export class Toast extends Component {
     }
 }
 
+// interface ToastItem {
+//     message: string;
+//     background: string;
+//     autoClose: number
+// }
+
+class ToastBlock extends Component {
+    state = {
+        show: true
+    }
+    deleteCard = () => {
+        this.setState({ show: false })
+    }
+    render() {
+        const { item, autoClose = Number.MAX_VALUE, background = 'rgba(0,0,0,0.8)' } = this.props;
+        return (
+            <View>
+                {this.state.show &&
+                    <ToastSlideIn autoClose={item.autoClose || autoClose}>
+                        <TouchableOpacity style={[styles.card, { backgroundColor: item.background || background }]} onPress={() => { this.deleteCard(item) }}>
+                            <Icon name='times' size={16} style={styles.icon} />
+                            <Text style={styles.text}>{item.message}</Text>
+                            {(autoClose !== Number.MAX_VALUE || item.autoClose) &&
+                                <ToastProcess style={styles.progress} autoClose={item.autoClose || autoClose}></ToastProcess>
+                            }
+                        </TouchableOpacity>
+                    </ToastSlideIn>
+                }
+            </View>
+        )
+    }
+}
+
 class ToastProcess extends Component {
     state = {
-        barWidth: new Animated.Value(300)
+        barWidth: new Animated.Value(300),
     }
 
     componentDidMount() {
-        Animated.timing(
-            this.state.barWidth,
-            {
-                toValue: 0,
-                duration: this.props.autoClose,
-            }
-        ).start();
+        Animated.sequence([
+            Animated.timing(
+                this.state.barWidth,
+                {
+                    toValue: 0,
+                    duration: this.props.autoClose,
+                }
+            )
+
+        ]).start();
     }
 
     render() {
@@ -115,7 +137,13 @@ class ToastProcess extends Component {
 
 class ToastSlideIn extends Component {
     state = {
-        right: new Animated.Value(-400)
+        right: new Animated.Value(-400),
+        opacity: new Animated.Value(1)
+    }
+
+    constructor() {
+        super()
+        this.animatedValue = new Animated.Value(0)
     }
 
     componentDidMount() {
@@ -128,10 +156,10 @@ class ToastSlideIn extends Component {
                 }
             ),
             Animated.timing(
-                this.state.right,
+                this.state.opacity,
                 {
-                    toValue: -400,
-                    duration: 500,
+                    toValue: 0,
+                    duration: 300,
                     delay: this.props.autoClose
                 }
             )
@@ -141,7 +169,7 @@ class ToastSlideIn extends Component {
     render() {
         return (
             <Animated.View
-                style={{ ...this.props.style, position: 'relative', right: this.state.right }}>
+                style={{ ...this.props.style, position: 'relative', right: this.state.right, opacity: this.state.opacity }}>
                 {this.props.children}
             </Animated.View>
         )

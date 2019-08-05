@@ -32,7 +32,7 @@ class App extends Component {
                     <ConfirmPopup message={message}
                         textLeft={textLeft} textRight={textRight} onPressLeft={onPressLeft} onPressRight={onPressRight} />
                 }
-                <Toast background='rgba(104,159,56,0.9)' autoClose={10000} />
+                <Toast background='rgba(104,159,56,0.9)' />
             </View>
         );
     }

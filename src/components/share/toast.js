@@ -43,6 +43,16 @@ export class Toast extends Component {
         }, 4000);
     }
 
+    componentDidUpdate(prevProps) {
+
+        if (this.props.message && this.props.message !== prevProps.message) {
+            setTimeout(() => {
+                this.addCard(this.props.message);
+            }, 0);
+        }
+
+    }
+
     addCard = (message) => {
         const info = [...this.state.info, message];
         this.setState({ info });
@@ -52,8 +62,9 @@ export class Toast extends Component {
                 let { info } = this.state;
                 const index = info.indexOf(message);
                 info[index].hide = true;
-                this.setState({ info })
-            }, message.autoClose + 300);
+                this.setState({ info });
+                console.log(info);
+            }, message.autoClose + 750);
         }
     }
 
@@ -159,7 +170,7 @@ class ToastSlideIn extends Component {
                 this.state.opacity,
                 {
                     toValue: 0,
-                    duration: 300,
+                    duration: 250,
                     delay: this.props.autoClose
                 }
             )

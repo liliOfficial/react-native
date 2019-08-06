@@ -32,7 +32,10 @@ class App extends Component {
                     <ConfirmPopup message={message}
                         textLeft={textLeft} textRight={textRight} onPressLeft={onPressLeft} onPressRight={onPressRight} />
                 }
-                <Toast background='rgba(104,159,56,0.9)' />
+                <Toast background='rgba(104,159,56,0.9)' message={{
+                message: 'From App in 10000ms',
+                autoClose: 10000
+            }} />
             </View>
         );
     }

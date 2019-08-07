@@ -5,6 +5,7 @@ import AuthReducer from './authReducer';
 import JoinReducer from './joinReducer';
 import UserReducer from './userReducer';
 import PopupReducer from './popupReducer';
+import ToastReducer from './toastReducer';
 
 export default combineReducers({
     offers: OffersReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
     auth: AuthReducer,
     join: JoinReducer,
     user: UserReducer,
-    popup: PopupReducer
+    popup: PopupReducer,
+    toast: ToastReducer
 })

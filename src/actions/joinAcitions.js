@@ -1,6 +1,6 @@
 import {
     USER_INFO_UPDATE, USER_CREATE, USER_CREATE_SUCCESS, USER_CREATE_FAIL, USER_INFO_CREATE,
-    USER_FETCH_SUCCESS, USER_DETAIL_UPDATE, POPUP_SUCCESS_SHOW
+    USER_FETCH_SUCCESS, USER_DETAIL_UPDATE, POPUP_SUCCESS_SHOW, TOAST_MESSAGE
 } from './types';
 import firebase from 'firebase';
 
@@ -69,7 +69,7 @@ export const userDetailSave = ({ firstName, lastName, postCode, mobile, birthday
         firebase.database().ref(`/users/${currentUser.uid}/userinfo/${uid}`)
             .set({ firstName, lastName, postCode, mobile, birthday, gender })
             .then(() => {
-                dispatch({ type: POPUP_SUCCESS_SHOW, payload: { message: 'Successfully Saved!' } })
+                dispatch({ type: TOAST_MESSAGE, payload: { message: 'Successfully Saved!' } })
                 console.log('saved!')
             })
     }

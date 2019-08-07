@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 
 import { connect } from 'react-redux';
-import { popupClose } from './actions';
+import { popupClose, toastPopup } from './actions';
 import Navigation from './Navigation';
 
 import { SuccessPopup, FailPopup, ConfirmPopup } from './components/share/popup';
@@ -10,14 +10,14 @@ import { Toast } from './components/share/toast';
 
 class App extends Component {
     state = {
-        
+
     }
     closePopup() {
         this.props.popupClose();
     }
 
     render() {
-        const { popupShow, message, type, textLeft, textRight, onPressLeft, onPressRight } = this.props;
+        const { popupShow, message, type, textLeft, textRight, onPressLeft, onPressRight, toastMessage } = this.props;
         return (
             <View style={{ flex: 1 }}>
 
@@ -32,10 +32,7 @@ class App extends Component {
                     <ConfirmPopup message={message}
                         textLeft={textLeft} textRight={textRight} onPressLeft={onPressLeft} onPressRight={onPressRight} />
                 }
-                <Toast background='rgba(104,159,56,0.9)' message={{
-                message: 'From App in 10000ms',
-                autoClose: 10000
-            }} />
+                <Toast background='#3f1dcb' message={toastMessage} autoClose={5000}/>
             </View>
         );
     }
@@ -43,7 +40,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
     const { popupShow, message, type, textLeft, textRight, onPressLeft, onPressRight } = state.popup;
-    return { popupShow, message, type, textLeft, textRight, onPressLeft, onPressRight };
+    const { toastMessage } = state.toast;
+    return { popupShow, message, type, textLeft, textRight, onPressLeft, onPressRight, toastMessage };
 }
 
-export default connect(mapStateToProps, { popupClose })(App);
+export default connect(mapStateToProps, { popupClose, toastPopup })(App);

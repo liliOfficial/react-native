@@ -15,39 +15,14 @@ export class Toast extends Component {
             message: 'a a a a aaaannanaa a a a a a a a a a a a 30000ms',
             autoClose: 3000
         });
-        setTimeout(() => {
-            this.addCard({
-                message: 'Auto Close in 24000ms',
-                autoClose: 24000
-            });
-        }, 1000);
-        setTimeout(() => {
-            this.addCard({
-                message: 'Auto Close in 35000ms',
-                background: '#f44330'
-
-            });
-        }, 2000);
-
-        setTimeout(() => {
-            this.addCard({
-                message: 'Auto Close in 10000ms',
-                autoClose: 10000
-            });
-        }, 3000);
-        setTimeout(() => {
-            this.addCard({
-                message: 'Auto Close in 15000ms',
-                autoClose: 15000
-            });
-        }, 4000);
     }
 
     componentDidUpdate(prevProps) {
-
-        if (this.props.message && this.props.message !== prevProps.message) {
+        console.log(this.props);
+        const { message } = this.props
+        if (message.message && message !== prevProps.message) {
             setTimeout(() => {
-                this.addCard(this.props.message);
+                this.addCard(message);
             }, 0);
         }
 

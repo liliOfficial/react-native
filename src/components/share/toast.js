@@ -12,13 +12,12 @@ export class Toast extends Component {
 
     componentDidMount() {
         this.addCard({
-            message: 'a a a a aaaannanaa a a a a a a a a a a a 30000ms',
+            message: 'Li Li Toast',
             autoClose: 3000
         });
     }
 
     componentDidUpdate(prevProps) {
-        console.log(this.props);
         const { message } = this.props
         if (message.message && message !== prevProps.message) {
             setTimeout(() => {
@@ -32,15 +31,6 @@ export class Toast extends Component {
         const info = [...this.state.info, message];
         this.setState({ info });
 
-        if (message.autoClose) {
-            setTimeout(() => {
-                let { info } = this.state;
-                const index = info.indexOf(message);
-                info[index].hide = true;
-                this.setState({ info });
-                console.log(info);
-            }, message.autoClose + 750);
-        }
     }
 
     render() {
@@ -48,13 +38,7 @@ export class Toast extends Component {
         return (
             <View style={styles.container} autoClose={autoClose}>
                 {this.state.info.map((item, index) => {
-                    return (
-                        <View key={index}>
-                            {!item.hide &&
-                                <ToastBlock item={item} autoClose={autoClose} background={background} />
-                            }
-                        </View>
-                    )
+                    return <ToastBlock item={item} autoClose={autoClose} background={background} key={index} />
                 })}
             </View>
         );
@@ -71,9 +55,23 @@ class ToastBlock extends Component {
     state = {
         show: true
     }
+
+    componentDidMount() {
+        const { item, autoClose = Number.MAX_VALUE } = this.props;
+        const time = item.autoClose || autoClose;
+        this.autoClose(time);
+    }
+
     deleteCard = () => {
         this.setState({ show: false })
     }
+
+    autoClose = (time) => {
+        setTimeout(() => {
+            this.setState({ show: false })
+        }, time + 750);
+    }
+
     render() {
         const { item, autoClose = Number.MAX_VALUE, background = 'rgba(0,0,0,0.8)' } = this.props;
         return (

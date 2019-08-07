@@ -69,6 +69,7 @@ export const userDetailSave = ({ firstName, lastName, postCode, mobile, birthday
         firebase.database().ref(`/users/${currentUser.uid}/userinfo/${uid}`)
             .set({ firstName, lastName, postCode, mobile, birthday, gender })
             .then(() => {
+                dispatch({ type: POPUP_SUCCESS_SHOW, payload: { message: 'Successfully Saved!' } })
                 dispatch({ type: TOAST_MESSAGE, payload: { message: 'Successfully Saved!' } })
                 console.log('saved!')
             })

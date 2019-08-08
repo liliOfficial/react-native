@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
+import { AsyncStorage } from 'react-native';
 import { View, ScrollView, Text, StyleSheet, Platform, Alert, Linking, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -38,8 +39,9 @@ export default class ProfilePage extends React.Component {
         Alert.alert('You tapped the button!')
     }
 
-    logOut = () => {
+    logOut = async () => {
         firebase.auth().signOut();
+        await AsyncStorage.setItem('userToken','');
         this.props.navigation.navigate('LogIn');
     }
 

@@ -1,6 +1,6 @@
 import { EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL } from './types';
 import firebase from 'firebase';
-
+import {AsyncStorage} from 'react-native';
 
 export const emailChanged = (text) => {
     return {
@@ -25,9 +25,11 @@ export const loginUser = ({ email, password, navigation }) => {
     }
 }
 
-const loginUserSuccess = (dispatch, user, navigation) => {
-    dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
+const loginUserSuccess = async (dispatch, user, navigation) => {
+    await AsyncStorage.setItem('userToken','token');
     navigation.navigate('authPages');
+    dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
+    
 }
 
 const loginUserFail = (dispatch, e) => {

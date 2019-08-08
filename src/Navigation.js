@@ -6,10 +6,11 @@
  * @flow
  */
 import React from 'react';
-import { createAppContainer, createStackNavigator } from 'react-navigation';
+import { createAppContainer, createStackNavigator, createSwitchNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
+import AuthLoadingScreen from './Auth';
 import LogNavigator from './components/log/loginNav';
 
 import OfferPage from './components/pages/offerPage';
@@ -24,6 +25,8 @@ import GoPage from './components/pages/goPage';
 import LogoutPage from './components/log/loginPage';
 import LinkCardPage from './components/cardLinked/linkCard';
 import CardListPage from './components/cardLinked/cardList';
+
+
 
 
 
@@ -181,23 +184,14 @@ const authNavigator = createMaterialBottomTabNavigator(
 );
 
 //Logged In and Logged Out
-const AppNavigator = createStackNavigator(
+const AppNavigator = createSwitchNavigator(
   {
-    logPages: {
-      screen: LogNavigator,
-      navigationOptions: {
-        header: null
-      }
-    },
-    authPages: {
-      screen: authNavigator,
-      navigationOptions: {
-        header: null
-      }
-    }
+    AuthLoading: AuthLoadingScreen,
+    logPages: LogNavigator,
+    authPages: authNavigator,
   },
   {
-    initialRouteName: 'logPages',
+    initialRouteName: 'AuthLoading',
   }
 )
 

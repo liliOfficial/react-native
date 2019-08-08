@@ -1,4 +1,3 @@
-
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -13,8 +12,6 @@ import firebase from 'firebase';
 import { COLOR, ThemeContext, getTheme } from 'react-native-material-ui';
 import SplashScreen from 'react-native-splash-screen';
 import reducers from './src/reducers';
-
-import {SuccessPopup} from './src/components/share/popup';
 
 const uiTheme = {
   palette: {

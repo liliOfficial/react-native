@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-nativ
 import { Checkbox } from 'react-native-material-ui';
 import { PurpleButton } from '../share/button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import VGSCollect from './vgs';
 
 export default class LinkCardPage extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ export default class LinkCardPage extends Component {
             <View style={styles.container}>
                 <Text style={styles.title}>Link your Card</Text>
                 <Text style={styles.subTitle}>Link one or more Visa credit or debit cards and activate available card-linked Cashback offers to your card. </Text>
+                <VGSCollect/>
                 <View style={{ position: 'relative' }}>
                     <TextInput
                         style={styles.input}

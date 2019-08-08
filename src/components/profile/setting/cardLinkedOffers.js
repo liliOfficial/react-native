@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default class CardLinkedOffers extends Component {
     constructor(props) {
@@ -9,9 +9,13 @@ export default class CardLinkedOffers extends Component {
     }
 
     render() {
+
         return (
             <View style={styles.box}>
-                <Text>Introducing Visa card linked offers, the newest way for CASHREWARDS members to earn Cashback. Now you can start earning Cashback when you shop in-store and online at participating stores when you use your linked Visa card.</Text>
+                <Text>Get Cashback when you shop in-store at participating stores with your linked Visa or Mastercard.</Text>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('CardList')}>
+                    <Text style={styles.button}>Card Setting</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -25,4 +29,8 @@ const styles = StyleSheet.create({
         borderTopColor: '#fff',
         borderWidth: 1,
     },
+    button: {
+        paddingTop: 10,
+        color: '#7c4dff',
+    }
 });

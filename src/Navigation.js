@@ -119,7 +119,7 @@ const ProfileNavigator = createStackNavigator(
     CardList: {
       screen: CardListPage,
       navigationOptions: {
-        title: 'Linked Card List',
+        title: 'Card Setting',
         headerStyle: {
           backgroundColor: '#7C4DFF'
         },

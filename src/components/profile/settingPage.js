@@ -12,44 +12,7 @@ import TwoFactorAuthentication from './setting/twoFactorAuthentication';
 import CommunicationPreference from './setting/communicationPreference';
 import CloseAccount from './setting/closeAccount';
 
-const SECTIONS = [
-    {
-        header: 'Personal Details',
-        content: <PersonalDetails />,
-    },
-    {
-        header: 'Email Address',
-        content: <EmailAddress />,
-    },
-    {
-        header: 'Card-Linked Offers',
-        content: <CardLinkedOffers />,
-    },
-    {
-        header: 'Password',
-        content: <Password />,
-    },
-    {
-        header: 'Bank Account',
-        content: <BankAccount />,
-    },
-    {
-        header: 'PayPal Account',
-        content: <PaypelAccount />,
-    },
-    {
-        header: 'Two-Factor Authentication',
-        content: <TwoFactorAuthentication />,
-    },
-    {
-        header: 'Communication Preference',
-        content: <CommunicationPreference />,
-    },
-    {
-        header: 'Close my Account',
-        content: <CloseAccount />,
-    },
-];
+
 
 export default class SettingPage extends React.Component {
 
@@ -88,6 +51,44 @@ export default class SettingPage extends React.Component {
     }
 
     render() {
+        const SECTIONS = [
+            {
+                header: 'Personal Details',
+                content: <PersonalDetails />,
+            },
+            {
+                header: 'Email Address',
+                content: <EmailAddress />,
+            },
+            {
+                header: 'Card-Linked Offers',
+                content: <CardLinkedOffers navigation={this.props.navigation}/>,
+            },
+            {
+                header: 'Password',
+                content: <Password />,
+            },
+            {
+                header: 'Bank Account',
+                content: <BankAccount />,
+            },
+            {
+                header: 'PayPal Account',
+                content: <PaypelAccount />,
+            },
+            {
+                header: 'Two-Factor Authentication',
+                content: <TwoFactorAuthentication />,
+            },
+            {
+                header: 'Communication Preference',
+                content: <CommunicationPreference />,
+            },
+            {
+                header: 'Close my Account',
+                content: <CloseAccount />,
+            },
+        ];
         return (
             <View style={styles.layout}>
                 <ScrollView style={{ padding: 10 }}>

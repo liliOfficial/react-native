@@ -11,25 +11,25 @@ export default class CardListPage extends Component {
             cards: [
                 {
                     id: 1,
-                    number: '5000 0000 0000 2345',
+                    number: '5*** **** **** 2345',
                     date: '01/01/2019',
                     type: 'master'
                 },
                 {
                     id: 2,
-                    number: '4000 0000 0000 6534',
+                    number: '4*** **** **** 6534',
                     date: '18/01/2019',
                     type: 'visa'
                 },
                 {
                     id: 3,
-                    number: '4100 0000 0000 1799',
+                    number: '4*** **** **** 1799',
                     date: '26/01/2019',
                     type: 'visa'
                 },
                 {
                     id: 4,
-                    number: '5000 0000 0000 5434',
+                    number: '5*** **** **** 5434',
                     date: '01/01/2019',
                     type: 'master'
                 }
@@ -50,10 +50,10 @@ export default class CardListPage extends Component {
                                         <Text style={styles.date}>Date Added: {card.date}</Text>
                                         <Text style={styles.cardNumber}>{card.number}</Text>
                                         {card.type === 'master' &&
-                                            <Image source={require('../../asset/img/mastercard.jpg')} style={styles.cardType} />
+                                            <Image source={require('../../asset/img/mastercard.png')} style={styles.cardType} />
                                         }
                                         {card.type === 'visa' &&
-                                            <Image source={require('../../asset/img/visa-card.png')} style={styles.cardType} />
+                                            <Image source={require('../../asset/img/visa.png')} style={styles.cardType} />
                                         }
 
                                         <TouchableHighlight style={styles.deleteButton}>
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     },
     card: {
         marginBottom: 8,
-        backgroundColor: '#212121',
+        backgroundColor: '#ede7f6',
         borderRadius: 5,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 1 },
@@ -100,13 +100,13 @@ const styles = StyleSheet.create({
         position: 'relative'
     },
     date: {
-        color: '#fff',
+        color: '#212121',
         marginBottom: 5
     },
     cardNumber: {
         fontSize: 22,
         fontWeight: 'bold',
-        color: '#fff',
+        color: '#212121',
         marginBottom: 8,
     },
     cardType: {

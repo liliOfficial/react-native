@@ -16,6 +16,7 @@ export default class LinkCardPage extends Component {
 
     render() {
         return (
+            
             <View style={styles.container}>
                 <Text style={styles.title}>Link your Card</Text>
                 <Text style={styles.subTitle}>Link one or more Visa credit or debit cards and activate available card-linked Cashback offers to your card. </Text>

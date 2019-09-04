@@ -28,9 +28,6 @@ const VGSCollectFormHTMl = `
     <script type="text/javascript" src="https://js.verygoodvault.com/vgs-collect/1/vgs-collect-examples.js"></script>
 
     <style>
-      body {
-        margin-top: 100px;
-      }
 
       span[id*="cc-"] {
         display: block;
